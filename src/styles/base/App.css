@@ -1,0 +1,16 @@
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-background);
+}
+
+.app-main-content {
+  flex: 1;
+}
+
+.results-scroll-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

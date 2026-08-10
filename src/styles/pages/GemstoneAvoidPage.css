@@ -1,0 +1,83 @@
+.avoid-gems-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.avoid-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.avoid-gem-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+}
+
+.avoid-card-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.avoid-gem-thumb {
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Scale down the SVG inside thumb */
+.avoid-gem-thumb .gem-materialize-wrap {
+  width: 54px;
+  height: 54px;
+}
+
+.avoid-gem-thumb .gem-pedestal {
+  width: 50px;
+  height: 50px;
+}
+
+.avoid-gem-thumb .gem-aura {
+  display: none;
+}
+
+.avoid-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.avoid-gem-name {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.avoid-gem-reason {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.avoid-badge-col {
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .avoid-gem-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .avoid-badge-col {
+    align-self: flex-end;
+  }
+}

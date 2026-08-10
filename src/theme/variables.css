@@ -1,0 +1,53 @@
+:root {
+  /* Base */
+  --color-background: #FCFAF5;     /* warm ivory page background */
+  --color-card: #FFFFFF;           /* white cards on top of ivory background */
+  --color-card-alt: #FBF7EE;       /* soft warm-beige card variant (e.g. pricing card) */
+
+  /* Text */
+  --color-text-primary: #16213E;   /* deep navy — headings and primary text */
+  --color-text-secondary: #6B7280; /* muted grey — subtitles, helper text */
+
+  /* Accent - gold (numbered badges, icons, borders, CTA highlights) */
+  --color-gold: #C8934A;
+  --color-gold-hover: #B5823B;
+  --color-gold-soft: #F3E4C8;
+  --color-gold-bg: #FBF3E3;
+
+  /* Primary action - deep emerald (recommended / positive / primary buttons) */
+  --color-emerald: #1F7A4D;
+  --color-emerald-dark: #16613D;
+  --color-emerald-bg: #E9F5EE;
+
+  /* Warning - soft coral/red (avoid states) */
+  --color-avoid: #D1483F;
+  --color-avoid-bg: #FBEAE8;
+
+  /* Borders & dividers */
+  --color-border: #ECE6D8;
+  --color-border-dark: #3A4770;
+
+  /* Dark contrast section — used ONLY on the analysis/loading screen */
+  --color-void: #0F1B3D;           /* deep navy background for AnalysisLoadingPage */
+  --color-void-card: #17244D;      /* elevated panel on the dark screen */
+  --color-void-text: #F5F3EE;      /* ivory text on dark */
+  --color-void-text-secondary: #9AA3C4;
+
+  /* Dimensions & Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 6px rgba(22, 33, 62, 0.03);
+  --shadow-md: 0 6px 16px rgba(22, 33, 62, 0.06);
+  --shadow-lg: 0 12px 32px rgba(22, 33, 62, 0.09);
+  --shadow-glow-emerald: 0 0 24px rgba(31, 122, 77, 0.28);
+  --shadow-glow-gold: 0 0 24px rgba(200, 147, 74, 0.28);
+
+  /* Typography */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}

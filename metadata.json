@@ -1,0 +1,6 @@
+{
+  "name": "Vedic Astrology Gemstone Suggestion",
+  "description": "Premium Vedic astrology gemstone analysis, birth chart breakdown, and wearing guide report.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

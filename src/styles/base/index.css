@@ -1,0 +1,4 @@
+@import "tailwindcss";
+@import "./variables.css";
+@import "./globalReset.css";
+@import "./typography.css";

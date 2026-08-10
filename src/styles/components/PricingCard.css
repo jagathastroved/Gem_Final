@@ -1,0 +1,98 @@
+.pricing-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.pricing-main-card {
+  background-color: var(--color-card-alt);
+  border: 1px solid var(--color-gold-soft);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  text-align: center;
+  position: relative;
+  box-shadow: var(--shadow-md);
+}
+
+.pricing-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--color-gold-bg);
+  border: 1px solid var(--color-gold-soft);
+  color: var(--color-gold);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  margin-bottom: 16px;
+}
+
+.pricing-sparkle {
+  width: 14px;
+  height: 14px;
+}
+
+.pricing-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.price-old {
+  text-decoration: line-through;
+  color: var(--color-text-secondary);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.price-current {
+  font-family: var(--font-serif);
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+}
+
+.pricing-savings-pill {
+  display: inline-block;
+  background-color: var(--color-emerald-bg);
+  color: var(--color-emerald-dark);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  margin-bottom: 20px;
+  border: 1px solid rgba(31, 122, 77, 0.2);
+}
+
+.pricing-guarantee-note {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-top: 16px;
+  line-height: 1.4;
+}
+
+.pricing-warning-box {
+  background-color: var(--color-emerald);
+  color: #FFFFFF;
+  padding: 20px 24px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.pricing-warning-box h4 {
+  color: var(--color-gold-soft);
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.pricing-warning-box p {
+  color: #E2F0E8;
+  font-size: 0.875rem;
+  line-height: 1.45;
+}

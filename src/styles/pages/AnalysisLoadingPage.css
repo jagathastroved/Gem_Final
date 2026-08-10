@@ -1,0 +1,144 @@
+.analysis-loading-page {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--color-void);
+  color: var(--color-void-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  overflow: hidden;
+}
+
+.analysis-content-grid {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.analysis-header-text {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.analysis-header-text h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.85rem, 3vw, 2.5rem);
+  color: var(--color-void-text);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.analysis-subtitle {
+  color: var(--color-void-text-secondary);
+  font-size: 1rem;
+}
+
+.orbital-centerpiece {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-counter-text {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.percent-num {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-gold-soft);
+  text-shadow: 0 0 12px rgba(200, 147, 74, 0.4);
+}
+
+.analysis-footer-status {
+  text-align: center;
+  margin-top: 24px;
+  color: var(--color-gold-soft);
+  font-size: 0.925rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Checklist Panel */
+.stage-checklist-card {
+  background-color: var(--color-void-card);
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--radius-xl);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--color-void-text-secondary);
+  transition: all 0.25s ease;
+  font-size: 0.925rem;
+}
+
+.checklist-item.done {
+  color: var(--color-void-text);
+}
+
+.checklist-item.active {
+  color: var(--color-gold-soft);
+  font-weight: 600;
+}
+
+.stage-icon-wrap {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stage-check-icon {
+  width: 20px;
+  height: 20px;
+  color: #34D399; /* emerald check */
+}
+
+.stage-pending-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-border-dark);
+}
+
+.stage-pulsing-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-gold);
+  box-shadow: 0 0 10px var(--color-gold);
+  animation: pulseDot 1.2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0% { transform: scale(0.85); opacity: 0.7; }
+  50% { transform: scale(1.25); opacity: 1; }
+  100% { transform: scale(0.85); opacity: 0.7; }
+}
+
+@media (max-width: 860px) {
+  .analysis-content-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

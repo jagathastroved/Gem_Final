@@ -1,0 +1,30 @@
+.section-header {
+  margin-bottom: 24px;
+}
+
+.section-header-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-header-title-row h2 {
+  font-family: var(--font-serif);
+  color: var(--color-text-primary);
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  font-weight: 700;
+}
+
+.section-header-subtitle {
+  margin-top: 6px;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  padding-left: 40px;
+}
+
+@media (max-width: 640px) {
+  .section-header-subtitle {
+    padding-left: 0;
+    margin-top: 8px;
+  }
+}

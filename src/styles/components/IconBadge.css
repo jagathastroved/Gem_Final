@@ -1,0 +1,53 @@
+.icon-badge-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.icon-badge-wrap.size-sm {
+  width: 32px;
+  height: 32px;
+}
+
+.icon-badge-wrap.size-md {
+  width: 44px;
+  height: 44px;
+}
+
+.icon-badge-wrap.size-lg {
+  width: 56px;
+  height: 56px;
+}
+
+/* Themes */
+.icon-badge-wrap.theme-emerald {
+  background-color: var(--color-emerald-bg);
+  color: var(--color-emerald);
+  border: 1px solid rgba(31, 122, 77, 0.15);
+}
+
+.icon-badge-wrap.theme-gold {
+  background-color: var(--color-gold-bg);
+  color: var(--color-gold);
+  border: 1px solid rgba(200, 147, 74, 0.2);
+}
+
+.icon-badge-wrap.theme-avoid {
+  background-color: var(--color-avoid-bg);
+  color: var(--color-avoid);
+  border: 1px solid rgba(209, 72, 63, 0.2);
+}
+
+.icon-badge-wrap.theme-void {
+  background-color: var(--color-void-card);
+  color: var(--color-gold);
+  border: 1px solid var(--color-border-dark);
+}
+
+.badge-icon {
+  width: 50%;
+  height: 50%;
+}
