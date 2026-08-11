@@ -1,4 +1,4 @@
-import { getMockReportByDetails } from "../data/mock/mockGemstoneReport.js";
+import { getMockReportByDetails } from "../data/mockGemstoneReport.js";
 
 /**
  * Single service file, single exported function.

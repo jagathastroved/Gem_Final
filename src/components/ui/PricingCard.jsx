@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from './Button.jsx';
 import { ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
-import '../../styles/components/PricingCard.css';
+import '../../styles/ui/PricingCard.css';
 
 export function PricingCard({ onGetReport }) {
   return (

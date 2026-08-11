@@ -17,7 +17,7 @@ import {
   CheckCircle2,
   FileText
 } from 'lucide-react';
-import '../../styles/components/IconBadge.css';
+import '../../styles/ui/IconBadge.css';
 
 export function IconBadge({ icon, theme = 'emerald', size = 'md' }) {
   const getIcon = () => {

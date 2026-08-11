@@ -1,9 +1,9 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { FormPage } from '../pages/FormPage.jsx';
-import { AnalysisLoadingPage } from '../pages/AnalysisLoadingPage.jsx';
-import { ReportContainerPage } from '../pages/ReportContainerPage.jsx';
-import { PaymentPage } from '../pages/PaymentPage.jsx';
+import {FormPage} from '../components/pages/FormPage.jsx';
+import { AnalysisLoadingPage } from '../components/pages/AnalysisLoadingPage.jsx';
+import { ReportContainerPage } from '../components/pages/ReportContainerPage.jsx';
+import { PaymentPage } from '../components/pages/PaymentPage.jsx';
 
 export function AppRoutes({ report, onSubmitDetails, onLoadingComplete }) {
   return (

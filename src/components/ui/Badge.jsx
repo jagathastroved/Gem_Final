@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/components/Badge.css';
+import '../../styles/ui/Badge.css';
 
 export function NumberBadge({ number }) {
   return (

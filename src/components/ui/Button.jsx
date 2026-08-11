@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import '../../styles/components/Button.css';
+import '../../styles/ui/Button.css';
 
 export function Button({ 
   children, 

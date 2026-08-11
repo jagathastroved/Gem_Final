@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import '../../styles/components/Card.css';
+import '../../styles/ui/Card.css';
 
 export function Card({ 
   children, 

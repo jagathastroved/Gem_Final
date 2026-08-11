@@ -1,6 +1,6 @@
 import React from 'react';
 import { Gem, ShieldCheck, Lock, Award, FileCheck } from 'lucide-react';
-import './Footer.css';
+import '../../styles/ui/Footer.css';
 
 export function Footer() {
   return (

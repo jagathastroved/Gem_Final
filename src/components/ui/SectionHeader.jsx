@@ -1,6 +1,6 @@
 import React from 'react';
 import { NumberBadge } from './Badge.jsx';
-import '../../styles/components/SectionHeader.css';
+import '../../styles/ui/SectionHeader.css';
 
 export function SectionHeader({ number, title, subtitle, className = '' }) {
   return (

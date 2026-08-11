@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Gem, Menu, X, ArrowRight, Sparkles } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from './Button.jsx';
-import './Navbar.css';
+import '../../styles/ui/Navbar.css';
 
 export function Navbar({ onGetReportClick }) {
   const [mobileOpen, setMobileOpen] = useState(false);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import '../../styles/components/ConstellationReveal.css';
+import '../../styles/animations/ConstellationReveal.css';
 
 export function ConstellationReveal() {
   return (

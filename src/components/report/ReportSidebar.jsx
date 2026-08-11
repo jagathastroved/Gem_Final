@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BookOpen, Download, RotateCcw, PanelLeftClose, PanelLeft } from 'lucide-react';
-import '../../styles/components/ReportSidebar.css';
+import { BookOpen, Download, RotateCcw, PanelLeftClose, PanelLeft, Sun, Moon } from 'lucide-react';
+import '../../styles/report/ReportSidebar.css';
 
 export function ReportSidebar({ 
   sections, 
@@ -9,7 +9,9 @@ export function ReportSidebar({
   onSelectSection, 
   collapsed, 
   onToggleCollapse,
-  onDownloadReport 
+  onDownloadReport,
+  isDarkMode,
+  toggleTheme
 }) {
   const navigate = useNavigate();
 
@@ -17,23 +19,57 @@ export function ReportSidebar({
     navigate('/');
   };
 
+  if (collapsed) {
+    return (
+      <button 
+        className="floating-show-index-btn"
+        onClick={onToggleCollapse}
+      >
+        <BookOpen className="show-index-btn-icon" />
+        <span>Show Index</span>
+      </button>
+    );
+  }
+
   return (
-    <aside className={`report-sidebar ${collapsed ? 'collapsed' : ''}`}>
+    <>
+      {!collapsed && (
+        <div 
+          className="sidebar-backdrop" 
+          onClick={onToggleCollapse}
+          aria-hidden="true"
+        />
+      )}
+      <aside className="report-sidebar">
       <div className="sidebar-header">
         <div className="sidebar-title">
           <div className="book-icon-badge">
             <BookOpen className="sidebar-book-icon" />
           </div>
-          {!collapsed && <span className="sidebar-title-text">REPORT INDEX</span>}
+          <span className="sidebar-title-text">REPORT INDEX</span>
         </div>
-        <button 
-          className="collapse-toggle-btn"
-          onClick={onToggleCollapse} 
-          title={collapsed ? "Expand Index" : "Collapse Index"}
-          aria-label="Toggle Sidebar"
-        >
-          {collapsed ? <PanelLeft className="panel-icon" /> : <PanelLeftClose className="panel-icon" />}
-        </button>
+        
+        <div className="sidebar-header-actions">
+          <button 
+            className="theme-toggle-switch-btn" 
+            onClick={toggleTheme}
+            title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+            aria-label="Toggle Theme"
+          >
+            <div className={`switch-knob ${isDarkMode ? 'dark' : 'light'}`}>
+              {isDarkMode ? <Moon className="theme-icon moon" /> : <Sun className="theme-icon sun" />}
+            </div>
+          </button>
+
+          <button 
+            className="collapse-toggle-btn"
+            onClick={onToggleCollapse} 
+            title="Collapse Index"
+            aria-label="Toggle Sidebar"
+          >
+            <PanelLeftClose className="panel-icon" />
+          </button>
+        </div>
       </div>
 
       <nav className="sidebar-index-list">
@@ -46,36 +82,33 @@ export function ReportSidebar({
               onClick={() => onSelectSection(idx)}
             >
               <span className="index-number-badge">{idx + 1}</span>
-              {!collapsed && (
-                <div className="index-item-info">
-                  <span className="index-item-title">{sec.title}</span>
-                  {sec.isPro && <span className="pro-pill-badge">PRO</span>}
-                </div>
-              )}
+              <div className="index-item-info">
+                <span className="index-item-title">{sec.title}</span>
+                {sec.isPro && <span className="pro-pill-badge">PRO</span>}
+              </div>
             </button>
           );
         })}
       </nav>
 
-      {!collapsed && (
-        <div className="sidebar-actions-footer">
-          <button 
-            className="sidebar-btn-download"
-            onClick={onDownloadReport}
-          >
-            <Download className="btn-icon" />
-            <span>DOWNLOAD REPORT</span>
-          </button>
+      <div className="sidebar-actions-footer">
+        <button 
+          className="sidebar-btn-download"
+          onClick={onDownloadReport}
+        >
+          <Download className="btn-icon" />
+          <span>DOWNLOAD REPORT</span>
+        </button>
 
-          <button 
-            className="sidebar-btn-reset"
-            onClick={handleEnterDifferentDetails}
-          >
-            <RotateCcw className="btn-icon" />
-            <span>ENTER DIFFERENT DETAILS</span>
-          </button>
-        </div>
-      )}
+        <button 
+          className="sidebar-btn-reset"
+          onClick={handleEnterDifferentDetails}
+        >
+          <RotateCcw className="btn-icon" />
+          <span>ENTER DIFFERENT DETAILS</span>
+        </button>
+      </div>
     </aside>
+    </>
   );
 }

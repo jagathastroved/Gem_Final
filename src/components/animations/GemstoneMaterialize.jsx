@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import '../../styles/components/GemstoneMaterialize.css';
+import '../../styles/animations/GemstoneMaterialize.css';
 
 export function GemstoneMaterialize({ gemType = 'emerald', name = 'Emerald' }) {
   const getGemColors = () => {

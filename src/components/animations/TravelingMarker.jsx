@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import '../../styles/components/TravelingMarker.css';
+import '../../styles/animations/TravelingMarker.css';
 
 export function TravelingMarker({ totalHeight = 240 }) {
   return (

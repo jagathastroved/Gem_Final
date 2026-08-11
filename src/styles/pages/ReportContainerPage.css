@@ -2,16 +2,16 @@
   display: flex;
   min-height: 100vh;
   position: relative;
-  background: var(--bg-cosmic-gradient);
+  background: transparent;
   transition: background 0.3s ease, color 0.3s ease;
 }
 
 .report-view-layout.theme-light {
-  background: radial-gradient(circle at 20% 20%, #312E81 0%, #1E1B4B 60%, #0F172A 100%);
+  background: transparent;
 }
 
 .report-view-layout.theme-dark {
-  background: radial-gradient(circle at 20% 20%, #181032 0%, #0B081A 60%, #05030A 100%);
+  background: transparent;
 }
 
 .report-main-stage {
@@ -22,66 +22,6 @@
   align-items: center;
   position: relative;
   z-index: 2;
-}
-
-/* Top Floating Bar Controls */
-.report-stage-topbar {
-  width: 100%;
-  max-width: 860px;
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 16px;
-}
-
-.theme-toggle-switch-btn {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 30px;
-  padding: 4px;
-  width: 60px;
-  height: 32px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  transition: all 0.3s ease;
-}
-
-.theme-toggle-switch-btn:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
-
-.switch-knob {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.switch-knob.light {
-  transform: translateX(0);
-}
-
-.switch-knob.dark {
-  transform: translateX(28px);
-  background-color: #1E293B;
-}
-
-.theme-icon.sun {
-  width: 14px;
-  height: 14px;
-  color: #F59E0B;
-}
-
-.theme-icon.moon {
-  width: 14px;
-  height: 14px;
-  color: #818CF8;
 }
 
 /* Central Elevated Canvas Card */
@@ -118,7 +58,7 @@
 .card-astroved-header-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  position: relative;
   padding-bottom: 24px;
   border-bottom: 1px solid #F1F5F9;
   margin-bottom: 28px;
@@ -152,6 +92,9 @@
 }
 
 .section-badge-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -219,6 +162,7 @@
 .highlight-user-name {
   background: linear-gradient(135deg, #4F46E5 0%, #EC4899 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -443,5 +387,19 @@
   }
   .includes-grid-two, .traits-info-cards-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .card-astroved-header-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: 40px; /* Added margin to avoid overlap with Show Index */
+  }
+  
+  .section-badge-center {
+    position: relative;
+    left: auto;
+    transform: none;
+    text-align: center;
   }
 }

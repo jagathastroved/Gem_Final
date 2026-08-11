@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import '../../styles/components/OrbitalRings.css';
+import '../../styles/animations/OrbitalRings.css';
 
-export function OrbitalRings({ progress = 68 }) {
-  const dashOffset = 502 - (502 * progress) / 100;
+export function OrbitalRings({ progress = 0 }) {
+  const dashOffset = 723 - (723 * progress) / 100;
 
   return (
     <div className="orbital-rings-container">
