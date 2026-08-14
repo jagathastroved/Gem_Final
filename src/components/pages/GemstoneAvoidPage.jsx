@@ -11,7 +11,6 @@ export function GemstoneAvoidPage({ report }) {
   return (
     <section className="avoid-gems-section">
       <SectionHeader 
-        number="6" 
         title="Gemstones You Should Avoid" 
       />
 
@@ -20,7 +19,7 @@ export function GemstoneAvoidPage({ report }) {
           <Card key={gem.id} className="avoid-gem-card" hoverable>
             <div className="avoid-card-left">
               <div className="avoid-gem-thumb">
-                <GemstoneMaterialize gemType={gem.id} name={gem.name} />
+                <GemstoneMaterialize gemType={gem.id} name={gem.name} disableFloat={true} />
               </div>
 
               <div className="avoid-card-info">

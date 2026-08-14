@@ -26,8 +26,8 @@
 }
 
 .avoid-gem-thumb {
-  width: 54px;
-  height: 54px;
+  width: 80px;
+  height: 80px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -36,13 +36,13 @@
 
 /* Scale down the SVG inside thumb */
 .avoid-gem-thumb .gem-materialize-wrap {
-  width: 54px;
-  height: 54px;
+  width: 80px;
+  height: 80px;
 }
 
 .avoid-gem-thumb .gem-pedestal {
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
 }
 
 .avoid-gem-thumb .gem-aura {

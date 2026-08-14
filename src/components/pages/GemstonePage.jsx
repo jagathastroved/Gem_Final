@@ -15,10 +15,9 @@ export function GemstonePage({ report }) {
     <section id="primary-gem-section" className="primary-gem-section">
       {/* Section 4: Your Primary Gemstone */}
       <SectionHeader 
-        number="4" 
         title="Your Primary Gemstone" 
+        subtitle="Based on your ascendant and planetary placements"
       />
-
       <Card className="primary-gem-main-card">
         <div className="gem-section-kicker">
           <span>✨ YOUR PRIMARY GEMSTONE ✨</span>
@@ -64,7 +63,6 @@ export function GemstonePage({ report }) {
       {/* Section 5: Why Your Recommendation Is Different */}
       <div className="margin-top-xl">
         <SectionHeader 
-          number="5" 
           title="Why Your Recommendation Is Different" 
         />
 

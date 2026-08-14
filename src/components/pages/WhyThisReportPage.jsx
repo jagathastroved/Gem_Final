@@ -48,7 +48,6 @@ export function WhyThisReportPage() {
   return (
     <section className="why-report-section">
       <SectionHeader 
-        number="8" 
         title="Why This Report Goes Beyond a Gemstone Name" 
       />
 

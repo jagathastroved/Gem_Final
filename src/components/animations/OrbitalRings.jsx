@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import emeraldImg from '../../assets/gemStone_images/emerald.png';
 import '../../styles/animations/OrbitalRings.css';
 
 export function OrbitalRings({ progress = 0 }) {
@@ -70,24 +71,11 @@ export function OrbitalRings({ progress = 0 }) {
       <div className="center-jewel-wrapper">
         <div className="sunburst-ring" />
         <div className="emerald-gem-box">
-          <svg viewBox="0 0 100 100" className="emerald-svg">
-            <polygon 
-              points="30,10 70,10 90,30 90,70 70,90 30,90 10,70 10,30" 
-              fill="url(#gemGradient)" 
-              stroke="#A8F0C6" 
-              strokeWidth="2"
-            />
-            <polygon points="35,20 65,20 80,35 80,65 65,80 35,80 20,65 20,35" fill="#1F7A4D" opacity="0.6" />
-            <polygon points="40,30 60,30 70,40 70,60 60,70 40,70 30,60 30,40" fill="#38A169" opacity="0.8" />
-            <polygon points="42,32 58,32 68,42 68,58 58,68 42,68 32,58 32,42" fill="#6EE7B7" opacity="0.9" />
-            <defs>
-              <linearGradient id="gemGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#16613D" />
-                <stop offset="50%" stopColor="#1F7A4D" />
-                <stop offset="100%" stopColor="#0B3C23" />
-              </linearGradient>
-            </defs>
-          </svg>
+          <img 
+            src={emeraldImg} 
+            alt="Emerald Gemstone" 
+            className="emerald-img"
+          />
         </div>
       </div>
     </div>

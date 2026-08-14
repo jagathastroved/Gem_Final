@@ -12,7 +12,6 @@ export function WearingGuidePage({ report, onGetReport }) {
   return (
     <section className="wearing-guide-section">
       <SectionHeader 
-        number="9" 
         title="Your Premium Report" 
       />
 

@@ -35,6 +35,7 @@
   box-shadow: 0 24px 72px rgba(0, 0, 0, 0.45);
   color: #1E293B;
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow: hidden;
 }
 
 [data-theme="dark"] .report-central-canvas-card {
@@ -44,14 +45,14 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.card-top-orange-accent-line {
+.card-top-progress-line {
   position: absolute;
   top: 0;
-  left: 44px;
-  width: 80px;
+  left: 0;
   height: 4px;
-  background: linear-gradient(90deg, #FF5722 0%, #FF9800 100%);
-  border-radius: 0 0 4px 4px;
+  background: linear-gradient(90deg, #10B981 0%, #059669 100%);
+  border-radius: 28px 28px 0 0;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* AstroVed Header Row Inside Card */
@@ -160,7 +161,7 @@
 }
 
 .highlight-user-name {
-  background: linear-gradient(135deg, #4F46E5 0%, #EC4899 100%);
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

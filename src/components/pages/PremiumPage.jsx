@@ -69,7 +69,6 @@ export function PremiumPage({ onGetReport }) {
       {/* Section 10: What's In Your Gemstone Suggestion Report */}
       <div className="whats-in-report-wrap margin-top-2xl">
         <SectionHeader 
-          number="10" 
           title="What's In Your Gemstone Suggestion Report" 
           subtitle="This isn't a general guide. Everything below is calculated from your birth chart."
         />

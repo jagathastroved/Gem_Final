@@ -68,7 +68,9 @@ export function ReportContainerPage({ report }) {
         onSelectSection={(idx) => {
           navigate(`/${sections[idx].id}`);
           window.scrollTo({ top: 0, behavior: 'smooth' });
-          setSidebarCollapsed(true);
+          if (window.innerWidth <= 900) {
+            setSidebarCollapsed(true);
+          }
         }}
         collapsed={sidebarCollapsed}
         onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
@@ -80,7 +82,10 @@ export function ReportContainerPage({ report }) {
       <main className="report-main-stage">
         {/* Central AstroVed Styled Card Canvas */}
         <div className="report-central-canvas-card">
-          <div className="card-top-orange-accent-line" />
+          <div 
+            className="card-top-progress-line" 
+            style={{ width: `${((activeSectionIndex + 1) / sections.length) * 100}%` }}
+          />
 
           {/* AstroVed Header Badge Inside Card */}
           <div className="card-astroved-header-row">

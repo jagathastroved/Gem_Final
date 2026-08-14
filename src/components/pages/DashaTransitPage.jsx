@@ -13,7 +13,6 @@ export function DashaTransitPage({ report }) {
   return (
     <section id="timeline-section" className="dasha-timeline-section">
       <SectionHeader 
-        number="7" 
         title="Dasha & Timeline Insights" 
       />
 
