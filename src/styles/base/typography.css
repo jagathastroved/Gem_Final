@@ -32,6 +32,10 @@ p, span, label, li {
   line-height: 1.5;
 }
 
+button span, a span {
+  color: inherit;
+}
+
 .text-primary-color {
   color: var(--color-text-primary);
 }

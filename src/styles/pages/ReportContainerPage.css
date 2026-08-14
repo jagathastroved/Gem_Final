@@ -352,25 +352,25 @@
   background-color: #1E293B;
 }
 
-.nav-btn-next-orange {
+.nav-btn-next-green {
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 12px 28px;
   border-radius: 30px;
-  background: linear-gradient(135deg, #FF6B00 0%, #FF8800 100%);
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
   color: #FFFFFF;
   font-size: 0.95rem;
   font-weight: 800;
   border: none;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(255, 107, 0, 0.35);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.nav-btn-next-orange:hover {
+.nav-btn-next-green:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 26px rgba(255, 107, 0, 0.5);
+  box-shadow: 0 8px 26px rgba(16, 185, 129, 0.5);
 }
 
 .nav-btn-icon {

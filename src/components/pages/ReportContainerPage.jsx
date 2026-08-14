@@ -25,8 +25,6 @@ export function ReportContainerPage({ report }) {
     { id: 'primary-gem', title: 'Primary Gemstone', badgeText: 'PRIMARY GEMSTONE' },
     { id: 'gems-avoid', title: 'Gems to Avoid', badgeText: 'GEMS TO AVOID' },
     { id: 'dasha-transit', title: 'Dasha & Transit', badgeText: 'DASHA & TRANSIT' },
-    { id: 'wearing-guide', title: 'Wearing Overview', badgeText: 'WEARING PROTOCOL' },
-    { id: 'lucky-traits', title: 'Lucky Traits & Metals', badgeText: 'LUCKY METALS & RITUALS' },
     { id: 'why-report', title: 'Why This Gemstone', badgeText: 'ASTROLOGICAL PROOF' },
     { id: 'premium', title: 'Premium Deliverables', badgeText: 'UNLOCK FULL REPORT', isPro: true },
   ];
@@ -67,21 +65,19 @@ export function ReportContainerPage({ report }) {
   return (
     <div className={`report-view-layout ${isDarkMode ? 'theme-dark' : 'theme-light'}`}>
 
-      {activeSectionIndex !== 8 && (
-        <ReportSidebar
-          sections={sections}
-          activeSectionIndex={activeSectionIndex}
-          onSelectSection={(idx) => {
-            navigate(`/${sections[idx].id}`);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          collapsed={sidebarCollapsed}
-          onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
-          onDownloadReport={handleDownload}
-          isDarkMode={isDarkMode}
-          toggleTheme={toggleTheme}
-        />
-      )}
+      <ReportSidebar
+        sections={sections}
+        activeSectionIndex={activeSectionIndex}
+        onSelectSection={(idx) => {
+          navigate(`/${sections[idx].id}`);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        collapsed={sidebarCollapsed}
+        onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
+        onDownloadReport={handleDownload}
+        isDarkMode={isDarkMode}
+        toggleTheme={toggleTheme}
+      />
 
       <main className="report-main-stage">
         {/* Central AstroVed Styled Card Canvas */}
@@ -185,65 +181,28 @@ export function ReportContainerPage({ report }) {
             )}
 
             {activeSectionIndex === 5 && (
-              <WearingGuidePage report={report} onGetReport={() => navigate('/checkout')} />
-            )}
-
-            {activeSectionIndex === 6 && (
-              <div className="lucky-traits-view">
-                <div className="journey-purple-pill">
-                  <Gem className="pill-sparkle-icon" />
-                  <span>SACRED ELEMENTS & RITUALS</span>
-                </div>
-                <h2 className="section-title-repo">Lucky Elements & Metal Alignment</h2>
-                <div className="traits-info-cards-grid">
-                  <div className="trait-card">
-                    <span className="trait-card-label">RECOMMENDED METAL</span>
-                    <strong className="trait-card-value">{report?.wearingGuide?.metal || 'Gold / Panchdhatu'}</strong>
-                  </div>
-
-                  <div className="trait-card">
-                    <span className="trait-card-label">RING FINGER</span>
-                    <strong className="trait-card-value">{report?.wearingGuide?.finger || 'Little Finger / Ring Finger'}</strong>
-                  </div>
-
-                  <div className="trait-card">
-                    <span className="trait-card-label">AUSPICIOUS DAY</span>
-                    <strong className="trait-card-value">{report?.wearingGuide?.dayAndTime || 'Wednesday Morning'}</strong>
-                  </div>
-
-                  <div className="trait-card">
-                    <span className="trait-card-label">PURIFICATION TIME</span>
-                    <strong className="trait-card-value">Shukla Paksha (Sunrise)</strong>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {activeSectionIndex === 7 && (
               <WhyThisReportPage />
             )}
 
-            {activeSectionIndex === 8 && (
+            {activeSectionIndex === 6 && (
               <PremiumPage onGetReport={() => navigate('/checkout')} />
             )}
           </div>
 
           {/* Bottom Card Footer - Back & Next Buttons */}
-          {activeSectionIndex !== 8 && (
-            <div className="card-navigation-bottom-bar">
-              {activeSectionIndex > 0 ? (
-                <button className="nav-btn-back" onClick={handleBack}>
-                  <ArrowLeft className="nav-btn-icon" />
-                  <span>Back</span>
-                </button>
-              ) : <div />}
-
-              <button className="nav-btn-next-orange" onClick={handleNext}>
-                <span>{activeSectionIndex === sections.length - 1 ? 'Get Full Report Now' : 'Next'}</span>
-                <ArrowRight className="nav-btn-icon" />
+          <div className="card-navigation-bottom-bar">
+            {activeSectionIndex > 0 ? (
+              <button className="nav-btn-back" onClick={handleBack}>
+                <ArrowLeft className="nav-btn-icon" />
+                <span>Back</span>
               </button>
-            </div>
-          )}
+            ) : <div />}
+
+            <button className="nav-btn-next-green" onClick={handleNext}>
+              <span>{activeSectionIndex === sections.length - 1 ? 'Get Full Report Now' : 'Next'}</span>
+              <ArrowRight className="nav-btn-icon" />
+            </button>
+          </div>
         </div>
       </main>
     </div>

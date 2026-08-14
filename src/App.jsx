@@ -4,7 +4,6 @@ import { AppRoutes } from './routes/AppRoutes.jsx';
 import { mockGemstoneReportData, getMockReportByDetails } from './data/mockGemstoneReport.js';
 import './styles/base/App.css';
 import { ThemeProvider } from './context/ThemeContext.jsx';
-import { MainLayout } from './components/layout/MainLayout.jsx';
 
 function AppContent() {
   const [report, setReport] = useState(mockGemstoneReportData);
@@ -23,15 +22,13 @@ function AppContent() {
 
   return (
     <div className="app-root">
-      <MainLayout>
-        <div className="app-main-content">
-        <AppRoutes 
-          report={report} 
-          onSubmitDetails={handleSubmitBirthDetails} 
-          onLoadingComplete={handleLoadingComplete} 
-        />
-        </div>
-      </MainLayout>
+      <div className="app-main-content">
+      <AppRoutes 
+        report={report} 
+        onSubmitDetails={handleSubmitBirthDetails} 
+        onLoadingComplete={handleLoadingComplete} 
+      />
+      </div>
     </div>
   );
 }
