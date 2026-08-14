@@ -24,7 +24,6 @@ export function OrbitalRings({ progress = 0 }) {
         {/* Ring 1 - Outer dotted */}
         <circle cx="150" cy="150" r="130" className="ring-dotted" />
 
-        {/* Ring 2 - Outer Progress Ring */}
         <circle
           cx="150"
           cy="150"
@@ -36,7 +35,10 @@ export function OrbitalRings({ progress = 0 }) {
           cy="150"
           r="115"
           className="ring-progress-bar"
-          style={{ strokeDashoffset: dashOffset }}
+          style={{ 
+            strokeDasharray: 2 * Math.PI * 115,
+            strokeDashoffset: (2 * Math.PI * 115) - ((2 * Math.PI * 115) * progress) / 100 
+          }}
         />
 
         {/* Ring 3 - Middle Orbit */}

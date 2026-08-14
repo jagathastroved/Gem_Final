@@ -22,22 +22,22 @@ export function AnalysisLoadingPage({ onLoadingComplete }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    if (progress >= 100) return;
+
+    // Slow down loading after 80%
+    const delay = progress >= 80 ? 250 : 30;
+
+    const timer = setTimeout(() => {
       setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(timer);
-          return 100;
-        }
         const next = prev + 1;
-        // Map progress (0-100) to stages (0-8)
         const stage = Math.min(Math.floor((next / 100) * STAGES.length), STAGES.length - 1);
         setActiveStageIndex(stage);
         return next;
       });
-    }, 35); // Takes ~3.5 seconds total
+    }, delay);
 
-    return () => clearInterval(timer);
-  }, []);
+    return () => clearTimeout(timer);
+  }, [progress]);
 
   useEffect(() => {
     if (progress === 100) {

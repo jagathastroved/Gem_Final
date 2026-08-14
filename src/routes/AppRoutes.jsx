@@ -3,7 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import {FormPage} from '../components/pages/FormPage.jsx';
 import { AnalysisLoadingPage } from '../components/pages/AnalysisLoadingPage.jsx';
 import { ReportContainerPage } from '../components/pages/ReportContainerPage.jsx';
-import { PaymentPage } from '../components/pages/PaymentPage.jsx';
+
 import Particles from '../components/animations/Particles.jsx';
 import '../styles/layout/MainLayout.css';
 
@@ -45,10 +45,6 @@ export function AppRoutes({ report, onSubmitDetails, onLoadingComplete }) {
             element={<ReportContainerPage report={report} />} 
           />
 
-          <Route 
-            path="/checkout" 
-            element={<PaymentPage report={report} />} 
-          />
         </Routes>
       </main>
     </div>

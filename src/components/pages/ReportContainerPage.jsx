@@ -7,7 +7,6 @@ import { GemstonePage } from './GemstonePage.jsx';
 import { GemstoneAvoidPage } from './GemstoneAvoidPage.jsx';
 import { DashaTransitPage } from './DashaTransitPage.jsx';
 import { WhyThisReportPage } from './WhyThisReportPage.jsx';
-import { WearingGuidePage } from './WearingGuidePage.jsx';
 import { PremiumPage } from './PremiumPage.jsx';
 import '../../styles/pages/ReportContainerPage.css';
 import { useTheme } from '../../context/ThemeContext.jsx';
@@ -44,8 +43,6 @@ export function ReportContainerPage({ report }) {
     if (activeSectionIndex < sections.length - 1) {
       navigate(`/${sections[activeSectionIndex + 1].id}`);
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      navigate('/checkout');
     }
   };
 
@@ -71,6 +68,7 @@ export function ReportContainerPage({ report }) {
         onSelectSection={(idx) => {
           navigate(`/${sections[idx].id}`);
           window.scrollTo({ top: 0, behavior: 'smooth' });
+          setSidebarCollapsed(true);
         }}
         collapsed={sidebarCollapsed}
         onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
@@ -110,7 +108,7 @@ export function ReportContainerPage({ report }) {
                 </div>
 
                 <h1 className="welcome-user-headline">
-                  Hey <span className="highlight-user-name">{report.seekerName || 'Seeker'}</span>
+                  Hey <span className="highlight-user-name" style={{ textTransform: 'capitalize' }}>{report.user?.name || 'Seeker'}</span>
                 </h1>
 
                 <p className="welcome-intro-p">
@@ -131,15 +129,23 @@ export function ReportContainerPage({ report }) {
                     <div className="include-card-item">
                       <div className="include-check-badge">✓</div>
                       <div>
-                        <strong>Your Primary Gemstone</strong>
-                        <p>Aligned with Lagna Lord & planetary strength.</p>
+                        <strong>Astrology Blueprint</strong>
+                        <p>In-depth analysis of your Lagna, Moon Sign, and Nakshatra.</p>
                       </div>
                     </div>
 
                     <div className="include-card-item">
                       <div className="include-check-badge">✓</div>
                       <div>
-                        <strong>Gems to Strictly Avoid</strong>
+                        <strong>Primary Gemstone</strong>
+                        <p>The most beneficial gemstone aligned with your planetary strength.</p>
+                      </div>
+                    </div>
+
+                    <div className="include-card-item">
+                      <div className="include-check-badge">✓</div>
+                      <div>
+                        <strong>Avoid Gemstone</strong>
                         <p>Protecting you from conflicting planetary energies.</p>
                       </div>
                     </div>
@@ -147,16 +153,8 @@ export function ReportContainerPage({ report }) {
                     <div className="include-card-item">
                       <div className="include-check-badge">✓</div>
                       <div>
-                        <strong>In-depth Birth Chart Math</strong>
-                        <p>Lagni, Moon Sign, Nakshatra, and current Dasha.</p>
-                      </div>
-                    </div>
-
-                    <div className="include-card-item">
-                      <div className="include-check-badge">✓</div>
-                      <div>
-                        <strong>Authentic Wearing Guidelines</strong>
-                        <p>Exact metal, finger, day, time, and activation mantra.</p>
+                        <strong>Dasha and Transits</strong>
+                        <p>Actionable timeline guidance for your planetary periods.</p>
                       </div>
                     </div>
                   </div>
@@ -185,7 +183,7 @@ export function ReportContainerPage({ report }) {
             )}
 
             {activeSectionIndex === 6 && (
-              <PremiumPage onGetReport={() => navigate('/checkout')} />
+              <PremiumPage onGetReport={() => {}} />
             )}
           </div>
 
@@ -198,10 +196,12 @@ export function ReportContainerPage({ report }) {
               </button>
             ) : <div />}
 
-            <button className="nav-btn-next-green" onClick={handleNext}>
-              <span>{activeSectionIndex === sections.length - 1 ? 'Get Full Report Now' : 'Next'}</span>
-              <ArrowRight className="nav-btn-icon" />
-            </button>
+            {activeSectionIndex < sections.length - 1 && (
+              <button className="nav-btn-next-green" onClick={handleNext}>
+                <span>Next</span>
+                <ArrowRight className="nav-btn-icon" />
+              </button>
+            )}
           </div>
         </div>
       </main>

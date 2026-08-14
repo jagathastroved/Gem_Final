@@ -381,8 +381,9 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 310px !important;
-    min-width: 310px !important;
+    width: 90vw !important;
+    min-width: auto !important;
+    max-width: 340px !important;
     height: 100vh !important;
     margin: 0;
     border-radius: 0;
