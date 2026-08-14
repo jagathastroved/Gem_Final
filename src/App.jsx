@@ -6,17 +6,36 @@ import './styles/base/App.css';
 import { ThemeProvider } from './context/ThemeContext.jsx';
 
 function AppContent() {
-  const [report, setReport] = useState(mockGemstoneReportData);
-  const [userBirthDetails, setUserBirthDetails] = useState(null);
+  const [report, setReport] = useState(() => {
+    try {
+      const saved = localStorage.getItem('gemstone_app_report');
+      if (saved) return JSON.parse(saved);
+    } catch (e) {
+      console.error('Failed to parse saved report', e);
+    }
+    return mockGemstoneReportData;
+  });
+  
+  const [userBirthDetails, setUserBirthDetails] = useState(() => {
+    try {
+      const saved = localStorage.getItem('gemstone_app_user_details');
+      if (saved) return JSON.parse(saved);
+    } catch (e) {
+      console.error('Failed to parse saved user details', e);
+    }
+    return null;
+  });
 
   const handleSubmitBirthDetails = (details) => {
     setUserBirthDetails(details);
+    localStorage.setItem('gemstone_app_user_details', JSON.stringify(details));
   };
 
   const handleLoadingComplete = () => {
     if (userBirthDetails) {
       const updatedReport = getMockReportByDetails(userBirthDetails);
       setReport(updatedReport);
+      localStorage.setItem('gemstone_app_report', JSON.stringify(updatedReport));
     }
   };
 

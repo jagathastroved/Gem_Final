@@ -3,13 +3,12 @@
  */
 export const mockGemstoneReportData = {
   user: {
-    name: "Aravind Sharma",
+    name: "",
     gender: "Male",
     dob: "15/08/1995",
     tob: "10:30 AM",
     country: "India",
     city: "Chennai",
-    weightKg: "72"
   },
   lagna: "Taurus",
   lagnaSanskrit: "Vrishabha",
