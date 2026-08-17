@@ -1,3 +1,4 @@
+import axios from "axios";
 import { getMockReportByDetails } from "../data/mockGemstoneReport.js";
 
 /**
@@ -12,4 +13,23 @@ export async function getGemstoneReport(birthDetails) {
       resolve(report);
     }, 400);
   });
+}
+
+export const countryList = async () => {
+  try {
+    const countries = await axios.get('https://www.astroved.com/new/json/Countries.json')
+    return countries.data.Countries;
+  }
+  catch (err) {
+    console.log('countrylist do not fetch')
+  }
+};
+
+export const cityList = async (countryName, cityName) => {
+  try {
+    const cities = await axios.get(`https://webservice.astroved.com/Api/Panchang/PopulateCityBycountry/${countryName}/${cityName}`)
+    return cities
+  } catch (error) {
+    console.log('cityList is not able to fetch');
+  }
 }

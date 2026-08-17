@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CheckCircle2, ArrowRight, Sparkles } from 'lucide-react';
 import { Card } from '../ui/Card.jsx';
+import { SearchableDropdown } from '../ui/SearchableDropdown.jsx';
 import '../../styles/pages/FormPage.css';
+import { cityList, countryList } from '@/src/services/astrologyApi.js';
+
 
 export function FormPage({ onSubmitDetails }) {
   const navigate = useNavigate();
-
+  const [country, setCountry] = useState([]);
   const [formData, setFormData] = useState({
     name: 'Jagath',
     gender: 'Male',
@@ -21,6 +24,18 @@ export function FormPage({ onSubmitDetails }) {
     city: 'Chennai'
   });
 
+  useEffect(() => {
+    const fetchCountries = async () => {
+      const countries = await countryList();
+      const countryName = countries.map((item) => item.CountryName1);
+      setCountry(countryName);
+      console.log(countryName);
+    };
+    fetchCountries();
+  }, []);
+
+
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -29,7 +44,7 @@ export function FormPage({ onSubmitDetails }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const birthDetails = {
-      name: formData.name || 'Seeker',
+      name: formData.name,
       gender: formData.gender,
       email: formData.email,
       dob: `${formData.dobDay}/${formData.dobMonth}/${formData.dobYear}`,
@@ -57,7 +72,8 @@ export function FormPage({ onSubmitDetails }) {
     { num: '11', name: 'Nov' },
     { num: '12', name: 'Dec' }
   ];
-  const years = Array.from({ length: 80 }, (_, i) => String(2010 - i));
+  const currentYear = new Date().getFullYear();
+  const years = Array.from({ length: 80 }, (_, i) => String(currentYear - i));
   const hours = Array.from({ length: 12 }, (_, i) => String(i + 1).padStart(2, '0'));
   const minutes = Array.from({ length: 60 }, (_, i) => String(i).padStart(2, '0'));
 
@@ -143,11 +159,12 @@ export function FormPage({ onSubmitDetails }) {
 
                   <div className="floating-form-group">
                     <span className="field-floating-label">Gender</span>
-                    <select name="gender" value={formData.gender} onChange={handleChange}>
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-                      <option value="Other">Other</option>
-                    </select>
+                    <SearchableDropdown
+                      value={formData.gender}
+                      onChange={(val) => setFormData((prev) => ({ ...prev, gender: val }))}
+                      options={["Male", "Female", "Other"]}
+                      placeholder="Gender"
+                    />
                   </div>
                 </div>
 
@@ -168,23 +185,35 @@ export function FormPage({ onSubmitDetails }) {
                 <div className="repo-form-row-three">
                   <div className="floating-form-group">
                     <span className="field-floating-label">Day</span>
-                    <select name="dobDay" value={formData.dobDay} onChange={handleChange}>
-                      {days.map((d) => <option key={d} value={d}>{parseInt(d, 10)}</option>)}
-                    </select>
+                    <SearchableDropdown
+                      value={formData.dobDay}
+                      onChange={(val) => setFormData((prev) => ({ ...prev, dobDay: val }))}
+                      options={days}
+                      placeholder="Day"
+                      openUpwards={true}
+                    />
                   </div>
 
                   <div className="floating-form-group">
                     <span className="field-floating-label">Month</span>
-                    <select name="dobMonth" value={formData.dobMonth} onChange={handleChange}>
-                      {months.map((m) => <option key={m.num} value={m.num}>{m.name}</option>)}
-                    </select>
+                    <SearchableDropdown
+                      value={months.find(m => m.num === formData.dobMonth)?.name || formData.dobMonth}
+                      onChange={(text, opt) => setFormData((prev) => ({ ...prev, dobMonth: opt ? opt.value : text }))}
+                      options={months.map(m => ({ title: m.name, value: m.num }))}
+                      placeholder="Month"
+                      openUpwards={true}
+                    />
                   </div>
 
                   <div className="floating-form-group">
                     <span className="field-floating-label">Year</span>
-                    <select name="dobYear" value={formData.dobYear} onChange={handleChange}>
-                      {years.map((y) => <option key={y} value={y}>{y}</option>)}
-                    </select>
+                    <SearchableDropdown
+                      value={formData.dobYear}
+                      onChange={(val) => setFormData((prev) => ({ ...prev, dobYear: val }))}
+                      options={years}
+                      placeholder="Year"
+                      openUpwards={true}
+                    />
                   </div>
                 </div>
 
@@ -192,24 +221,35 @@ export function FormPage({ onSubmitDetails }) {
                 <div className="repo-form-row-three">
                   <div className="floating-form-group">
                     <span className="field-floating-label">Hour</span>
-                    <select name="tobHour" value={formData.tobHour} onChange={handleChange}>
-                      {hours.map((h) => <option key={h} value={h}>{h}</option>)}
-                    </select>
+                    <SearchableDropdown
+                      value={formData.tobHour}
+                      onChange={(val) => setFormData((prev) => ({ ...prev, tobHour: val }))}
+                      options={hours}
+                      placeholder="Hour"
+                      openUpwards={true}
+                    />
                   </div>
 
                   <div className="floating-form-group">
                     <span className="field-floating-label">Minute</span>
-                    <select name="tobMinute" value={formData.tobMinute} onChange={handleChange}>
-                      {minutes.map((m) => <option key={m} value={m}>{m}</option>)}
-                    </select>
+                    <SearchableDropdown
+                      value={formData.tobMinute}
+                      onChange={(val) => setFormData((prev) => ({ ...prev, tobMinute: val }))}
+                      options={minutes}
+                      placeholder="Minute"
+                      openUpwards={true}
+                    />
                   </div>
 
                   <div className="floating-form-group">
                     <span className="field-floating-label">AM / PM</span>
-                    <select name="tobAmPm" value={formData.tobAmPm} onChange={handleChange}>
-                      <option value="AM">AM</option>
-                      <option value="PM">PM</option>
-                    </select>
+                    <SearchableDropdown
+                      value={formData.tobAmPm}
+                      onChange={(val) => setFormData((prev) => ({ ...prev, tobAmPm: val }))}
+                      options={["AM", "PM"]}
+                      placeholder="AM/PM"
+                      openUpwards={true}
+                    />
                   </div>
                 </div>
 
@@ -217,25 +257,38 @@ export function FormPage({ onSubmitDetails }) {
                 <div className="repo-form-row-two">
                   <div className="floating-form-group">
                     <span className="field-floating-label">Country</span>
-                    <select name="country" value={formData.country} onChange={handleChange}>
-                      <option value="India">India</option>
-                      <option value="United States">United States</option>
-                      <option value="United Kingdom">United Kingdom</option>
-                      <option value="Canada">Canada</option>
-                      <option value="UAE">UAE</option>
-                      <option value="Australia">Australia</option>
-                    </select>
+                    <SearchableDropdown
+                      value={formData.country}
+                      onChange={(val) => setFormData((prev) => ({ ...prev, country: val, city: '' }))}
+                      options={country}
+                      placeholder="Select a Country"
+                      openUpwards={true}
+                    />
                   </div>
 
                   <div className="floating-form-group">
                     <span className="field-floating-label">City</span>
-                    <input
-                      type="text"
-                      name="city"
+                    <SearchableDropdown
                       value={formData.city}
-                      onChange={handleChange}
+                      onChange={(val) => setFormData((prev) => ({ ...prev, city: val }))}
                       placeholder="Type your city"
-                      required
+                      disabled={!formData.country}
+                      fetchOptions={async (search) => {
+                        if (!formData.country || search.length < 3) return [];
+                        const cities = await cityList(formData.country, search);
+                        if (!cities || !cities.data) return [];
+                        return cities.data.map(c => ({
+                          title: c.City,
+                          subtitle: `${c.StateorProvince}, ${c.Country}`
+                        }));
+                      }}
+                      renderItem={(opt) => (
+                        <>
+                          <span className="searchable-item-title">{opt.title}</span>
+                          <span className="searchable-item-subtitle">{opt.subtitle}</span>
+                        </>
+                      )}
+                      openUpwards={true}
                     />
                   </div>
                 </div>

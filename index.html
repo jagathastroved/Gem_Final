@@ -7,10 +7,140 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  </head>
-  <body>
+
+    
+  <!-- Google Tag Manager -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l !== 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-TRS65PJ');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- GA4 DataLayer Push -->
+  <script>
+    function getCookie(name) {
+      var match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
+      return match ? match[2] : null;
+    }
+
+    var cId = getCookie("C_Id");
+    var pageLanguage = "en-US";
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "page_view",
+      page_name: document.title || "",
+      page_url: window.location.href,
+      user_id: cId || 0,
+      language: pageLanguage
+    });
+  </script>
+  <!-- GA4 DataLayer Push End -->
+  <!-- SEO Schema -->
+  <meta charset="UTF-8" />
+  <!-- Prevent caching -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <link rel="icon" type="image/png"
+    href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABiElEQVR4AWIgDP4zMpALQkP/M2dkADgnB5iKojAAZ9uuKXtmNqYasq7SkG1raq6xIWtqRrZryjae1X/3zsvedvx/3zGnqLxcJPMvAUFwIkDAx3F2yJ9hHBepgGAbBCIoVzIyRIp/FLBzaFicuEJop/0BZhgDdIEETFQe4/i93q8EALcj6AHH+SHQZtBtiuI0/QhDkDMEs5CgRnyY7DZ0Fo8Uxbb5EqavC4JGEXyQlnaoy+3Tw7PJBwNYxSmS9Hz5NjCMHQRBAkhCkmRhvH6dQE6nEYc1oOdJkuxMJObhOMvrA0xfEwwuo1nmh3Ib1BkNZouP+ZYCZpPZVEfukDr0ryHJNFyz/PuDo8QzcwQEwfO7L7CIZ+RbCR8LLAWPUD7kW0RSFD9cskIc58Y/w8nJIh1Y4jGyD5WXl8s8FBjpAzwPScAosJq4zbfQps8IJhpDcbvR0SINyZPNg3QAkl0M4zhIxIxCS2MQdNGyV2/EHeA9Oh5uJwN9mnUF+DhPA2Ni0glMLTgcKAUAst8Rb7CK94wAAAAASUVORK5CYII=" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AstroVed - Astrology, Vedic Astrology, Indian Astrology, Free Horoscope</title>
+  <meta name="yandex-verification" content="b278cbf15fec8032" />
+
+  <meta name="description"
+    content="Astrology & Vedic astrology portal offering free horoscope, online astrologers, live consultations, panchangam, Indian astrology & Vedic remedies." />
+  <meta name="keywords"
+    content="Astrology, Vedic astrology, Vedic remedies, Indian astrology, free horoscope, online astrologers, live astrology consultation, online astrology, panchangam, free astrology predictions" />
+  <link rel="canonical" href="https://www.astroved.com" />
+  <meta name="facebook-domain-verification" content="bzbnqt8qb4w54z3gzweotzhp9suhrc" />
+  <meta name="msvalidate.01" content="E9F6803026417EC7E27A11463F3B5493" />
+  <meta name="robots" content="index" />
+  <meta name="robots" content="noodp" />
+  <meta property="og:title" content="AstroVed - Astrology, Vedic Astrology, Indian Astrology, Free Horoscope" />
+  <meta property="og:description"
+    content="Astrology & Vedic astrology portal offering free horoscope, online astrologers, live consultations, panchangam, Indian astrology & Vedic remedies." />
+  <meta property="og:url" content="https://www.astroved.com/" />
+  <meta property="og:image" content="https://www.astroved.com/images/logo-astroved.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="fb:app_id" content="201285856706759" />
+</head>
+<body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+      <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TRS65PJ" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script>
+    function getQueryStringValue(key) {
+      return new URLSearchParams(window.location.search).get(key);
+    }
+
+    function setCookieReferralLevel(cvalue) {
+      if (!cvalue || cvalue.trim() === "") {
+        return;
+      }
+
+      var d = new Date();
+      d.setTime(d.getTime() + (7 * 24 * 60 * 60 * 1000));
+      var expires = "expires=" + d.toUTCString();
+      document.cookie = "referralLevel1=" + cvalue + ";" + expires + ";path=/";
+    }
+    function ReadCookie(cookieName) {
+      var theCookie = " " + document.cookie;
+      var ind = theCookie.indexOf(" " + cookieName + "=");
+      if (ind == -1) ind = theCookie.indexOf(";" + cookieName + "=");
+      if (ind == -1 || cookieName == "") return "";
+      var ind1 = theCookie.indexOf(";", ind + 1);
+      if (ind1 == -1) ind1 = theCookie.length;
+      return unescape(theCookie.substring(ind + cookieName.length + 2, ind1));
+    }
+
+
+    function CheckForDomain(refURL) {
+      if (refURL != "") {
+        var a = document.createElement('a');
+        a.href = refURL;
+        var hostname = a.hostname;
+        if (hostname != window.location.hostname) { return hostname; } else { return ""; }
+      }
+      return refURL;
+    }
+
+    //To set referralLevel1 cookie
+    var referralLevel1cookie = ReadCookie("referralLevel1");
+    if (referralLevel1cookie == null || referralLevel1cookie == "") {
+      var refURL = document.referrer;
+      var referralURL = CheckForDomain(refURL);
+      var promoCode = getQueryStringValue("promo");
+      //(promoCode != null) ? setCookieReferralLevel(promoCode) : (referralURL != "") ? setCookieReferralLevel(referralURL) : "";
+      if (promoCode) {
+        setCookieReferralLevel(promoCode);
+      } else if (referralURL) {
+        setCookieReferralLevel(referralURL);
+      }
+    }
+  </script>
   </body>
 </html>
 

@@ -89,7 +89,14 @@ export function ReportContainerPage({ report }) {
 
           {/* AstroVed Header Badge Inside Card */}
           <div className="card-astroved-header-row">
-            <div className="astroved-logo-brand">
+            <div 
+              className="astroved-logo-brand" 
+              onClick={() => {
+                navigate(`/${sections[0].id}`);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              style={{ cursor: 'pointer' }}
+            >
               <img 
                 src="https://cdn.astroved.com/images/images-av/AstroVed-Logo.svg" 
                 alt="AstroVed Logo" 
