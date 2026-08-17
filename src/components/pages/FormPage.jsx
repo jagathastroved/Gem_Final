@@ -29,17 +29,17 @@ export function FormPage({ onSubmitDetails }) {
   const [country, setCountry] = useState([]);
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
-    name: 'jagath',
-    gender: 'male',
-    email: 'jagath@gmail.com',
+    name: '',
+    gender: '',
+    email: '',
     dobDay: '01',
     dobMonth: '01',
     dobYear: '2000',
     tobHour: '12',
     tobMinute: '00',
     tobAmPm: 'AM',
-    country: 'india',
-    city: 'chennai',
+    country: 'India',
+    city: '',
     latitude: 0,
     longitude: 0
   });
@@ -49,7 +49,6 @@ export function FormPage({ onSubmitDetails }) {
       const countries = await countryList();
       const countryName = countries.map((item) => item.CountryName1);
       setCountry(countryName);
-      console.log(countryName);
     };
     fetchCountries();
   }, []);
@@ -89,8 +88,6 @@ export function FormPage({ onSubmitDetails }) {
       return;
     }
 
-    console.log("Form Data Submitted:", formData);
-
     let hour24 = parseInt(formData.tobHour, 10);
     if (formData.tobAmPm === 'PM' && hour24 !== 12) {
       hour24 += 12;
@@ -111,10 +108,11 @@ export function FormPage({ onSubmitDetails }) {
       birthSecond: "00",
       birthCountry: formData.country,
       birthCity: formData.city,
-      latitude: formData.latitude || 0,
-      longitude: formData.longitude || 0,
+      latitude: formData.latitude,
+      longitude: formData.longitude,
       promo: ""
     };
+    console.log('API PayLoad', birthDetails)
 
     // Go to loading immediately
     navigate('/loading');
