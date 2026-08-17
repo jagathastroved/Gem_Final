@@ -7,7 +7,7 @@ import { IconBadge } from '../ui/IconBadge.jsx';
 import { ShieldCheck, Zap, FileText, ArrowRight, Gem } from 'lucide-react';
 import '../../styles/pages/PremiumPage.css';
 
-export function PremiumPage({ onGetReport }) {
+export function PremiumPage({ onGetReport = () => {} }) {
   const reportFeatures = [
     {
       id: 1,

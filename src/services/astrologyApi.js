@@ -1,19 +1,4 @@
 import axios from "axios";
-import { getMockReportByDetails } from "../data/mockGemstoneReport.js";
-
-/**
- * Single service file, single exported function.
- * Connects to astrology computation engine or returns structured calculation mock.
- */
-export async function getGemstoneReport(birthDetails) {
-  // Simulate quick API latency if needed or return immediately
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const report = getMockReportByDetails(birthDetails);
-      resolve(report);
-    }, 400);
-  });
-}
 
 export const countryList = async () => {
   try {
@@ -31,5 +16,16 @@ export const cityList = async (countryName, cityName) => {
     return cities
   } catch (error) {
     console.log('cityList is not able to fetch');
+  }
+}
+
+export const fetchGemstoneReport = async (birthDetails) => {
+  try {
+    const report = await axios.post(`${import.meta.env.VITE_GEMSTONE_REPORT_API}`, birthDetails);
+    console.log('responce data', report.data)
+    return report.data;
+  } catch (error) {
+    console.error('fetchGemstoneReport is not able to fetch', error);
+    throw error;
   }
 }

@@ -1,52 +1,27 @@
 import React, { useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { AppRoutes } from './routes/AppRoutes.jsx';
-import { mockGemstoneReportData, getMockReportByDetails } from './data/mockGemstoneReport.js';
 import './styles/base/App.css';
 import { ThemeProvider } from './context/ThemeContext.jsx';
 
 function AppContent() {
-  const [report, setReport] = useState(() => {
-    try {
-      const saved = localStorage.getItem('gemstone_app_report');
-      if (saved) return JSON.parse(saved);
-    } catch (e) {
-      console.error('Failed to parse saved report', e);
-    }
-    return mockGemstoneReportData;
-  });
-  
-  const [userBirthDetails, setUserBirthDetails] = useState(() => {
-    try {
-      const saved = localStorage.getItem('gemstone_app_user_details');
-      if (saved) return JSON.parse(saved);
-    } catch (e) {
-      console.error('Failed to parse saved user details', e);
-    }
-    return null;
-  });
+  const [report, setReport] = useState(null);
+  const [userBirthDetails, setUserBirthDetails] = useState(null);
 
-  const handleSubmitBirthDetails = (details) => {
+  const handleSubmitBirthDetails = (details, fetchedReport) => {
     setUserBirthDetails(details);
-    localStorage.setItem('gemstone_app_user_details', JSON.stringify(details));
-  };
-
-  const handleLoadingComplete = () => {
-    if (userBirthDetails) {
-      const updatedReport = getMockReportByDetails(userBirthDetails);
-      setReport(updatedReport);
-      localStorage.setItem('gemstone_app_report', JSON.stringify(updatedReport));
+    if (fetchedReport) {
+      setReport(fetchedReport);
     }
   };
 
   return (
     <div className="app-root">
       <div className="app-main-content">
-      <AppRoutes 
-        report={report} 
-        onSubmitDetails={handleSubmitBirthDetails} 
-        onLoadingComplete={handleLoadingComplete} 
-      />
+        <AppRoutes
+          report={report}
+          onSubmitDetails={handleSubmitBirthDetails}
+        />
       </div>
     </div>
   );

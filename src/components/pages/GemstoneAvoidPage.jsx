@@ -1,21 +1,22 @@
 import React from 'react';
+import { useOutletContext } from 'react-router-dom';
 import { SectionHeader } from '../ui/SectionHeader.jsx';
 import { Card } from '../ui/Card.jsx';
 import { StatusBadge } from '../ui/Badge.jsx';
 import { GemstoneMaterialize } from '../animations/GemstoneMaterialize.jsx';
 import '../../styles/pages/GemstoneAvoidPage.css';
 
-export function GemstoneAvoidPage({ report }) {
-  if (!report || !report.avoidGemstones) return null;
-
+export function GemstoneAvoidPage() {
+  const { report } = useOutletContext();
+  if (!report) return null;
   return (
     <section className="avoid-gems-section">
-      <SectionHeader 
-        title="Gemstones You Should Avoid" 
+      <SectionHeader
+        title="Gemstones You Should Avoid"
       />
 
       <div className="avoid-cards-stack">
-        {report.avoidGemstones.map((gem) => (
+        {report?.avoidGemstones?.map((gem) => (
           <Card key={gem.id} className="avoid-gem-card" hoverable>
             <div className="avoid-card-left">
               <div className="avoid-gem-thumb">

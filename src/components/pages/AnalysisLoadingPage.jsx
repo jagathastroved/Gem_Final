@@ -22,7 +22,7 @@ export function AnalysisLoadingPage({ onLoadingComplete }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (progress >= 100) return;
+    if (progress >= 99) return;
 
     // Slow down loading after 80%
     const delay = progress >= 80 ? 250 : 30;
@@ -39,15 +39,7 @@ export function AnalysisLoadingPage({ onLoadingComplete }) {
     return () => clearTimeout(timer);
   }, [progress]);
 
-  useEffect(() => {
-    if (progress === 100) {
-      const timeout = setTimeout(() => {
-        if (onLoadingComplete) onLoadingComplete();
-        navigate('/welcome');
-      }, 600);
-      return () => clearTimeout(timeout);
-    }
-  }, [progress, navigate, onLoadingComplete]);
+  // Navigation is now handled by App.jsx when the API call completes
 
   return (
     <div className="analysis-loading-page">
@@ -80,8 +72,8 @@ export function AnalysisLoadingPage({ onLoadingComplete }) {
               const isActive = idx === activeStageIndex && progress < 100;
 
               return (
-                <div 
-                  key={stage.id} 
+                <div
+                  key={stage.id}
                   className={`checklist-item ${isDone ? 'done' : ''} ${isActive ? 'active' : ''}`}
                 >
                   <div className="stage-icon-wrap">

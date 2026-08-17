@@ -9,7 +9,9 @@ export function SearchableDropdown({
   placeholder = "Search...",
   disabled = false,
   openUpwards = false,
-  renderItem = null
+  renderItem = null,
+  emptyMessage = "No results found",
+  minSearchLength = 0
 }) {
   const [query, setQuery] = useState(value || '');
   const [isOpen, setIsOpen] = useState(false);
@@ -105,7 +107,17 @@ export function SearchableDropdown({
       {isOpen && (
         <ul className={`searchable-dropdown-menu ${openUpwards ? 'searchable-dropdown-up' : ''}`}>
           {loading ? (
-            <li className="searchable-dropdown-empty">Loading...</li>
+            <li className="searchable-dropdown-empty" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#6b7280' }}>
+              <style>
+                {`
+                  @keyframes dropdown-spin {
+                    to { transform: rotate(360deg); }
+                  }
+                `}
+              </style>
+              <div style={{ animation: 'dropdown-spin 1s linear infinite', width: '16px', height: '16px', border: '2px solid #e5e7eb', borderTopColor: '#8b5cf6', borderRadius: '50%', flexShrink: 0 }}></div>
+              Searching for "{query}"...
+            </li>
           ) : internalOptions.length > 0 ? (
             internalOptions.map((opt, idx) => (
               <li
@@ -121,8 +133,14 @@ export function SearchableDropdown({
                 )}
               </li>
             ))
+          ) : (fetchOptions && query.trim().length < minSearchLength) ? (
+            <li className="searchable-dropdown-empty" style={{ textAlign: 'center', color: '#6b7280' }}>
+              {query.trim().length === 0 ? "Type to search..." : "Keep typing..."}
+            </li>
           ) : (
-            <li className="searchable-dropdown-empty">No results found</li>
+            <li className="searchable-dropdown-empty" style={{ textAlign: 'center', color: '#6b7280' }}>
+              {emptyMessage}
+            </li>
           )}
         </ul>
       )}

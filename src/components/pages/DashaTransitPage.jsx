@@ -3,17 +3,19 @@ import { SectionHeader } from '../ui/SectionHeader.jsx';
 import { Card } from '../ui/Card.jsx';
 import { IconBadge } from '../ui/IconBadge.jsx';
 import { TravelingMarker } from '../animations/TravelingMarker.jsx';
+import { useOutletContext } from 'react-router-dom';
 import '../../styles/pages/DashaTransitPage.css';
 
-export function DashaTransitPage({ report }) {
+export function DashaTransitPage() {
+  const { report } = useOutletContext();
   if (!report || !report.timeline) return null;
 
-  const { keyInsights, events } = report.timeline;
+  const { keyInsights, events } = report?.timeline;
 
   return (
     <section id="timeline-section" className="dasha-timeline-section">
-      <SectionHeader 
-        title="Dasha & Timeline Insights" 
+      <SectionHeader
+        title="Dasha & Timeline Insights"
       />
 
       <div className="timeline-two-col-grid">
@@ -46,14 +48,14 @@ export function DashaTransitPage({ report }) {
 
             <div className="timeline-events-list">
               {events?.map((ev) => (
-                <div 
-                  key={ev.id} 
+                <div
+                  key={ev.id}
                   className={`timeline-event-node ${ev.active ? 'active-node' : ''}`}
                 >
-                  <IconBadge 
-                    icon={ev.icon} 
-                    theme={ev.active ? 'gold' : 'emerald'} 
-                    size="md" 
+                  <IconBadge
+                    icon={ev.icon}
+                    theme={ev.active ? 'gold' : 'emerald'}
+                    size="md"
                   />
                   <div className="event-info-col">
                     <h5 className="event-title">{ev.title}</h5>

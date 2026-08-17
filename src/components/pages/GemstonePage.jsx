@@ -3,19 +3,21 @@ import { SectionHeader } from '../ui/SectionHeader.jsx';
 import { StatusBadge } from '../ui/Badge.jsx';
 import { Card } from '../ui/Card.jsx';
 import { GemstoneMaterialize } from '../animations/GemstoneMaterialize.jsx';
+import { useOutletContext } from 'react-router-dom';
 import '../../styles/pages/GemstonePage.css';
 
-export function GemstonePage({ report }) {
+export function GemstonePage() {
+  const { report } = useOutletContext();
   if (!report) return null;
 
-  const gem = report.gemstone;
-  const comp = report.comparison;
+  const gem = report?.primaryGemstone?.gemstone;
+  const comp = report?.comparison;
 
   return (
     <section id="primary-gem-section" className="primary-gem-section">
-      {/* Section 4: Your Primary Gemstone */}
-      <SectionHeader 
-        title="Your Primary Gemstone" 
+      {/* Your Primary Gemstone */}
+      <SectionHeader
+        title="Your Primary Gemstone"
         subtitle="Based on your ascendant and planetary placements"
       />
       <Card className="primary-gem-main-card">
@@ -23,13 +25,13 @@ export function GemstonePage({ report }) {
           <span>✨ YOUR PRIMARY GEMSTONE ✨</span>
         </div>
 
-        <GemstoneMaterialize gemType="emerald" name={gem?.suitableStone} />
+        <GemstoneMaterialize gemType={gem?.suitableStone} name={gem?.suitableStone} />
 
         <h3 className="gem-title">{gem?.suitableStone}</h3>
         <p className="gem-subtext">{gem?.sanskritName} • {gem?.associatedPlanet}</p>
 
         <div className="gem-badge-wrap">
-          <StatusBadge type="recommended">{gem?.badgeText}</StatusBadge>
+          <StatusBadge type="recommended">Recommented for You</StatusBadge>
         </div>
 
         <p className="gem-description">
@@ -62,8 +64,8 @@ export function GemstonePage({ report }) {
 
       {/* Section 5: Why Your Recommendation Is Different */}
       <div className="margin-top-xl">
-        <SectionHeader 
-          title="Why Your Recommendation Is Different" 
+        <SectionHeader
+          title="Why Your Recommendation Is Different"
         />
 
         <div className="comparison-stack">

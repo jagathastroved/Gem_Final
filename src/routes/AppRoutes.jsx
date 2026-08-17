@@ -2,7 +2,14 @@ import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import {FormPage} from '../components/pages/FormPage.jsx';
 import { AnalysisLoadingPage } from '../components/pages/AnalysisLoadingPage.jsx';
-import { ReportContainerPage } from '../components/pages/ReportContainerPage.jsx';
+import { ReportLayout } from '../components/pages/ReportLayout.jsx';
+import { WelcomePage } from '../components/pages/WelcomePage.jsx';
+import { AstrologyDetailsPage } from '../components/pages/AstrologyDetailsPage.jsx';
+import { GemstonePage } from '../components/pages/GemstonePage.jsx';
+import { GemstoneAvoidPage } from '../components/pages/GemstoneAvoidPage.jsx';
+import { DashaTransitPage } from '../components/pages/DashaTransitPage.jsx';
+import { WhyThisReportPage } from '../components/pages/WhyThisReportPage.jsx';
+import { PremiumPage } from '../components/pages/PremiumPage.jsx';
 
 import Particles from '../components/animations/Particles.jsx';
 import '../styles/layout/MainLayout.css';
@@ -40,11 +47,15 @@ export function AppRoutes({ report, onSubmitDetails, onLoadingComplete }) {
             element={<AnalysisLoadingPage onLoadingComplete={onLoadingComplete} />} 
           />
 
-          <Route 
-            path="/:sectionId" 
-            element={<ReportContainerPage report={report} />} 
-          />
-
+          <Route element={<ReportLayout report={report} />}>
+            <Route path="/welcome" element={<WelcomePage />} />
+            <Route path="/lagna" element={<AstrologyDetailsPage />} />
+            <Route path="/primary-gem" element={<GemstonePage />} />
+            <Route path="/gems-avoid" element={<GemstoneAvoidPage />} />
+            <Route path="/dasha-transit" element={<DashaTransitPage />} />
+            <Route path="/why-report" element={<WhyThisReportPage />} />
+            <Route path="/premium" element={<PremiumPage />} />
+          </Route>
         </Routes>
       </main>
     </div>

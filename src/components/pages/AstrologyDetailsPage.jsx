@@ -4,10 +4,15 @@ import { IconBadge } from '../ui/IconBadge.jsx';
 import { Button } from '../ui/Button.jsx';
 import { ConstellationReveal } from '../animations/ConstellationReveal.jsx';
 import { ArrowUpRight } from 'lucide-react';
+import { useOutletContext } from 'react-router-dom';
 import '../../styles/pages/AstrologyDetailsPage.css';
 
-export function AstrologyDetailsPage({ report, onNextSection }) {
+export function AstrologyDetailsPage() {
+  const { report, handleNext: onNextSection } = useOutletContext();
   if (!report) return null;
+
+  const birthChartData = report?.astroBluePrint?.birthChart;
+  const dashaTimeLine = report?.astroBluePrint?.dasha;
 
   return (
     <section id="blueprint-section" className="blueprint-page-section">
@@ -23,22 +28,22 @@ export function AstrologyDetailsPage({ report, onNextSection }) {
         <Card className="blueprint-card" hoverable>
           <IconBadge icon="lagna" theme="emerald" size="md" />
           <span className="card-label">Lagna (Ascendant)</span>
-          <strong className="card-primary-val">{report.lagna}</strong>
-          <span className="card-sanskrit">({report.lagnaSanskrit})</span>
+          <strong className="card-primary-val">{birthChartData.lagna}</strong>
+          <span className="card-sanskrit">({birthChartData.lagnaSanskrit})</span>
         </Card>
 
         <Card className="blueprint-card" hoverable>
           <IconBadge icon="moon" theme="gold" size="md" />
           <span className="card-label">Moon Sign (Rashi)</span>
-          <strong className="card-primary-val">{report.moonSign}</strong>
-          <span className="card-sanskrit">({report.moonSignSanskrit})</span>
+          <strong className="card-primary-val">{birthChartData.moonSign}</strong>
+          <span className="card-sanskrit">({birthChartData.moonSignSanskrit})</span>
         </Card>
 
         <Card className="blueprint-card" hoverable>
           <IconBadge icon="star" theme="gold" size="md" />
           <span className="card-label">Nakshatra</span>
-          <strong className="card-primary-val">{report.star}</strong>
-          <span className="card-sanskrit">{report.starPada}</span>
+          <strong className="card-primary-val">{birthChartData.star}</strong>
+          <span className="card-sanskrit">Pada {birthChartData.starPada}</span>
         </Card>
       </div>
 
@@ -48,7 +53,7 @@ export function AstrologyDetailsPage({ report, onNextSection }) {
           <IconBadge icon="venus" theme="emerald" size="md" />
           <div className="card-text-col">
             <span className="card-label">Nakshatra Lord</span>
-            <strong className="card-primary-val">{report.nakshatraLord}</strong>
+            <strong className="card-primary-val">{birthChartData.nakshatraLord}</strong>
           </div>
         </Card>
 
@@ -56,7 +61,7 @@ export function AstrologyDetailsPage({ report, onNextSection }) {
           <IconBadge icon="venus" theme="avoid" size="md" />
           <div className="card-text-col">
             <span className="card-label">Lagna Lord</span>
-            <strong className="card-primary-val">{report.lagnaLord}</strong>
+            <strong className="card-primary-val">{birthChartData.lagnaLord}</strong>
           </div>
         </Card>
       </div>
@@ -72,8 +77,8 @@ export function AstrologyDetailsPage({ report, onNextSection }) {
           <IconBadge icon="jupiter" theme="gold" size="md" />
           <div className="card-text-col">
             <span className="card-label">Mahadasha</span>
-            <strong className="card-primary-val">{report.dasha?.mahadasha}</strong>
-            <span className="card-sanskrit">{report.dasha?.mahadashaYears}</span>
+            <strong className="card-primary-val">{dashaTimeLine?.mahadasha}</strong>
+            <span className="card-sanskrit">{dashaTimeLine?.mahadashaYears}</span>
           </div>
         </Card>
 
@@ -81,8 +86,8 @@ export function AstrologyDetailsPage({ report, onNextSection }) {
           <IconBadge icon="rahu" theme="gold" size="md" />
           <div className="card-text-col">
             <span className="card-label">Antardasha</span>
-            <strong className="card-primary-val">{report.dasha?.antardasha}</strong>
-            <span className="card-sanskrit">{report.dasha?.antardashaYears}</span>
+            <strong className="card-primary-val">{dashaTimeLine?.antardasha}</strong>
+            <span className="card-sanskrit">{dashaTimeLine?.antardashaYears}</span>
           </div>
         </Card>
       </div>
@@ -92,9 +97,9 @@ export function AstrologyDetailsPage({ report, onNextSection }) {
       </p>
 
       <div className="blueprint-cta-wrap">
-        <Button 
-          variant="emerald" 
-          size="md" 
+        <Button
+          variant="emerald"
+          size="md"
           onClick={onNextSection}
           icon={ArrowUpRight}
         >
