@@ -90,7 +90,7 @@ export function FormPage({ onSubmitDetails }) {
 
     // Format Day
     const finalDay = formData.dobDay ? String(formData.dobDay).trim().padStart(2, '0') : '01';
-    
+
     // Format Month
     let finalMonth = '01';
     if (formData.dobMonth) {
@@ -183,7 +183,7 @@ export function FormPage({ onSubmitDetails }) {
     ? allMonths.filter(m => parseInt(m.num) <= currentMonth)
     : allMonths;
 
-  const years = Array.from({ length: 80 }, (_, i) => String(currentYear - i));
+  const years = Array.from({ length: 100 }, (_, i) => String(currentYear - i));
 
   useEffect(() => {
     // Reset day/month if they become invalid due to year/month change
