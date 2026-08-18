@@ -6,7 +6,7 @@ import '../../styles/pages/WelcomePage.css';
 
 export function WelcomePage() {
   const { report } = useOutletContext();
-  const userName = report?.astroBluePrint?.full_name || 'Jagath';
+  const userName = report?.astroBluePrint?.full_name || '';
 
   return (
     <div className="welcome-section-view">

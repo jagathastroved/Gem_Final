@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter, useNavigate, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { AppRoutes } from './routes/AppRoutes.jsx';
 import './styles/base/App.css';
 import { ThemeProvider } from './context/ThemeContext.jsx';
@@ -26,13 +26,11 @@ function AppContent() {
     }
   });
 
-  useEffect(() => {
-    if (location.pathname !== '/' && location.pathname !== '/loading') {
-      if (!userBirthDetails || !report) {
-        navigate('/');
-      }
-    }
-  }, [userBirthDetails, report, location.pathname, navigate]);
+  const isAuthRoute = location.pathname === '/' || location.pathname === '/loading';
+
+  if (!isAuthRoute && (!userBirthDetails || !report)) {
+    return <Navigate to="/" replace />;
+  }
 
   const handleSubmitBirthDetails = (details, fetchedReport) => {
     setUserBirthDetails(details);

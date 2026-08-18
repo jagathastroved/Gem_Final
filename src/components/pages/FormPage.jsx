@@ -137,20 +137,8 @@ export function FormPage({ onSubmitDetails }) {
     };
     console.log('API PayLoad', birthDetails)
 
-    // Go to loading immediately
-    navigate('/loading');
-
-    try {
-      const response = await fetchGemstoneReport(birthDetails);
-      console.log('Response data:', response);
-      onSubmitDetails(birthDetails, response);
-    } catch (error) {
-      console.error('API submission failed:', error);
-      onSubmitDetails(birthDetails, null);
-    }
-
-    // Once done, go to welcome
-    navigate('/welcome', { state: { userName: formData.name } });
+    // Go to loading immediately and pass birthDetails
+    navigate('/loading', { state: { birthDetails } });
   };
 
   const currentDate = new Date();

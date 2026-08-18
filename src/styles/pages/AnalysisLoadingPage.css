@@ -8,7 +8,8 @@
   align-items: center;
   justify-content: center;
   padding: 40px 24px;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .analysis-content-grid {
@@ -37,8 +38,13 @@
 }
 
 @keyframes textShimmer {
-  0% { text-shadow: 0 0 0px rgba(255,255,255,0); }
-  100% { text-shadow: 0 0 16px rgba(255,255,255,0.3); }
+  0% {
+    text-shadow: 0 0 0px rgba(255, 255, 255, 0);
+  }
+
+  100% {
+    text-shadow: 0 0 16px rgba(255, 255, 255, 0.3);
+  }
 }
 
 .analysis-subtitle {
@@ -120,15 +126,33 @@
 }
 
 @keyframes scanLaser {
-  0% { top: 0%; opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { top: 100%; opacity: 0; }
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
 }
 
 @keyframes rotateSweep {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .checklist-item {
@@ -144,19 +168,52 @@
   animation: slideInFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.checklist-item:nth-child(1) { animation-delay: 0.1s; }
-.checklist-item:nth-child(2) { animation-delay: 0.2s; }
-.checklist-item:nth-child(3) { animation-delay: 0.3s; }
-.checklist-item:nth-child(4) { animation-delay: 0.4s; }
-.checklist-item:nth-child(5) { animation-delay: 0.5s; }
-.checklist-item:nth-child(6) { animation-delay: 0.6s; }
-.checklist-item:nth-child(7) { animation-delay: 0.7s; }
-.checklist-item:nth-child(8) { animation-delay: 0.8s; }
-.checklist-item:nth-child(9) { animation-delay: 0.9s; }
+.checklist-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.checklist-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.checklist-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.checklist-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.checklist-item:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.checklist-item:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+.checklist-item:nth-child(7) {
+  animation-delay: 0.7s;
+}
+
+.checklist-item:nth-child(8) {
+  animation-delay: 0.8s;
+}
+
+.checklist-item:nth-child(9) {
+  animation-delay: 0.9s;
+}
 
 @keyframes slideInFade {
-  0% { opacity: 0; transform: translateY(15px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .checklist-item.done {
@@ -187,13 +244,21 @@
 .stage-check-icon {
   width: 20px;
   height: 20px;
-  color: #34D399; /* emerald check */
+  color: #34D399;
+  /* emerald check */
   animation: checkPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 @keyframes checkPop {
-  0% { transform: scale(0); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .stage-pending-icon {
@@ -212,14 +277,38 @@
 }
 
 @keyframes pulseDot {
-  0% { transform: scale(0.85); opacity: 0.7; }
-  50% { transform: scale(1.25); opacity: 1; }
-  100% { transform: scale(0.85); opacity: 0.7; }
+  0% {
+    transform: scale(0.85);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.85);
+    opacity: 0.7;
+  }
 }
 
 @media (max-width: 860px) {
   .analysis-content-grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 20px;
+  }
+
+  .analysis-right-panel {
+    display: none;
+  }
+
+  .orbital-centerpiece {
+    transform: scale(0.85);
+    transform-origin: center center;
+  }
+
+  .analysis-header-text h1 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
   }
 }

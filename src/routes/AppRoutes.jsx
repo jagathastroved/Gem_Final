@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { FormPage } from '../components/pages/FormPage.jsx';
 import { AnalysisLoadingPage } from '../components/pages/AnalysisLoadingPage.jsx';
 import { ReportLayout } from '../components/pages/ReportLayout.jsx';
@@ -14,7 +14,7 @@ import { PremiumPage } from '../components/pages/PremiumPage.jsx';
 import Particles from '../components/animations/Particles.jsx';
 import '../styles/layout/MainLayout.css';
 
-export function AppRoutes({ report, onSubmitDetails, onLoadingComplete }) {
+export function AppRoutes({ report, onSubmitDetails }) {
   const location = useLocation();
   const isAnalysis = location.pathname === '/loading';
 
@@ -44,7 +44,7 @@ export function AppRoutes({ report, onSubmitDetails, onLoadingComplete }) {
 
           <Route
             path="/loading"
-            element={<AnalysisLoadingPage onLoadingComplete={onLoadingComplete} />}
+            element={<AnalysisLoadingPage onSubmitDetails={onSubmitDetails} />}
           />
 
           <Route element={<ReportLayout report={report} />}>
@@ -56,6 +56,8 @@ export function AppRoutes({ report, onSubmitDetails, onLoadingComplete }) {
             <Route path="/why-report" element={<WhyThisReportPage />} />
             {/* <Route path="/premium" element={<PremiumPage />} /> */}
           </Route>
+
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
     </div>
