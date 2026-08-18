@@ -88,23 +88,46 @@ export function FormPage({ onSubmitDetails }) {
       return;
     }
 
-    let hour24 = parseInt(formData.tobHour, 10);
-    if (formData.tobAmPm === 'PM' && hour24 !== 12) {
+    // Format Day
+    const finalDay = formData.dobDay ? String(formData.dobDay).trim().padStart(2, '0') : '01';
+    
+    // Format Month
+    let finalMonth = '01';
+    if (formData.dobMonth) {
+      const isNumeric = !isNaN(parseInt(formData.dobMonth, 10));
+      if (isNumeric) {
+        finalMonth = String(parseInt(formData.dobMonth, 10)).padStart(2, '0');
+      } else {
+        const matched = allMonths.find(m => m.name.toLowerCase().startsWith(formData.dobMonth.trim().toLowerCase()));
+        if (matched) finalMonth = matched.num;
+      }
+    }
+
+    // Format Year
+    const finalYear = formData.dobYear ? String(formData.dobYear).trim() : '2000';
+
+    // Format Minute
+    const finalMinute = formData.tobMinute ? String(formData.tobMinute).trim().padStart(2, '0') : '00';
+
+    // Format Hour (24-hour format)
+    let hour24 = parseInt(formData.tobHour, 10) || 12;
+    const ampm = formData.tobAmPm ? formData.tobAmPm.trim().toUpperCase() : 'AM';
+    if (ampm === 'PM' && hour24 !== 12) {
       hour24 += 12;
-    } else if (formData.tobAmPm === 'AM' && hour24 === 12) {
+    } else if (ampm === 'AM' && hour24 === 12) {
       hour24 = 0;
     }
-    const formattedHour = String(hour24).padStart(2, '0');
+    const finalHour = String(hour24).padStart(2, '0');
 
     const birthDetails = {
       fullName: formData.name,
       email: formData.email,
       gender: formData.gender,
-      birthDay: formData.dobDay,
-      birthMonth: formData.dobMonth,
-      birthYear: formData.dobYear,
-      birthHour: formattedHour,
-      birthMinute: formData.tobMinute,
+      birthDay: finalDay,
+      birthMonth: finalMonth,
+      birthYear: finalYear,
+      birthHour: finalHour,
+      birthMinute: finalMinute,
       birthSecond: "00",
       birthCountry: formData.country,
       birthCity: formData.city,
@@ -278,6 +301,7 @@ export function FormPage({ onSubmitDetails }) {
                         onChange={(val) => { setFormData((prev) => ({ ...prev, gender: val })); setErrors(prev => ({ ...prev, gender: null })); }}
                         options={["Male", "Female", "Other"]}
                         placeholder="Select your gender"
+                        disableTyping={true}
                       />
                     </div>
                     {errors.gender && <ErrorIcon message={errors.gender} />}
@@ -316,6 +340,7 @@ export function FormPage({ onSubmitDetails }) {
                       options={days}
                       placeholder="Day"
                       openUpwards={true}
+                      disableTyping={true}
                     />
                   </div>
 
@@ -327,6 +352,7 @@ export function FormPage({ onSubmitDetails }) {
                       options={months.map(m => ({ title: m.name, value: m.num }))}
                       placeholder="Month"
                       openUpwards={true}
+                      disableTyping={true}
                     />
                   </div>
 
@@ -338,6 +364,7 @@ export function FormPage({ onSubmitDetails }) {
                       options={years}
                       placeholder="Year"
                       openUpwards={true}
+                      disableTyping={true}
                     />
                   </div>
                 </div>
@@ -352,6 +379,7 @@ export function FormPage({ onSubmitDetails }) {
                       options={hours}
                       placeholder="Hour"
                       openUpwards={true}
+                      disableTyping={true}
                     />
                   </div>
 
@@ -363,6 +391,7 @@ export function FormPage({ onSubmitDetails }) {
                       options={minutes}
                       placeholder="Minute"
                       openUpwards={true}
+                      disableTyping={true}
                     />
                   </div>
 
@@ -374,6 +403,7 @@ export function FormPage({ onSubmitDetails }) {
                       options={["AM", "PM"]}
                       placeholder="AM/PM"
                       openUpwards={true}
+                      disableTyping={true}
                     />
                   </div>
                 </div>

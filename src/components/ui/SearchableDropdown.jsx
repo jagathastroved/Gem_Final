@@ -11,7 +11,8 @@ export function SearchableDropdown({
   openUpwards = false,
   renderItem = null,
   emptyMessage = "No results found",
-  minSearchLength = 0
+  minSearchLength = 0,
+  disableTyping = false
 }) {
   const [query, setQuery] = useState(value || '');
   const [isOpen, setIsOpen] = useState(false);
@@ -97,6 +98,8 @@ export function SearchableDropdown({
         placeholder={placeholder}
         value={query}
         onChange={handleInputChange}
+        readOnly={disableTyping}
+        style={{ cursor: disableTyping ? 'pointer' : 'text' }}
         onFocus={() => {
           setIsOpen(true);
           if (!fetchOptions) setInternalOptions(options);
