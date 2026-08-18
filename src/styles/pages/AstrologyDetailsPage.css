@@ -1,114 +1,562 @@
+/* Base Layout */
 .blueprint-page-section {
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 60px 24px 40px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
 }
 
+/* Header */
 .section-title-center {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 8px;
 }
 
 .section-title-center h2 {
-  font-family: var(--font-serif);
-  font-size: clamp(1.6rem, 3vw, 2.25rem);
-  font-weight: 700;
-  color: var(--color-text-primary);
-  margin-bottom: 6px;
+  font-family: var(--font-serif, serif);
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #1E293B;
+  margin-bottom: 12px;
 }
 
-.section-title-center p {
-  color: var(--color-text-secondary);
+[data-theme="dark"] .section-title-center h2 {
+  color: #FFFFFF;
+}
+
+.text-purple {
+  color: #6358F7;
+  /* Blueprint purple */
+}
+
+.blueprint-subtitle-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #64748B;
   font-size: 0.95rem;
+  font-weight: 500;
 }
 
-.grid-3-cards {
+[data-theme="dark"] .blueprint-subtitle-row {
+  color: #94A3B8;
+}
+
+.diamond-icon {
+  color: #C7D2FE;
+  font-size: 0.8rem;
+}
+
+/* Grids */
+.blueprint-grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
-.grid-2-cards {
+.blueprint-grid-2 {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 
-.margin-top-md {
-  margin-top: 20px;
+@media (max-width: 768px) {
+
+  .blueprint-grid-3,
+  .blueprint-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title-center h2 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+    padding: 0 10px;
+  }
+
+  .blueprint-subtitle-row {
+    font-size: 0.85rem;
+    gap: 6px;
+    padding: 0 10px;
+    text-align: center;
+  }
 }
 
-.blueprint-card {
+/* Vertical Cards (Top Row) */
+.bp-card {
+  position: relative;
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  padding: 32px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 8px;
-  padding: 24px 16px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.02);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.flex-row-card {
-  flex-direction: row;
-  align-items: center;
-  text-align: left;
-  gap: 16px;
-  padding: 20px 24px;
+[data-theme="dark"] .bp-card {
+  background-color: #1E293B;
+  border-color: #2A3A5E;
 }
 
-.card-text-col {
+.bp-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+}
+
+.card-top-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+}
+
+.lagna-border {
+  background-color: #10B981;
+}
+
+.moon-border {
+  background-color: #F59E0B;
+}
+
+.star-border {
+  background-color: #6358F7;
+}
+
+.icon-ring {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  border: 2px dashed rgba(0, 0, 0, 0.1);
 }
 
-.card-label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--color-text-secondary);
-  text-transform: capitalize;
+[data-theme="dark"] .icon-ring {
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
-.card-primary-val {
-  font-family: var(--font-serif);
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--color-text-primary);
+.lagna-ring {
+  background-color: #ECFDF5;
+  color: #10B981;
+  border-color: rgba(16, 185, 129, 0.3);
 }
 
-.card-sanskrit {
-  font-size: 0.825rem;
-  color: var(--color-text-secondary);
+.moon-ring {
+  background-color: #FFFBEB;
+  color: #F59E0B;
+  border-color: rgba(245, 158, 11, 0.3);
 }
 
-.planetary-period-header {
-  text-align: center;
-  margin: 36px 0 16px 0;
+.star-ring {
+  background-color: #F5F3FF;
+  color: #6358F7;
+  border-color: rgba(99, 88, 247, 0.3);
 }
 
-.planetary-period-header span {
-  font-size: 0.75rem;
+[data-theme="dark"] .lagna-ring {
+  background-color: rgba(16, 185, 129, 0.1);
+}
+
+[data-theme="dark"] .moon-ring {
+  background-color: rgba(245, 158, 11, 0.1);
+}
+
+[data-theme="dark"] .star-ring {
+  background-color: rgba(99, 88, 247, 0.1);
+}
+
+.bp-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.bp-label {
+  font-size: 0.95rem;
   font-weight: 800;
-  color: var(--color-gold);
-  letter-spacing: 0.12em;
+  color: #334155;
+  margin-bottom: 8px;
 }
 
-.blueprint-footer-note {
-  text-align: center;
-  font-size: 0.875rem;
-  color: var(--color-text-secondary);
-  max-width: 580px;
-  margin: 32px auto 24px auto;
-  line-height: 1.5;
+[data-theme="dark"] .bp-label { color: #F8FAFC; }
+
+.bp-value {
+  font-family: var(--font-serif, serif);
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 4px;
 }
 
-.blueprint-cta-wrap {
+.lagna-value { color: #10B981; }
+.moon-value { color: #D97706; } /* Darker gold for text */
+.star-value { color: #6358F7; }
+
+.bp-subtext {
+  font-size: 0.85rem;
+  color: #94A3B8;
+}
+
+.date-text {
+  margin-top: 4px;
+  line-height: 1.6;
+  font-size: 0.8rem;
+  color: #94A3B8;
+}
+
+/* Horizontal Cards (Middle Row & Bottom Row) */
+.bp-card-horizontal {
+  position: relative;
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  padding: 24px;
   display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid #E2E8F0;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s ease;
+}
+
+[data-theme="dark"] .bp-card-horizontal {
+  background-color: #1E293B;
+  border-color: #2A3A5E;
+}
+
+.bp-card-horizontal:hover {
+  transform: translateY(-2px);
+}
+
+.bp-text-col {
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.bg-network-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(0, 0, 0, 0.03) 8px, rgba(0, 0, 0, 0.03) 10px);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 80%);
+  mask-image: linear-gradient(to right, transparent, black 80%);
+  z-index: 0;
+}
+
+[data-theme="dark"] .bg-network-overlay {
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(255, 255, 255, 0.03) 8px, rgba(255, 255, 255, 0.03) 10px);
+}
+
+.nakshatra-network {
+  background-color: rgba(16, 185, 129, 0.05);
+}
+
+.lagna-network {
+  background-color: rgba(244, 63, 94, 0.05);
+}
+
+.icon-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.nakshatra-circle {
+  background-color: #ECFDF5;
+  color: #10B981;
+}
+
+.lagna-circle {
+  background-color: #FFF1F2;
+  color: #F43F5E;
+}
+
+.maha-circle {
+  background-color: #FFFBEB;
+  color: #F59E0B;
+}
+
+.antar-circle {
+  background-color: #FDF2F8;
+  color: #EC4899;
+}
+
+[data-theme="dark"] .nakshatra-circle {
+  background-color: rgba(16, 185, 129, 0.1);
+}
+
+[data-theme="dark"] .lagna-circle {
+  background-color: rgba(244, 63, 94, 0.1);
+}
+
+[data-theme="dark"] .maha-circle {
+  background-color: rgba(245, 158, 11, 0.1);
+}
+
+[data-theme="dark"] .antar-circle {
+  background-color: rgba(236, 72, 153, 0.1);
+}
+
+/* Dotted ring backgrounds for Dasha cards */
+.icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 76px;
+  flex-shrink: 0;
+}
+
+.dotted-ring-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px dotted rgba(0, 0, 0, 0.15);
+  z-index: 0;
+}
+
+[data-theme="dark"] .dotted-ring-bg {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.maha-ring {
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.antar-ring {
+  border-color: rgba(236, 72, 153, 0.3);
+}
+
+/* Planetary Period Divider */
+.planetary-period-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 16px 0;
+  color: #6358F7;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+[data-theme="dark"] .planetary-period-divider {
+  color: #818CF8;
+}
+
+.dash-line {
+  width: 60px;
+  height: 1px;
+  background: repeating-linear-gradient(90deg, #C7D2FE, #C7D2FE 4px, transparent 4px, transparent 8px);
+}
+
+[data-theme="dark"] .dash-line {
+  background: repeating-linear-gradient(90deg, #4338CA, #4338CA 4px, transparent 4px, transparent 8px);
+}
+
+/* Bottom CTA Banner */
+.blueprint-cta-banner {
+  background-color: #F8F7FF;
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-top: 16px;
+  border: 1px solid #E0DDF7;
+}
+
+[data-theme="dark"] .blueprint-cta-banner {
+  background-color: rgba(99, 88, 247, 0.05);
+  border-color: #2A3A5E;
+}
+
+.cta-graphics-left {
+  width: 140px;
+  height: 140px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.orbit-rings {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
 
-@media (max-width: 768px) {
-  .grid-3-cards, .grid-2-cards {
-    grid-template-columns: 1fr;
+.orbit-1,
+.orbit-2,
+.orbit-3 {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid #C7D2FE;
+}
+
+[data-theme="dark"] .orbit-1,
+[data-theme="dark"] .orbit-2,
+[data-theme="dark"] .orbit-3 {
+  border-color: #4338CA;
+}
+
+.orbit-1 {
+  width: 120px;
+  height: 120px;
+}
+
+.orbit-2 {
+  width: 90px;
+  height: 90px;
+  transform: rotate(45deg);
+  border-style: dashed;
+}
+
+.orbit-3 {
+  width: 60px;
+  height: 60px;
+  transform: rotate(-30deg);
+}
+
+.center-star {
+  background-color: #E0DDF7;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+[data-theme="dark"] .center-star {
+  background-color: #3730A3;
+}
+
+.sparkle-icon {
+  color: #6358F7;
+  width: 24px;
+  height: 24px;
+}
+
+[data-theme="dark"] .sparkle-icon {
+  color: #A5B4FC;
+}
+
+.floating-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #6358F7;
+}
+
+[data-theme="dark"] .floating-dot {
+  background-color: #818CF8;
+}
+
+.dot-1 {
+  top: 10px;
+  right: 20px;
+  width: 6px;
+  height: 6px;
+}
+
+.dot-2 {
+  bottom: 20px;
+  left: 10px;
+  background-color: #F59E0B;
+}
+
+.dot-3 {
+  top: 40px;
+  left: -5px;
+  width: 4px;
+  height: 4px;
+}
+
+.cta-content-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.cta-note {
+  font-size: 1rem;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
+}
+
+[data-theme="dark"] .cta-note {
+  color: #94A3B8;
+}
+
+.cta-btn-emerald {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background-color: #10B981;
+  color: #FFFFFF;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.cta-btn-emerald:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.btn-arrow-icon {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 900px) {
+  .blueprint-cta-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px;
+  }
+
+  .cta-content-right {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .cta-note {
+    br {
+      display: none;
+    }
   }
 }

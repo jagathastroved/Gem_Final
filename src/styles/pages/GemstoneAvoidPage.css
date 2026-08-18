@@ -1,9 +1,53 @@
 .avoid-gems-section {
-  max-width: 800px;
+  max-width: 860px;
   margin: 0 auto;
   padding: 40px 24px;
 }
 
+/* Header Styles */
+.avoid-page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.avoid-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.avoid-title-row h2 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1E293B;
+  margin: 0;
+}
+
+[data-theme="dark"] .avoid-title-row h2 {
+  color: #F8FAFC;
+}
+
+.avoid-title-accent {
+  color: #D4AF37;
+  /* Gold accent */
+  font-size: 1.2rem;
+}
+
+.avoid-subtitle {
+  color: #64748B;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+[data-theme="dark"] .avoid-subtitle {
+  color: #94A3B8;
+}
+
+/* Cards Stack */
 .avoid-cards-stack {
   display: flex;
   flex-direction: column;
@@ -14,69 +58,158 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 24px;
-  background-color: var(--color-card);
-  border: 1px solid var(--color-border);
+  padding: 24px 32px;
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+  overflow: hidden;
+  position: relative;
 }
 
+.avoid-gem-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] .avoid-gem-card {
+  background-color: #1E293B;
+  border-color: #334155;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Card Left Section */
 .avoid-card-left {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
 }
 
 .avoid-gem-thumb {
-  width: 80px;
-  height: 80px;
+  width: 72px;
+  height: 72px;
   flex-shrink: 0;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
-/* Scale down the SVG inside thumb */
-.avoid-gem-thumb .gem-materialize-wrap {
-  width: 80px;
-  height: 80px;
+.avoid-gem-inner {
+  width: 130%;
+  height: 130%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0.7);
 }
 
-.avoid-gem-thumb .gem-pedestal {
-  width: 80px;
-  height: 80px;
-}
-
-.avoid-gem-thumb .gem-aura {
+.avoid-gem-inner .gem-aura {
   display: none;
+  /* Hide any glowing radial backgrounds from the component */
 }
 
+/* Card Info */
 .avoid-card-info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .avoid-gem-name {
   font-family: var(--font-serif);
-  font-size: 1.15rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #1E293B;
+  margin: 0;
+}
+
+[data-theme="dark"] .avoid-gem-name {
+  color: #F8FAFC;
+}
+
+/* Planet Badge */
+.planet-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-size: 0.75rem;
   font-weight: 700;
-  color: var(--color-text-primary);
+  width: fit-content;
+}
+
+.planet-badge span {
+  font-size: 0.9rem;
 }
 
 .avoid-gem-reason {
   font-size: 0.85rem;
-  color: var(--color-text-secondary);
+  color: #475569;
+  line-height: 1.4;
+  margin: 4px 0 0 0;
+  max-width: 400px;
 }
 
+[data-theme="dark"] .avoid-gem-reason {
+  color: #94A3B8;
+}
+
+/* Avoid Badge Button */
 .avoid-badge-col {
   flex-shrink: 0;
 }
 
-@media (max-width: 600px) {
+.btn-avoid-outline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #DC2626;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  box-shadow: none;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.btn-avoid-outline:hover {
+  background-color: #FEF2F2;
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+[data-theme="dark"] .btn-avoid-outline {
+  background: linear-gradient(135deg, #F87171 0%, #DC2626 100%);
+  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+  .avoid-title-row h2 {
+    font-size: 1.5rem;
+  }
+
   .avoid-gem-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .avoid-card-left {
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
   }
+
   .avoid-badge-col {
     align-self: flex-end;
   }

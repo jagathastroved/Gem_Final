@@ -1,9 +1,11 @@
 import React from 'react';
-import { SectionHeader } from '../ui/SectionHeader.jsx';
-import { StatusBadge } from '../ui/Badge.jsx';
-import { Card } from '../ui/Card.jsx';
-import { GemstoneMaterialize } from '../animations/GemstoneMaterialize.jsx';
+import {
+  ShoppingCart, Info, Quote, FileText, CheckCircle2,
+  Sparkles, Leaf, Zap, Diamond, Award, ShieldCheck, Truck, RotateCcw,
+  Compass, Shield
+} from 'lucide-react';
 import { useOutletContext } from 'react-router-dom';
+import { GemstoneMaterialize } from '../animations/GemstoneMaterialize.jsx';
 import '../../styles/pages/GemstonePage.css';
 
 export function GemstonePage() {
@@ -15,84 +17,163 @@ export function GemstonePage() {
 
   return (
     <section id="primary-gem-section" className="primary-gem-section">
-      {/* Your Primary Gemstone */}
-      <SectionHeader
-        title="Your Primary Gemstone"
-        subtitle="Based on your ascendant and planetary placements"
-      />
-      <Card className="primary-gem-main-card">
-        <div className="gem-section-kicker">
-          <span>✨ YOUR PRIMARY GEMSTONE ✨</span>
+
+      {/* Header */}
+      <div className="section-title-center">
+        <div className="blueprint-subtitle-row">
+          <div className="diamond-icon">✦</div>
+          <h2>Your Primary Gemstone</h2>
+          <div className="diamond-icon">✦</div>
         </div>
+        <p className="gem-page-subtitle">Based on your ascendant and planetary placements</p>
+      </div>
 
-        <GemstoneMaterialize gemType={gem?.suitableStone} name={gem?.suitableStone} />
+      {/* Grid: 2 Columns for Hero */}
+      <div className="gem-hero-grid">
 
-        <h3 className="gem-title">{gem?.suitableStone}</h3>
-        <p className="gem-subtext">{gem?.sanskritName} • {gem?.associatedPlanet}</p>
-
-        <div className="gem-badge-wrap">
-          <StatusBadge type="recommended">Recommented for You</StatusBadge>
-        </div>
-
-        <p className="gem-description">
-          {gem?.description}
-        </p>
-
-        {/* Inner Box: Why This Stone? */}
-        <div className="why-this-stone-box">
-          <div className="why-box-title">
-            <span>WHY THIS STONE?</span>
+        {/* Left Column: Gemstone Showcase */}
+        <div className="gem-showcase-card">
+          <div className="gem-showcase-kicker">
+            <span>✦</span> YOUR PRIMARY GEMSTONE <span>✦</span>
           </div>
 
-          <div className="why-items-list">
-            {gem?.whyThisStone?.map((item) => (
-              <div key={item.id} className="why-item-row">
-                <div className="why-num-badge">{item.id}</div>
-                <div className="why-item-text">
-                  <strong>{item.title}</strong>
-                  <p>{item.text}</p>
+          <div className="gem-image-container">
+            <GemstoneMaterialize gemType={gem?.suitableStone} name={gem?.suitableStone} />
+          </div>
+
+          <h3 className="gem-title">{gem?.suitableStone}</h3>
+          <p className="gem-subtext">{gem?.sanskritName} • {gem?.associatedPlanet}</p>
+
+          <div className="recommended-badge">
+            <CheckCircle2 className="rec-icon" />
+            <span>RECOMMENDED FOR YOU</span>
+          </div>
+
+          <p className="gem-description">
+            {gem?.description}
+          </p>
+
+          <div className="hero-features-grid-new">
+            <div className="hf-item-new">
+              <div className="hf-icon-new"><Leaf size={14} /></div>
+              <span>100% Natural</span>
+            </div>
+            <div className="hf-item-new">
+              <div className="hf-icon-new"><Zap size={14} /></div>
+              <span>Energized</span>
+            </div>
+            <div className="hf-item-new">
+              <div className="hf-icon-new"><Diamond size={14} /></div>
+              <span>Excellent Cut</span>
+            </div>
+            <div className="hf-item-new">
+              <div className="hf-icon-new"><Award size={14} /></div>
+              <span>Lab Certified</span>
+            </div>
+          </div>
+
+          <button className="gem-buy-btn">
+            <ShoppingCart className="btn-icon" />
+            <span>Buy Now</span>
+          </button>
+
+          <div className="hero-guarantees-compact">
+            <div className="hg-item">
+              <ShieldCheck size={14} /> <span>Secure Payment</span>
+            </div>
+            <span className="hg-dot">•</span>
+            <div className="hg-item">
+              <Truck size={14} /> <span>Free Shipping</span>
+            </div>
+            <span className="hg-dot">•</span>
+            <div className="hg-item">
+              <RotateCcw size={14} /> <span>7 Days Return</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column: Why This Stone? */}
+        <div className="why-stone-container">
+          <div className="why-stone-header">
+            <div className="dash-line-small"></div>
+            <span>WHY THIS STONE?</span>
+            <div className="dash-line-small"></div>
+          </div>
+
+          <div className="why-timeline">
+            {gem?.whyThisStone?.map((item, index) => {
+              const Icon = index === 0 ? Compass : index === 1 ? Shield : Zap;
+              return (
+                <div key={item.id} className="timeline-item">
+                  <div className="timeline-icon-wrap">
+                    <div className="timeline-circle">
+                      <Icon className="timeline-zodiac-icon" size={24} />
+                    </div>
+                    <div className="timeline-number">{String(index + 1).padStart(2, '0')}</div>
+                  </div>
+                  <div className="timeline-content">
+                    <h4>{item.title}</h4>
+                    <p>{item.text}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+      </div>
+
+      {/* Info Banner */}
+      <div className="gem-info-banner">
+        <Info className="info-icon" />
+        <p>This recommendation is based on in-depth celestial and astrological methods used in this report.</p>
+      </div>
+
+      {/* Why Your Recommendation Is Different */}
+      <div className="comparison-section">
+        <div className="section-title-center">
+          <div className="blueprint-subtitle-row">
+            <div className="diamond-icon">✦</div>
+            <h2>Why Your Recommendation Is Different</h2>
+            <div className="diamond-icon">✦</div>
+          </div>
+        </div>
+
+        <div className="comparison-grid">
+          {/* Left Card: Generic */}
+          <div className="comp-card generic-card">
+            <div className="comp-header-red">WHAT A GENERIC READER BASED TOOL WOULD SAY</div>
+            <div className="quote-circle">
+              <Quote className="quote-icon" />
+            </div>
+            <h3 className="generic-quote">{comp?.genericSaying}</h3>
+            <p className="generic-basis">{comp?.genericSubtext}</p>
+          </div>
+
+          {/* Right Card: Actual Chart */}
+          <div className="comp-card actual-card">
+            <div className="comp-header-green">
+              <FileText className="file-icon" />
+              <span>WHAT YOUR ACTUAL CHART SAYS</span>
+            </div>
+            <h3 className="actual-title">{comp?.actualChartSaying}</h3>
+            <p className="actual-desc">{comp?.actualChartText}</p>
+
+            <div className="recommendation-highlight-box">
+              <div className="rec-box-left">
+                <div className="small-gem-wrap">
+                  <GemstoneMaterialize gemType={gem?.suitableStone} name={gem?.suitableStone} disableFloat={true} />
                 </div>
               </div>
-            ))}
+              <div className="rec-box-right">
+                <strong>{comp?.recommendationLabel}</strong>
+                <span>{comp?.recommendationMethod}</span>
+              </div>
+            </div>
           </div>
         </div>
-
-        <p className="primary-gem-footer-note">
-          This recommendation is based on the birth details and astrological method used in this report.
-        </p>
-      </Card>
-
-      {/* Section 5: Why Your Recommendation Is Different */}
-      <div className="margin-top-xl">
-        <SectionHeader
-          title="Why Your Recommendation Is Different"
-        />
-
-        <div className="comparison-stack">
-          {/* Top Generic Card */}
-          <Card variant="avoid" className="generic-tool-card">
-            <span className="comp-kicker comp-kicker-avoid">
-              WHAT A GENERIC RASHI-BASED TOOL WOULD SAY
-            </span>
-            <h4 className="generic-saying-title">{comp?.genericSaying}</h4>
-            <span className="generic-subtext-label">{comp?.genericSubtext}</span>
-          </Card>
-
-          {/* Bottom Actual Chart Card */}
-          <Card variant="emerald" className="actual-chart-card">
-            <span className="comp-kicker comp-kicker-emerald">
-              WHAT YOUR ACTUAL CHART SAYS
-            </span>
-            <h4 className="actual-chart-title">{comp?.actualChartSaying}</h4>
-            <p className="actual-chart-text">{comp?.actualChartText}</p>
-
-            <div className="our-recommendation-highlight">
-              <strong>{comp?.recommendationLabel}</strong>
-              <span>{comp?.recommendationMethod}</span>
-            </div>
-          </Card>
-        </div>
       </div>
+
     </section>
   );
 }

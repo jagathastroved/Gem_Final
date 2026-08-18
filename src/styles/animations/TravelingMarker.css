@@ -1,4 +1,5 @@
-.traveling-line-container {
+/* Vertical styles */
+.traveling-line-container.vertical {
   position: absolute;
   top: 30px;
   bottom: 30px;
@@ -15,11 +16,43 @@
   opacity: 0.3;
 }
 
-.traveling-planet-node {
+.traveling-planet-node.vertical {
   position: absolute;
   width: 16px;
   height: 16px;
   left: -7px;
+  border-radius: 50%;
+  background-color: var(--color-gold-bg);
+  border: 1.5px solid var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 8px rgba(200, 147, 74, 0.6);
+}
+
+/* Horizontal styles */
+.traveling-line-container.horizontal {
+  position: absolute;
+  top: 40px; /* Align with center of node circles */
+  left: 30px;
+  right: 30px;
+  height: 2px;
+  display: flex;
+  align-items: center;
+}
+
+.horizontal-timeline-line {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-emerald) 0%, var(--color-gold) 50%, var(--color-emerald) 100%);
+  opacity: 0.3;
+}
+
+.traveling-planet-node.horizontal {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: -7px;
   border-radius: 50%;
   background-color: var(--color-gold-bg);
   border: 1.5px solid var(--color-gold);
