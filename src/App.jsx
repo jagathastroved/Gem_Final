@@ -1,17 +1,46 @@
-import React, { useState } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, useNavigate, useLocation } from 'react-router-dom';
 import { AppRoutes } from './routes/AppRoutes.jsx';
 import './styles/base/App.css';
 import { ThemeProvider } from './context/ThemeContext.jsx';
 
 function AppContent() {
-  const [report, setReport] = useState(null);
-  const [userBirthDetails, setUserBirthDetails] = useState(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const [report, setReport] = useState(() => {
+    try {
+      const saved = localStorage.getItem('gemstoneReport');
+      return saved ? JSON.parse(saved) : null;
+    } catch (e) {
+      return null;
+    }
+  });
+
+  const [userBirthDetails, setUserBirthDetails] = useState(() => {
+    try {
+      const saved = localStorage.getItem('gemstoneBirthDetails');
+      return saved ? JSON.parse(saved) : null;
+    } catch (e) {
+      return null;
+    }
+  });
+
+  useEffect(() => {
+    if (location.pathname !== '/' && location.pathname !== '/loading') {
+      if (!userBirthDetails || !report) {
+        navigate('/');
+      }
+    }
+  }, [userBirthDetails, report, location.pathname, navigate]);
 
   const handleSubmitBirthDetails = (details, fetchedReport) => {
     setUserBirthDetails(details);
+    localStorage.setItem('gemstoneBirthDetails', JSON.stringify(details));
+
     if (fetchedReport) {
       setReport(fetchedReport);
+      localStorage.setItem('gemstoneReport', JSON.stringify(fetchedReport));
     }
   };
 

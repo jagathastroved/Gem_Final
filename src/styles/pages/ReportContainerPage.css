@@ -167,7 +167,8 @@
   -webkit-text-fill-color: transparent;
 }
 
-.welcome-intro-p, .welcome-subintro-p {
+.welcome-intro-p,
+.welcome-subintro-p {
   font-size: 1rem;
   color: #475569;
   line-height: 1.65;
@@ -383,20 +384,24 @@
   .report-main-stage {
     padding: 20px 16px;
   }
+
   .report-central-canvas-card {
     padding: 24px 20px;
   }
-  .includes-grid-two, .traits-info-cards-grid {
+
+  .includes-grid-two,
+  .traits-info-cards-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .card-astroved-header-row {
     flex-direction: column;
     align-items: center;
     gap: 16px;
-    margin-top: 40px; /* Added margin to avoid overlap with Show Index */
+    margin-top: 40px;
+    /* Added margin to avoid overlap with Show Index */
   }
-  
+
   .section-badge-center {
     position: relative;
     left: auto;

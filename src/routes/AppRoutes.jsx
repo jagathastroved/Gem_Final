@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import {FormPage} from '../components/pages/FormPage.jsx';
+import { FormPage } from '../components/pages/FormPage.jsx';
 import { AnalysisLoadingPage } from '../components/pages/AnalysisLoadingPage.jsx';
 import { ReportLayout } from '../components/pages/ReportLayout.jsx';
 import { WelcomePage } from '../components/pages/WelcomePage.jsx';
@@ -37,14 +37,14 @@ export function AppRoutes({ report, onSubmitDetails, onLoadingComplete }) {
       </div>
       <main className="main-layout-content">
         <Routes>
-          <Route 
-            path="/" 
-            element={<FormPage onSubmitDetails={onSubmitDetails} />} 
+          <Route
+            path="/"
+            element={<FormPage onSubmitDetails={onSubmitDetails} />}
           />
 
-          <Route 
-            path="/loading" 
-            element={<AnalysisLoadingPage onLoadingComplete={onLoadingComplete} />} 
+          <Route
+            path="/loading"
+            element={<AnalysisLoadingPage onLoadingComplete={onLoadingComplete} />}
           />
 
           <Route element={<ReportLayout report={report} />}>
@@ -54,7 +54,7 @@ export function AppRoutes({ report, onSubmitDetails, onLoadingComplete }) {
             <Route path="/gems-avoid" element={<GemstoneAvoidPage />} />
             <Route path="/dasha-transit" element={<DashaTransitPage />} />
             <Route path="/why-report" element={<WhyThisReportPage />} />
-            <Route path="/premium" element={<PremiumPage />} />
+            {/* <Route path="/premium" element={<PremiumPage />} /> */}
           </Route>
         </Routes>
       </main>

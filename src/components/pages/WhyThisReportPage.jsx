@@ -47,8 +47,8 @@ export function WhyThisReportPage() {
 
   return (
     <section className="why-report-section">
-      <SectionHeader 
-        title="Why This Report Goes Beyond a Gemstone Name" 
+      <SectionHeader
+        title="Why This Report Goes Beyond a Gemstone Name"
       />
 
       {/* 3-Column Feature Grid */}
