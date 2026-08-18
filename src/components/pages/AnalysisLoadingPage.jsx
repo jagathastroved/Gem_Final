@@ -64,10 +64,15 @@ export function AnalysisLoadingPage({ onSubmitDetails }) {
       } catch (error) {
         console.error('API submission failed:', error);
         onSubmitDetails(birthDetails, null);
-      } finally {
-        setProgress(100);
-        setActiveStageIndex(STAGES.length - 1);
+        navigate('/error', {
+          replace: true,
+          state: { error: error.message || 'An unexpected cosmic anomaly occurred.' }
+        });
+        return; // Stop execution here so it doesn't go to welcome
       }
+
+      setProgress(100);
+      setActiveStageIndex(STAGES.length - 1);
     };
     doFetch();
   }, [birthDetails, onSubmitDetails]);

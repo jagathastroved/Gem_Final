@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { CheckCircle2, ArrowRight, Sparkles, AlertCircle } from 'lucide-react';
 import { Card } from '../ui/Card.jsx';
 import { SearchableDropdown } from '../ui/SearchableDropdown.jsx';
 import '../../styles/pages/FormPage.css';
-import { cityList, countryList, fetchGemstoneReport } from '@/src/services/astrologyApi.js';
+import { cityList, countryList } from '@/src/services/astrologyApi.js';
 
 const ErrorIcon = ({ message }) => {
   return (
@@ -26,6 +26,8 @@ const ErrorIcon = ({ message }) => {
 
 export function FormPage({ onSubmitDetails }) {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const promoCode = searchParams.get('promo') || "";
   const [country, setCountry] = useState([]);
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
@@ -41,7 +43,7 @@ export function FormPage({ onSubmitDetails }) {
     country: 'India',
     city: '',
     latitude: 0,
-    longitude: 0
+    longitude: 0,
   });
 
   useEffect(() => {
@@ -133,7 +135,7 @@ export function FormPage({ onSubmitDetails }) {
       birthCity: formData.city,
       latitude: formData.latitude,
       longitude: formData.longitude,
-      promo: ""
+      promo: promoCode
     };
     console.log('API PayLoad', birthDetails)
 

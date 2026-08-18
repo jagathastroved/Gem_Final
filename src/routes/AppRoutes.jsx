@@ -10,6 +10,7 @@ import { GemstoneAvoidPage } from '../components/pages/GemstoneAvoidPage.jsx';
 import { DashaTransitPage } from '../components/pages/DashaTransitPage.jsx';
 import { WhyThisReportPage } from '../components/pages/WhyThisReportPage.jsx';
 import { PremiumPage } from '../components/pages/PremiumPage.jsx';
+import { MaintenancePage } from '../components/pages/MaintenancePage.jsx';
 
 import Particles from '../components/animations/Particles.jsx';
 import '../styles/layout/MainLayout.css';
@@ -46,6 +47,8 @@ export function AppRoutes({ report, onSubmitDetails }) {
             path="/loading"
             element={<AnalysisLoadingPage onSubmitDetails={onSubmitDetails} />}
           />
+
+          <Route path="/error" element={<MaintenancePage />} />
 
           <Route element={<ReportLayout report={report} />}>
             <Route path="/welcome" element={<WelcomePage />} />
