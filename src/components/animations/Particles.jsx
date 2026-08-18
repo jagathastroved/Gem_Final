@@ -236,7 +236,7 @@ const Particles = ({
     pixelRatio
   ]);
 
-  return <div ref={containerRef} className={`relative w-full h-full ${className}`} />;
+  return <div ref={containerRef} style={{ position: 'relative', width: '100%', height: '100%' }} className={className} />;
 };
 
 export default Particles;

@@ -60,3 +60,10 @@ a {
 [data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
   background: #475569;
 }
+
+@media (max-width: 900px) {
+  html, body {
+    width: 100vw;
+    overflow-x: hidden;
+  }
+}
