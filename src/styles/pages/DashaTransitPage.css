@@ -1,7 +1,10 @@
 .dasha-timeline-section {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 40px 24px 80px;
+  padding: 16px 24px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 /* Header Styles */
@@ -59,7 +62,7 @@
   display: flex;
   flex-direction: column;
   padding-top: 20px;
-  /* Space for the floating badge */
+  min-width: 0;
 }
 
 /* Floating Pill Badge */
@@ -114,6 +117,7 @@
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 0;
 }
 
 .insight-card-modern:hover {
@@ -172,17 +176,17 @@
   align-items: flex-start;
   gap: 8px;
   color: #64748B;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   background-color: #ECFDF5;
   padding: 8px 12px;
   border-radius: 6px;
-  width: fit-content;
   line-height: 1.4;
+  word-break: break-word;
 }
 
 .insight-source-modern svg {
   flex-shrink: 0;
-  margin-top: 1px;
+  margin-top: 2px;
   color: #10B981;
 }
 
@@ -360,7 +364,7 @@
   color: #A78BFA;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 767px) {
   .timeline-two-col-grid {
     grid-template-columns: 1fr;
     gap: 56px;
@@ -369,15 +373,17 @@
 
 @media (max-width: 640px) {
   .insight-card-modern {
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
-    padding: 20px;
+    padding: 16px;
     gap: 12px;
   }
 
   .insight-num-circle {
-    margin-top: 0;
-    margin-bottom: 4px;
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+    margin-top: 2px;
   }
 
   .timeline-events-list {

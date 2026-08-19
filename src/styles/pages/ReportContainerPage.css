@@ -22,6 +22,7 @@
   align-items: center;
   position: relative;
   z-index: 2;
+  min-width: 0;
 }
 
 /* Central Elevated Canvas Card */
@@ -36,6 +37,7 @@
   color: #1E293B;
   transition: background-color 0.3s ease, color 0.3s ease;
   overflow: hidden;
+  min-width: 0;
 }
 
 [data-theme="dark"] .report-central-canvas-card {
@@ -340,17 +342,26 @@
   align-items: center;
   gap: 8px;
   padding: 12px 24px;
-  border-radius: 30px;
-  background-color: #334155;
-  color: #FFFFFF;
-  font-size: 0.9rem;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #475569;
+  border: 1px solid #E2E8F0;
+  font-size: 0.95rem;
   font-weight: 700;
-  border: none;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .nav-btn-back:hover {
+  background-color: #F8FAFC;
+}
+
+[data-theme="dark"] .nav-btn-back {
+  color: #94A3B8;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .nav-btn-back:hover {
   background-color: #1E293B;
 }
 
@@ -359,7 +370,7 @@
   align-items: center;
   gap: 8px;
   padding: 12px 28px;
-  border-radius: 30px;
+  border-radius: 8px;
   background: linear-gradient(135deg, #10B981 0%, #059669 100%);
   color: #FFFFFF;
   font-size: 0.95rem;
@@ -382,11 +393,11 @@
 
 @media (max-width: 900px) {
   .report-main-stage {
-    padding: 20px 16px;
+    padding: 16px 12px;
   }
 
   .report-central-canvas-card {
-    padding: 24px 20px;
+    padding: 24px 16px;
   }
 
   .includes-grid-two,
@@ -407,5 +418,26 @@
     left: auto;
     transform: none;
     text-align: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .card-navigation-bottom-bar {
+    padding-top: 16px;
+  }
+
+  .nav-btn-back {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+
+  .nav-btn-next-green {
+    padding: 8px 20px;
+    font-size: 0.85rem;
+  }
+
+  .nav-btn-icon {
+    width: 16px;
+    height: 16px;
   }
 }

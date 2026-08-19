@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BookOpen, Download, RotateCcw, PanelLeftClose, PanelLeft, Sun, Moon } from 'lucide-react';
 import '../../styles/report/ReportSidebar.css';
@@ -14,6 +14,27 @@ export function ReportSidebar({
   toggleTheme
 }) {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleScrollLock = () => {
+      if (!collapsed && window.innerWidth <= 900) {
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+      }
+    };
+
+    handleScrollLock();
+    window.addEventListener('resize', handleScrollLock);
+
+    return () => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      window.removeEventListener('resize', handleScrollLock);
+    };
+  }, [collapsed]);
 
   const handleEnterDifferentDetails = () => {
     navigate('/');
@@ -75,10 +96,11 @@ export function ReportSidebar({
         <nav className="sidebar-index-list">
           {sections.map((sec, idx) => {
             const isActive = activeSectionIndex === idx;
+            const isCompleted = idx < activeSectionIndex;
             return (
               <button
                 key={sec.id}
-                className={`sidebar-index-item ${isActive ? 'active' : ''}`}
+                className={`sidebar-index-item ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}`}
                 onClick={() => onSelectSection(idx)}
               >
                 <span className="index-number-badge">{idx + 1}</span>
@@ -112,3 +134,4 @@ export function ReportSidebar({
     </>
   );
 }
+

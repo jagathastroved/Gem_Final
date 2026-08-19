@@ -1,4 +1,4 @@
-* {
+﻿* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -61,7 +61,7 @@ a {
   background: #475569;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 767px) {
   html, body {
     width: 100vw;
     overflow-x: hidden;

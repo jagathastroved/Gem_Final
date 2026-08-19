@@ -1,4 +1,4 @@
-/* Base Layout */
+﻿/* Base Layout */
 .blueprint-page-section {
   display: flex;
   flex-direction: column;
@@ -17,6 +17,7 @@
   font-size: 2.25rem;
   font-weight: 800;
   color: #1E293B;
+  margin-top: 0;
   margin-bottom: 12px;
 }
 
@@ -24,9 +25,8 @@
   color: #FFFFFF;
 }
 
-.text-purple {
-  color: #6358F7;
-  /* Blueprint purple */
+.text-emerald {
+  color: #10B981;
 }
 
 .blueprint-subtitle-row {
@@ -61,7 +61,7 @@
   gap: 20px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 
   .blueprint-grid-3,
   .blueprint-grid-2 {
@@ -185,7 +185,9 @@
   margin-bottom: 8px;
 }
 
-[data-theme="dark"] .bp-label { color: #F8FAFC; }
+[data-theme="dark"] .bp-label {
+  color: #F8FAFC;
+}
 
 .bp-value {
   font-family: var(--font-serif, serif);
@@ -194,9 +196,18 @@
   margin-bottom: 4px;
 }
 
-.lagna-value { color: #10B981; }
-.moon-value { color: #D97706; } /* Darker gold for text */
-.star-value { color: #6358F7; }
+.lagna-value {
+  color: #10B981;
+}
+
+.moon-value {
+  color: #D97706;
+}
+
+/* Darker gold for text */
+.star-value {
+  color: #6358F7;
+}
 
 .bp-subtext {
   font-size: 0.85rem;
@@ -223,6 +234,7 @@
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
   transition: transform 0.2s ease;
+  min-width: 0;
 }
 
 [data-theme="dark"] .bp-card-horizontal {
@@ -237,6 +249,7 @@
 .bp-text-col {
   display: flex;
   flex-direction: column;
+  min-width: 0;
   z-index: 2;
 }
 
@@ -542,7 +555,7 @@
   height: 18px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 767px) {
   .blueprint-cta-banner {
     flex-direction: column;
     text-align: center;

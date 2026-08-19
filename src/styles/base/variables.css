@@ -1,12 +1,17 @@
 :root {
   /* Base */
-  --color-background: #FCFAF5;     /* warm ivory page background */
-  --color-card: #FFFFFF;           /* white cards on top of ivory background */
-  --color-card-alt: #FBF7EE;       /* soft warm-beige card variant (e.g. pricing card) */
+  --color-background: #FCFAF5;
+  /* warm ivory page background */
+  --color-card: #FFFFFF;
+  /* white cards on top of ivory background */
+  --color-card-alt: #FBF7EE;
+  /* soft warm-beige card variant (e.g. pricing card) */
 
   /* Text */
-  --color-text-primary: #16213E;   /* deep navy — headings and primary text */
-  --color-text-secondary: #6B7280; /* muted grey — subtitles, helper text */
+  --color-text-primary: #16213E;
+  /* deep navy — headings and primary text */
+  --color-text-secondary: #6B7280;
+  /* muted grey — subtitles, helper text */
 
   /* AstroVed Brand Purple & Indigo */
   --color-purple-brand: #554BF0;
@@ -39,9 +44,12 @@
   --color-border-dark: #2A364F;
 
   /* Dark contrast section — used ONLY on the analysis/loading screen or dark mode */
-  --color-void: #0B0E1B;           /* deep navy background */
-  --color-void-card: #16213E;      /* elevated panel on dark screen */
-  --color-void-text: #F5F3EE;      /* ivory text on dark */
+  --color-void: #0B0E1B;
+  /* deep navy background */
+  --color-void-card: #16213E;
+  /* elevated panel on dark screen */
+  --color-void-text: #F5F3EE;
+  /* ivory text on dark */
   --color-void-text-secondary: #9AA3C4;
 
   /* Dimensions & Radii */
@@ -72,4 +80,3 @@
   --color-text-secondary: #9AA3C4;
   --color-border: #2A3A5E;
 }
-

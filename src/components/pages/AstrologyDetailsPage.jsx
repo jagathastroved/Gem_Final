@@ -15,7 +15,7 @@ export function AstrologyDetailsPage() {
 
       {/* Header */}
       <div className="section-title-center">
-        <h2>Your Astrological <span className="text-purple">Blueprint</span></h2>
+        <h2>Your Astrological <span className="text-emerald">Blueprint</span></h2>
         <div className="blueprint-subtitle-row">
           <div className="diamond-icon">✦</div>
           <p>Key highlights from your birth chart</p>

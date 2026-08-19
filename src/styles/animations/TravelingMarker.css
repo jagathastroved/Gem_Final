@@ -33,7 +33,8 @@
 /* Horizontal styles */
 .traveling-line-container.horizontal {
   position: absolute;
-  top: 40px; /* Align with center of node circles */
+  top: 40px;
+  /* Align with center of node circles */
   left: 30px;
   right: 30px;
   height: 2px;

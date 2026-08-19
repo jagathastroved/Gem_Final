@@ -3,6 +3,7 @@ import { Card } from '../ui/Card.jsx';
 import { FileText, Sparkles, Sun, Moon, Flame, Zap, BookOpen, Heart, Anchor, Wind, Compass } from 'lucide-react';
 import { TravelingMarker } from '../animations/TravelingMarker.jsx';
 import { useOutletContext } from 'react-router-dom';
+import '../../styles/pages/AstrologyDetailsPage.css';
 import '../../styles/pages/DashaTransitPage.css';
 
 const getNodeTheme = (title) => {
@@ -27,13 +28,12 @@ export function DashaTransitPage() {
 
   return (
     <section id="timeline-section" className="dasha-timeline-section">
-      <div className="dasha-page-header">
-        <h2 className="dasha-title">Dasha & Timeline Insights</h2>
-        <p className="dasha-subtitle">Understand the flow of time and planetary influences in your life.</p>
-        <div className="gold-divider">
-          <span></span>
-          <Sparkles size={14} color="#D4AF37" />
-          <span></span>
+      <div className="section-title-center">
+        <h2>Dasha & Timeline <span className="text-emerald">Insights</span></h2>
+        <div className="blueprint-subtitle-row">
+          <div className="diamond-icon">✦</div>
+          <p>Understand the flow of time and planetary influences in your life.</p>
+          <div className="diamond-icon">✦</div>
         </div>
       </div>
 

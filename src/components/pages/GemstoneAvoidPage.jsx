@@ -3,6 +3,7 @@ import { useOutletContext } from 'react-router-dom';
 import { Card } from '../ui/Card.jsx';
 import { XCircle } from 'lucide-react';
 import { GemstoneMaterialize } from '../animations/GemstoneMaterialize.jsx';
+import '../../styles/pages/AstrologyDetailsPage.css';
 import '../../styles/pages/GemstoneAvoidPage.css';
 
 const getGemTheme = (name) => {
@@ -25,13 +26,14 @@ export function GemstoneAvoidPage() {
   if (!report) return null;
   return (
     <section className="avoid-gems-section">
-      <div className="avoid-page-header">
-        <div className="avoid-title-row">
-          <span className="avoid-title-accent">✦</span>
-          <h2>Gemstones You Should Avoid</h2>
-          <span className="avoid-title-accent">✦</span>
+      {/* Header */}
+      <div className="section-title-center">
+        <h2>Gemstones You Should <span className="text-emerald">Avoid</span></h2>
+        <div className="blueprint-subtitle-row">
+          <div className="diamond-icon">✦</div>
+          <p>These gemstones may create planetary imbalances in your chart and are best avoided.</p>
+          <div className="diamond-icon">✦</div>
         </div>
-        <p className="avoid-subtitle">These gemstones may create planetary imbalances in your chart<br />and are best avoided.</p>
       </div>
 
       <div className="avoid-cards-stack">

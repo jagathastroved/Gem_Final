@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import { useOutletContext } from 'react-router-dom';
 import { GemstoneMaterialize } from '../animations/GemstoneMaterialize.jsx';
+import '../../styles/pages/AstrologyDetailsPage.css';
 import '../../styles/pages/GemstonePage.css';
 
 export function GemstonePage() {
@@ -20,12 +21,12 @@ export function GemstonePage() {
 
       {/* Header */}
       <div className="section-title-center">
+        <h2>Your Primary <span className="text-emerald">Gemstone</span></h2>
         <div className="blueprint-subtitle-row">
           <div className="diamond-icon">✦</div>
-          <h2>Your Primary Gemstone</h2>
+          <p>Based on your ascendant and planetary placements</p>
           <div className="diamond-icon">✦</div>
         </div>
-        <p className="gem-page-subtitle">Based on your ascendant and planetary placements</p>
       </div>
 
       {/* Grid: 2 Columns for Hero */}

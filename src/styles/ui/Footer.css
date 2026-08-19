@@ -1,4 +1,4 @@
-.app-footer {
+﻿.app-footer {
   background-color: var(--color-card-alt);
   border-top: 1px solid var(--color-border);
   padding: 48px 0 32px 0;
@@ -100,7 +100,7 @@
   color: #8C93A6;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 767px) {
   .footer-top {
     grid-template-columns: 1fr;
   }
@@ -108,3 +108,4 @@
     grid-template-columns: 1fr;
   }
 }
+

@@ -135,3 +135,4 @@ export function ReportLayout({ report }) {
     </div>
   );
 }
+

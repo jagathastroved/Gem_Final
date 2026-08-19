@@ -1,7 +1,10 @@
 .avoid-gems-section {
   max-width: 860px;
   margin: 0 auto;
-  padding: 40px 24px;
+  padding: 16px 24px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 /* Header Styles */
@@ -74,9 +77,11 @@
 }
 
 [data-theme="dark"] .avoid-gem-card {
-  background-color: #1E293B;
-  border-color: #334155;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  background: var(--color-card-alt) !important;
+  border-top-color: var(--color-border) !important;
+  border-right-color: var(--color-border) !important;
+  border-bottom-color: var(--color-border) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 /* Card Left Section */
