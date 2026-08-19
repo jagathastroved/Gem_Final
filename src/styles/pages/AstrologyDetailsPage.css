@@ -1,4 +1,4 @@
-﻿/* Base Layout */
+/* Base Layout */
 .blueprint-page-section {
   display: flex;
   flex-direction: column;
@@ -46,6 +46,145 @@
 .diamond-icon {
   color: #C7D2FE;
   font-size: 0.8rem;
+}
+
+/* User Details Bar */
+.user-details-wrapper {
+  margin-bottom: 8px;
+}
+
+.ud-section-title {
+  font-family: var(--font-serif, serif);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1E293B;
+  margin: 0 0 16px 0;
+  text-align: left;
+}
+
+[data-theme="dark"] .ud-section-title {
+  color: #FFFFFF;
+}
+
+.user-details-bar {
+  display: flex;
+  align-items: center;
+  background-color: #F8F7FF;
+  border-radius: 12px;
+  padding: 16px 24px;
+  border: 1px solid #E0DDF7;
+}
+
+[data-theme="dark"] .user-details-bar {
+  background-color: rgba(99, 88, 247, 0.05);
+  border-color: #2A3A5E;
+}
+
+.ud-name-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 140px;
+}
+
+.ud-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1E293B;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+[data-theme="dark"] .ud-name {
+  color: #FFFFFF;
+}
+
+.ud-divider {
+  width: 1px;
+  height: 40px;
+  background-color: #E2E8F0;
+  margin: 0 24px;
+}
+
+[data-theme="dark"] .ud-divider {
+  background-color: #334155;
+}
+
+.ud-info-grid {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ud-info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ud-icon {
+  width: 20px;
+  height: 20px;
+  color: #6358F7;
+  opacity: 0.8;
+}
+
+[data-theme="dark"] .ud-icon {
+  color: #818CF8;
+}
+
+.ud-info-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.ud-label {
+  font-size: 0.7rem;
+  color: #475569;
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .ud-label {
+  color: #94A3B8;
+}
+
+.ud-value {
+  font-size: 0.85rem;
+  color: #1E293B;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .ud-value {
+  color: #F8FAFC;
+}
+
+@media (max-width: 767px) {
+  .user-details-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .ud-divider {
+    display: none;
+  }
+
+  .ud-info-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ud-info-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Grids */

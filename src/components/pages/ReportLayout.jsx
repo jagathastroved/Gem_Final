@@ -15,7 +15,7 @@ export function ReportLayout({ report }) {
 
   const sections = [
     { id: 'welcome', title: 'Welcome', badgeText: 'WELCOME' },
-    { id: 'lagna', title: 'Chart & Lagna Math', badgeText: 'JYOTISH CHART MATH' },
+    { id: 'lagna', title: 'Chart & Lagna Math', badgeText: 'ASTROLOGICAL BLUEPRINT' },
     { id: 'primary-gem', title: 'Primary Gemstone', badgeText: 'PRIMARY GEMSTONE' },
     { id: 'gems-avoid', title: 'Gems to Avoid', badgeText: 'GEMS TO AVOID' },
     { id: 'dasha-transit', title: 'Dasha & Transit', badgeText: 'DASHA & TRANSIT' },

@@ -1,14 +1,51 @@
-import React from 'react';
-import { ArrowUpRight, Compass, Moon, Star, Orbit, Sun, Sparkles } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ArrowUpRight, Compass, Moon, Star, Orbit, Sun, Sparkles, Calendar, Clock, MapPin, User } from 'lucide-react';
 import { useOutletContext } from 'react-router-dom';
 import '../../styles/pages/AstrologyDetailsPage.css';
 
 export function AstrologyDetailsPage() {
   const { report, handleNext } = useOutletContext();
+  const [userBirthDetails, setUserBirthDetails] = useState(null);
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('gemstoneBirthDetails');
+      if (saved) setUserBirthDetails(JSON.parse(saved));
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
+
   if (!report) return null;
 
   const birthChartData = report?.astroBluePrint?.birthChart;
   const dashaTimeLine = report?.astroBluePrint?.dasha;
+
+  const formatTime = (hour, min) => {
+    if (!hour || !min) return "N/A";
+    let h = parseInt(hour, 10);
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12;
+    h = h ? h : 12;
+    return `${h.toString().padStart(2, '0')}:${min.padStart(2, '0')} ${ampm}`;
+  };
+
+  const getMonthName = (monthNum) => {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return months[parseInt(monthNum, 10) - 1] || monthNum;
+  };
+
+  const formattedDate = userBirthDetails
+    ? `${userBirthDetails.birthDay} ${getMonthName(userBirthDetails.birthMonth)} ${userBirthDetails.birthYear}`
+    : 'N/A';
+
+  const formattedTime = userBirthDetails
+    ? formatTime(userBirthDetails.birthHour, userBirthDetails.birthMinute)
+    : 'N/A';
+
+  const placeOfBirth = userBirthDetails
+    ? `${userBirthDetails.birthCity}, ${userBirthDetails.birthCountry}`
+    : 'N/A';
 
   return (
     <section id="blueprint-section" className="blueprint-page-section">
@@ -22,6 +59,46 @@ export function AstrologyDetailsPage() {
           <div className="diamond-icon">✦</div>
         </div>
       </div>
+
+      {/* User Details Bar */}
+      {userBirthDetails && (
+        <div className="user-details-wrapper">
+          <h3 className="ud-section-title">Birth Details</h3>
+          <div className="user-details-bar">
+            <div className="ud-info-item">
+              <User className="ud-icon" />
+              <div className="ud-info-text">
+                <span className="ud-label">Name</span>
+                <span className="ud-name">{userBirthDetails.fullName} {userBirthDetails.gender ? `(${userBirthDetails.gender})` : ''}</span>
+              </div>
+            </div>
+            <div className="ud-divider"></div>
+            <div className="ud-info-grid">
+              <div className="ud-info-item">
+                <Calendar className="ud-icon" />
+                <div className="ud-info-text">
+                  <span className="ud-label">Date of Birth</span>
+                  <span className="ud-value">{formattedDate}</span>
+                </div>
+              </div>
+              <div className="ud-info-item">
+                <Clock className="ud-icon" />
+                <div className="ud-info-text">
+                  <span className="ud-label">Time of Birth</span>
+                  <span className="ud-value">{formattedTime}</span>
+                </div>
+              </div>
+              <div className="ud-info-item">
+                <MapPin className="ud-icon" />
+                <div className="ud-info-text">
+                  <span className="ud-label">Place of Birth</span>
+                  <span className="ud-value">{placeOfBirth}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Top Row: Lagna, Moon Sign, Nakshatra */}
       <div className="blueprint-grid-3">
