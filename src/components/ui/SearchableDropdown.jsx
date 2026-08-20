@@ -12,7 +12,8 @@ export function SearchableDropdown({
   renderItem = null,
   emptyMessage = "No results found",
   minSearchLength = 0,
-  disableTyping = false
+  disableTyping = false,
+  preventNumbers = false
 }) {
   const [query, setQuery] = useState(value || '');
   const [isOpen, setIsOpen] = useState(false);
@@ -70,7 +71,10 @@ export function SearchableDropdown({
   }, [query, fetchOptions, isOpen]);
 
   const handleInputChange = (e) => {
-    const val = e.target.value;
+    let val = e.target.value;
+    if (preventNumbers) {
+      val = val.replace(/[0-9]/g, '');
+    }
     setQuery(val);
     setIsOpen(true);
 

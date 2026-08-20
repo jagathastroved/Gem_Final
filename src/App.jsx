@@ -57,7 +57,7 @@ function AppContent() {
 export default function App() {
   return (
     <ThemeProvider>
-      <BrowserRouter>
+      <BrowserRouter basename='gemstone-report'>
         <AppContent />
       </BrowserRouter>
     </ThemeProvider>

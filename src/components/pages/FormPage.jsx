@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { CheckCircle2, ArrowRight, Sparkles, AlertCircle } from 'lucide-react';
+import { Target, Globe, Gem, Calendar, AlertCircle, Sparkles, Lock, Compass, ShieldAlert, Hourglass } from 'lucide-react';
 import { Card } from '../ui/Card.jsx';
 import { SearchableDropdown } from '../ui/SearchableDropdown.jsx';
 import '../../styles/pages/FormPage.css';
@@ -59,7 +59,13 @@ export function FormPage({ onSubmitDetails }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (name === 'name') {
+      // Remove any character that is not a letter or a space
+      const sanitizedValue = value.replace(/[^a-zA-Z\s]/g, '');
+      setFormData((prev) => ({ ...prev, [name]: sanitizedValue }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const validateForm = () => {
@@ -209,50 +215,50 @@ export function FormPage({ onSubmitDetails }) {
         {/* Left Column - Headline & Repository Checklist */}
         <div className="form-hero-left">
           <h1 className="hero-repo-headline">
-            Unlock Your Gemstones
+            Discover Your Perfect Gemstone
           </h1>
           <p className="hero-repo-subtitle">
             Discover the hidden power of gemstones aligned with your unique birth chart. Unlock the perfect stones to amplify your strengths, balance your energies, and attract success.
           </p>
 
           <div className="hero-repo-checklist">
-            <div className="repo-check-item">
+            <div className="repo-check-item" style={{ flexDirection: 'row', alignItems: 'center', textAlign: 'left' }}>
               <div className="check-circle-icon-wrap">
-                <CheckCircle2 className="repo-check-icon" />
+                <Compass className="repo-check-icon" />
               </div>
-              <div>
-                <strong>Core & Birth Analysis</strong>
-                <p>Discover the deep planetary placements behind your birth chart.</p>
+              <div style={{ flex: 1 }}>
+                <strong className="repo-check-title">Astrology Blueprint</strong>
+                <p className="repo-check-desc">In-depth analysis of your Lagna, Moon Sign, and Nakshatra.</p>
               </div>
             </div>
 
-            <div className="repo-check-item">
+            <div className="repo-check-item" style={{ flexDirection: 'row', alignItems: 'center', textAlign: 'left' }}>
               <div className="check-circle-icon-wrap">
-                <CheckCircle2 className="repo-check-icon" />
+                <Gem className="repo-check-icon" />
               </div>
-              <div>
-                <strong>Lagna & Planetary Lord</strong>
-                <p>Understand how your ascendant shapes your true destiny and strength.</p>
+              <div style={{ flex: 1 }}>
+                <strong className="repo-check-title">Primary Gemstone</strong>
+                <p className="repo-check-desc">The most beneficial gemstone aligned with your planetary strength.</p>
               </div>
             </div>
 
-            <div className="repo-check-item">
+            <div className="repo-check-item" style={{ flexDirection: 'row', alignItems: 'center', textAlign: 'left' }}>
               <div className="check-circle-icon-wrap">
-                <CheckCircle2 className="repo-check-icon" />
+                <ShieldAlert className="repo-check-icon" />
               </div>
-              <div>
-                <strong>Primary & Supporting Gems</strong>
-                <p>Unlock the specific gemstones that bring you harmony and success.</p>
+              <div style={{ flex: 1 }}>
+                <strong className="repo-check-title">Avoid Gemstone</strong>
+                <p className="repo-check-desc">Protecting you from conflicting planetary energies.</p>
               </div>
             </div>
 
-            <div className="repo-check-item">
+            <div className="repo-check-item" style={{ flexDirection: 'row', alignItems: 'center', textAlign: 'left' }}>
               <div className="check-circle-icon-wrap">
-                <CheckCircle2 className="repo-check-icon" />
+                <Hourglass className="repo-check-icon" />
               </div>
-              <div>
-                <strong>Dasha & Timeline Guidance</strong>
-                <p>Get actionable predictions and wearing guidance for upcoming years.</p>
+              <div style={{ flex: 1 }}>
+                <strong className="repo-check-title">Dasha and Transits</strong>
+                <p className="repo-check-desc">Actionable timeline guidance for your planetary periods.</p>
               </div>
             </div>
           </div>
@@ -290,7 +296,7 @@ export function FormPage({ onSubmitDetails }) {
                         value={formData.gender}
                         onChange={(val) => { setFormData((prev) => ({ ...prev, gender: val })); setErrors(prev => ({ ...prev, gender: null })); }}
                         options={["Male", "Female", "Other"]}
-                        placeholder="Select your gender"
+                        placeholder="Select Gender"
                         disableTyping={true}
                       />
                     </div>
@@ -314,7 +320,7 @@ export function FormPage({ onSubmitDetails }) {
                         setErrors(prev => ({ ...prev, email: null }));
                       }
                     }}
-                    placeholder="Your Email"
+                    placeholder="Enter Your Email"
                     style={{ borderColor: errors.email ? '#ef4444' : undefined }}
                   />
                   {errors.email && <ErrorIcon message={errors.email} />}
@@ -407,8 +413,9 @@ export function FormPage({ onSubmitDetails }) {
                         value={formData.country}
                         onChange={(val) => { setFormData((prev) => ({ ...prev, country: val, city: '' })); setErrors(prev => ({ ...prev, country: null })); }}
                         options={country}
-                        placeholder="Select a Country"
+                        placeholder="Select Country"
                         openUpwards={true}
+                        preventNumbers={true}
                         emptyMessage={<span>No countries found. Please<br />check spelling.</span>}
                       />
                     </div>
@@ -438,6 +445,7 @@ export function FormPage({ onSubmitDetails }) {
                           }}
                           placeholder="Type your city"
                           disabled={!formData.country}
+                          preventNumbers={true}
                           fetchOptions={async (search) => {
                             if (!formData.country || search.length < 3) return [];
                             const cities = await cityList(formData.country, search);
