@@ -1,0 +1,12 @@
+{
+    "rewrites": [
+        {
+            "source": "/gemstone-report",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/gemstone-report/",
+            "destination": "/index.html"
+        }
+    ]
+}
