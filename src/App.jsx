@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { AppRoutes } from './routes/AppRoutes.jsx';
 import './styles/base/App.css';
@@ -7,6 +7,13 @@ import { ThemeProvider } from './context/ThemeContext.jsx';
 function AppContent() {
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   const [report, setReport] = useState(() => {
     try {

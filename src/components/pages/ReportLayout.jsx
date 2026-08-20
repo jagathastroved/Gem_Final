@@ -41,14 +41,12 @@ export function ReportLayout({ report }) {
   const handleNext = () => {
     if (activeSectionIndex < sections.length - 1) {
       navigate(`/${sections[activeSectionIndex + 1].id}`);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
   const handleBack = () => {
     if (activeSectionIndex > 0) {
       navigate(`/${sections[activeSectionIndex - 1].id}`);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -66,7 +64,6 @@ export function ReportLayout({ report }) {
         activeSectionIndex={activeSectionIndex}
         onSelectSection={(idx) => {
           navigate(`/${sections[idx].id}`);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
           if (window.innerWidth <= 900) {
             setSidebarCollapsed(true);
           }
@@ -92,7 +89,6 @@ export function ReportLayout({ report }) {
               className="astroved-logo-brand"
               onClick={() => {
                 navigate(`/${sections[0].id}`);
-                window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               style={{ cursor: 'pointer' }}
             >
