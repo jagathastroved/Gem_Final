@@ -1,11 +1,15 @@
 {
     "rewrites": [
         {
-            "source": "/gemstone-report",
+            "source": "/gemstone-report/assets/(.*)",
+            "destination": "/assets/$1"
+        },
+        {
+            "source": "/gemstone-report/(.*)",
             "destination": "/index.html"
         },
         {
-            "source": "/gemstone-report/",
+            "source": "/(.*)",
             "destination": "/index.html"
         }
     ]
