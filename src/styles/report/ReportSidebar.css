@@ -2,7 +2,7 @@
   width: 310px;
   min-width: 310px;
   height: fit-content;
-  max-height: calc(100vh - 40px);
+  max-height: calc(100dvh - 40px);
   margin: 20px 0 20px 20px;
   border-radius: 24px;
   position: sticky;
@@ -394,7 +394,7 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     background-color: rgba(15, 23, 42, 0.4);
     backdrop-filter: blur(4px);
     z-index: 95;
@@ -409,7 +409,7 @@
     min-width: 280px !important;
     max-width: calc(100vw - 40px) !important;
     height: fit-content !important;
-    max-height: calc(100vh - 40px) !important;
+    max-height: calc(100dvh - 40px) !important;
     margin: 0;
     border-radius: 24px;
     border: 1px solid var(--color-border);

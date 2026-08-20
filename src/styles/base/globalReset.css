@@ -1,4 +1,4 @@
-﻿* {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -11,8 +11,9 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: clip;
+  overflow-x: hidden; /* Better iOS support than clip */
   min-height: 100vh;
+  min-height: 100dvh; /* Use dynamic viewport height if supported */
 }
 
 button {
@@ -20,6 +21,8 @@ button {
   cursor: pointer;
   border: none;
   background: none;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 input,
@@ -27,6 +30,8 @@ select,
 textarea {
   font-family: inherit;
   font-size: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 a {
@@ -63,7 +68,9 @@ a {
 
 @media (max-width: 767px) {
   html, body {
-    width: 100vw;
+    width: 100%;
     overflow-x: hidden;
+    overscroll-behavior-x: none;
+    position: relative;
   }
 }

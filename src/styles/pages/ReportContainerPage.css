@@ -394,10 +394,13 @@
 @media (max-width: 900px) {
   .report-main-stage {
     padding: 16px 12px;
+    padding-bottom: 70px;
+    /* Reduced to fix too much space, while keeping some for chat */
   }
 
   .report-central-canvas-card {
     padding: 24px 16px;
+    margin-bottom: 20px;
   }
 
   .includes-grid-two,
