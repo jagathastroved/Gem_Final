@@ -5,6 +5,9 @@ import { defineConfig } from 'vite';
 export default defineConfig(() => {
   return {
     plugins: [react()],
+    build: {
+      target: ['es2015', 'edge88', 'firefox78', 'chrome87', 'safari13'],
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

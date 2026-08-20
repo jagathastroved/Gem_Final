@@ -67,7 +67,7 @@ a {
 }
 
 @media (max-width: 767px) {
-  html, body {
+  html, body, #root {
     width: 100%;
     overflow-x: hidden;
     overscroll-behavior-x: none;
