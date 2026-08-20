@@ -376,7 +376,10 @@
     flex-direction: row;
     align-items: flex-start;
     padding: 16px;
-    gap: 12px;
+  }
+  
+  .insight-card-modern > * + * {
+    margin-left: 12px;
   }
 
   .insight-num-circle {
@@ -388,14 +391,18 @@
 
   .timeline-events-list {
     padding-left: 12px;
-    /* Less padding on left for marker */
-    gap: 32px;
-    /* Smaller gap between events */
+  }
+  
+  .timeline-events-list > * + * {
+    margin-top: 32px;
   }
 
   .timeline-event-node {
     flex-direction: column;
-    gap: 12px;
+  }
+  
+  .timeline-event-node > * + * {
+    margin-top: 12px;
   }
 
   .dasha-node-circle {

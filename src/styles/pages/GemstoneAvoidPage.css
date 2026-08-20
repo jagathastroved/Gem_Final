@@ -4,7 +4,10 @@
   padding: 16px 24px 60px;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+}
+
+.avoid-gems-section>*:not(:last-child) {
+  margin-bottom: 40px;
 }
 
 /* Header Styles */
@@ -17,8 +20,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
   margin-bottom: 8px;
+}
+
+.avoid-title-accent {
+  color: #D4AF37;
+  font-size: 1.2rem;
+  margin-left: 16px;
 }
 
 .avoid-title-row h2 {
@@ -54,7 +62,10 @@
 .avoid-cards-stack {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+}
+
+.avoid-gem-card:not(:last-child) {
+  margin-bottom: 16px;
 }
 
 .avoid-gem-card {
@@ -88,10 +99,10 @@
 .avoid-card-left {
   display: flex;
   align-items: center;
-  gap: 24px;
 }
 
 .avoid-gem-thumb {
+  margin-right: 24px;
   width: 72px;
   height: 72px;
   flex-shrink: 0;
@@ -139,8 +150,8 @@
 .planet-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
   padding: 4px 10px;
+
   border-radius: 100px;
   font-size: 0.75rem;
   font-weight: 700;
@@ -149,6 +160,7 @@
 
 .planet-badge span {
   font-size: 0.9rem;
+  margin-left: 6px;
 }
 
 .avoid-gem-reason {
@@ -171,7 +183,6 @@
 .btn-avoid-outline {
   display: flex;
   align-items: center;
-  gap: 6px;
   padding: 8px 16px;
   border: 1px solid rgba(239, 68, 68, 0.3);
   color: #DC2626;
@@ -205,14 +216,18 @@
   .avoid-gem-card {
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
     padding: 20px;
   }
 
   .avoid-card-left {
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .avoid-gem-thumb {
+    margin-right: 0;
+    margin-bottom: 16px;
   }
 
   .avoid-badge-col {

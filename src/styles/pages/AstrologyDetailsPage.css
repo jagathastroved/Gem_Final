@@ -122,7 +122,10 @@
 .ud-info-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+}
+
+.ud-info-item > * + * {
+  margin-left: 12px;
 }
 
 .ud-icon {
@@ -166,7 +169,10 @@
   .user-details-bar {
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+  }
+  
+  .user-details-bar > * + * {
+    margin-top: 16px;
   }
 
   .ud-divider {
