@@ -17,7 +17,7 @@ export function ReportSidebar({
 
   useEffect(() => {
     const handleScrollLock = () => {
-      if (!collapsed && window.innerWidth <= 900) {
+      if (!collapsed && window.innerWidth <= 1080) {
         document.body.style.overflow = 'hidden';
         document.documentElement.style.overflow = 'hidden';
       } else {
@@ -72,8 +72,14 @@ export function ReportSidebar({
 
           <div className="sidebar-header-actions">
             <button
+              type="button"
               className="theme-toggle-switch-btn"
-              onClick={toggleTheme}
+              onClick={(e) => {
+                toggleTheme();
+                if (window.innerWidth <= 1080 && !collapsed) {
+                  onToggleCollapse();
+                }
+              }}
               title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
               aria-label="Toggle Theme"
             >

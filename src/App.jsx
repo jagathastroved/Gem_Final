@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter, useNavigate, useLocation, Navigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { BrowserRouter, useLocation, Navigate } from 'react-router-dom';
 import { AppRoutes } from './routes/AppRoutes.jsx';
 import './styles/base/App.css';
 import { ThemeProvider } from './context/ThemeContext.jsx';
 
 function AppContent() {
-  const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {

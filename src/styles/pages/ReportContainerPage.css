@@ -391,7 +391,7 @@
   height: 18px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1080px) {
   .report-main-stage {
     padding: 16px 12px;
     padding-bottom: 70px;

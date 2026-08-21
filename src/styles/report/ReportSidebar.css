@@ -397,7 +397,7 @@
   color: currentColor;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1080px) {
   .sidebar-backdrop {
     position: fixed;
     top: 0;

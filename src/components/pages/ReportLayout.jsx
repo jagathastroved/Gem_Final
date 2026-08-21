@@ -64,7 +64,7 @@ export function ReportLayout({ report }) {
         activeSectionIndex={activeSectionIndex}
         onSelectSection={(idx) => {
           navigate(`/${sections[idx].id}`);
-          if (window.innerWidth <= 900) {
+          if (window.innerWidth <= 1080) {
             setSidebarCollapsed(true);
           }
         }}

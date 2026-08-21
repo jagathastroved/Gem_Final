@@ -1,20 +1,5 @@
 import React from 'react';
 
-interface Option {
-  value: string;
-  label: string;
-}
-
-interface CustomSelectProps {
-  id?: string;
-  value: string | number;
-  onChange: (value: string) => void;
-  options: Option[];
-  placeholder?: string;
-  className?: string;
-  required?: boolean;
-}
-
 export default function CustomSelect({
   id,
   value,
@@ -23,7 +8,7 @@ export default function CustomSelect({
   placeholder,
   className = '',
   required = false,
-}: CustomSelectProps) {
+}) {
   return (
     <select
       id={id}
