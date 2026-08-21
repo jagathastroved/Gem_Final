@@ -6,7 +6,7 @@ export const countryList = async () => {
     return countries.data.Countries;
   }
   catch (err) {
-    console.log('countrylist do not fetch')
+    console.error('countrylist do not fetch')
   }
 };
 
@@ -15,14 +15,14 @@ export const cityList = async (countryName, cityName) => {
     const cities = await axios.get(`https://webservice.astroved.com/Api/Panchang/PopulateCityBycountry/${countryName}/${cityName}`)
     return cities
   } catch (error) {
-    console.log('cityList is not able to fetch');
+    console.error('cityList is not able to fetch');
   }
 }
 
 export const fetchGemstoneReport = async (birthDetails) => {
   try {
     const report = await axios.post(`${import.meta.env.VITE_GEMSTONE_REPORT_API}`, birthDetails);
-    console.log('responce data', report.data)
+    // console.log('responce data', report.data)
     return report.data;
   } catch (error) {
     console.error('fetchGemstoneReport is not able to fetch', error);

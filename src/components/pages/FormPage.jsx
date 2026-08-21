@@ -143,7 +143,7 @@ export function FormPage({ onSubmitDetails }) {
       longitude: formData.longitude,
       promo: promoCode
     };
-    console.log('API PayLoad', birthDetails)
+    // console.log('API PayLoad', birthDetails)
 
     // Go to loading immediately and pass birthDetails
     navigate('/loading', { state: { birthDetails } });
