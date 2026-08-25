@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
-import { FormPage } from '../components/pages/FormPage.jsx';
+import { GemstoneLp } from '../components/pages/GemstoneLp.jsx';
 import { AnalysisLoadingPage } from '../components/pages/AnalysisLoadingPage.jsx';
 import { ReportLayout } from '../components/pages/ReportLayout.jsx';
 import { WelcomePage } from '../components/pages/WelcomePage.jsx';
@@ -42,7 +42,7 @@ export function AppRoutes({ report, onSubmitDetails }) {
         <Routes>
           <Route
             path="/"
-            element={<FormPage onSubmitDetails={onSubmitDetails} />}
+            element={<GemstoneLp onSubmitDetails={onSubmitDetails} />}
           />
 
           <Route
