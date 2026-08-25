@@ -27,9 +27,6 @@ export function WelcomePage() {
           <p className="welcome-intro-p">
             Your birth chart carries a unique energetic planetary blueprint that influences your personality, strengths, talents, and life direction. Discover the deeper gemstone alignment that amplifies your potential.
           </p>
-          <p className="welcome-subintro-p">
-            This personalized Gemstone & Jyotish Report reveals valuable astrological insights into your lagna lord, dasha remedies, and authentic wearing guidelines.
-          </p>
         </div>
       </div>
 

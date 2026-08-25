@@ -11,6 +11,8 @@ import { DashaTransitPage } from '../components/pages/DashaTransitPage.jsx';
 import { WhyThisReportPage } from '../components/pages/WhyThisReportPage.jsx';
 import { PremiumPage } from '../components/pages/PremiumPage.jsx';
 import { MaintenancePage } from '../components/pages/MaintenancePage.jsx';
+import { WhyAstroVed } from '../components/pages/WhyAstroVed.jsx';
+import SellingGemPage from '../components/pages/SellingGemPage.jsx';
 
 import Particles from '../components/animations/Particles.jsx';
 import '../styles/layout/MainLayout.css';
@@ -54,9 +56,11 @@ export function AppRoutes({ report, onSubmitDetails }) {
             <Route path="/welcome" element={<WelcomePage />} />
             <Route path="/lagna" element={<AstrologyDetailsPage />} />
             <Route path="/primary-gem" element={<GemstonePage />} />
+            <Route path="/why-astroved" element={<WhyAstroVed />} />
             <Route path="/gems-avoid" element={<GemstoneAvoidPage />} />
             <Route path="/dasha-transit" element={<DashaTransitPage />} />
             <Route path="/why-report" element={<WhyThisReportPage />} />
+            <Route path="/selling-gem" element={<SellingGemPage />} />
             {/* <Route path="/premium" element={<PremiumPage />} /> */}
           </Route>
 

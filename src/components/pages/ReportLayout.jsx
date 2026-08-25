@@ -17,8 +17,10 @@ export function ReportLayout({ report }) {
     { id: 'welcome', title: 'Welcome', badgeText: 'WELCOME' },
     { id: 'lagna', title: 'Chart & Lagna Math', badgeText: 'ASTROLOGICAL BLUEPRINT' },
     { id: 'primary-gem', title: 'Primary Gemstone', badgeText: 'PRIMARY GEMSTONE' },
+    { id: 'why-astroved', title: 'Why Astroved', badgeText: 'WHY ASTROVED' },
     { id: 'gems-avoid', title: 'Gems to Avoid', badgeText: 'GEMS TO AVOID' },
     { id: 'dasha-transit', title: 'Dasha & Transit', badgeText: 'DASHA & TRANSIT' },
+    { id: 'selling-gem', title: 'Buy Gemstone', badgeText: 'YOUR GEMSTONE' },
     // { id: 'why-report', title: 'Why This Gemstone', badgeText: 'ASTROLOGICAL PROOF' },
     // { id: 'premium', title: 'Premium Deliverables', badgeText: 'UNLOCK FULL REPORT', isPro: true },
   ];
