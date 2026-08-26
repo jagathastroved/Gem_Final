@@ -669,10 +669,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
   text-align: center;
   position: relative;
   overflow: hidden;
+}
+
+.recommendation-highlight-box > * + * {
+  margin-top: 16px;
 }
 
 [data-theme="dark"] .recommendation-highlight-box {
@@ -712,8 +715,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
   min-width: 0;
+}
+
+.rec-box-right > * + * {
+  margin-top: 12px;
 }
 
 .rec-box-right strong {

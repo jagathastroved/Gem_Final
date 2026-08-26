@@ -1856,6 +1856,7 @@
 .vertical-flow .node svg {
   flex-shrink: 0;
   opacity: 0.8;
+  margin-right: 12px;
 }
 
 .lp-compare-card.generic .vertical-flow .node {
@@ -2141,7 +2142,7 @@
 .vertical-flow .node {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   padding: 14px 20px !important;
   border-radius: 12px !important;
@@ -2159,6 +2160,7 @@
 .vertical-flow .node svg {
   flex-shrink: 0;
   opacity: 0.8;
+  margin-right: 12px;
 }
 
 .lp-compare-card.generic .vertical-flow .node {
