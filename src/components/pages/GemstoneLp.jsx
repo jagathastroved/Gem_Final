@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Target, Globe, Gem, Calendar, AlertCircle, Sparkles, Lock, Compass, ShieldAlert, Hourglass } from 'lucide-react';
+import { Target, Globe, Gem, AlertCircle, Sparkles, Lock, Compass, ShieldAlert, Shield, Hourglass, Users, Moon, User, FileSearch, ArrowDown, ArrowRight } from 'lucide-react';
 import { Card } from '../ui/Card.jsx';
 import { SearchableDropdown } from '../ui/SearchableDropdown.jsx';
+import gemstoneOgImage from '../../assets/gemStone_images/gemstone_og_image.jpg';
 import '../../styles/pages/FormPage.css';
 import '../../styles/pages/GemstoneLp.css';
 import { cityList, countryList } from '@/src/services/astrologyApi.js';
@@ -49,8 +50,6 @@ export function GemstoneLp({ onSubmitDetails }) {
     };
     fetchCountries();
   }, []);
-
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -238,19 +237,19 @@ export function GemstoneLp({ onSubmitDetails }) {
                 <div className="premium-icon-wrap premium-icon-wrap-styled">
                   <Sparkles stroke="url(#premiumGradient)" />
                 </div>
-                <span className="premium-benefit-text"><strong className="premium-benefit-title">Your Primary Gemstone</strong> — see the gemstone identified through your chart and understand the astrological reason it may suit you.</span>
+                <span className="premium-benefit-text"><strong className="premium-benefit-title">Your Primary Gemstone</strong> â€” see the gemstone identified through your chart and understand the astrological reason it may suit you.</span>
               </li>
               <li className="premium-list-item premium-list-item-styled">
                 <div className="premium-icon-wrap premium-icon-wrap-styled">
                   <ShieldAlert stroke="url(#premiumGradient)" />
                 </div>
-                <span className="premium-benefit-text"><strong className="premium-benefit-title">Gemstones to Approach With Caution</strong> — know which stones may not align well with the planetary patterns in your chart.</span>
+                <span className="premium-benefit-text"><strong className="premium-benefit-title">Gemstones to Approach With Caution</strong> â€” know which stones may not align well with the planetary patterns in your chart.</span>
               </li>
               <li className="premium-list-item premium-list-item-styled">
                 <div className="premium-icon-wrap premium-icon-wrap-styled">
                   <Hourglass stroke="url(#premiumGradient)" />
                 </div>
-                <span className="premium-benefit-text"><strong className="premium-benefit-title">Your Planetary Timing</strong> — understand your Major Planetary Period [Mahadasha], Sub-Period [Antardasha], and relevant timing context.</span>
+                <span className="premium-benefit-text"><strong className="premium-benefit-title">Your Planetary Timing</strong> â€” understand your Major Planetary Period [Mahadasha], Sub-Period [Antardasha], and relevant timing context.</span>
               </li>
             </ul>
 
@@ -487,119 +486,140 @@ export function GemstoneLp({ onSubmitDetails }) {
       < div className="gemstone-lp-section" >
 
         {/* WHY ASTROVED GOES DEEPER */}
-        < section className="lp-section-pad lp-bg-navy" id="how-it-works" >
+        <section className="lp-section-pad lp-bg-navy" id="how-it-works">
           <div className="container">
-            <div className="lp-section-head custom-astro-header">
-              <p className="premium-eyebrow custom-astro-eyebrow">Why AstroVed's Recommendation Goes Deeper</p>
-              <h2>Not Just Your Moon Sign.<br />Your Deeper Birth-Chart Logic.</h2>
-              <p>
-                Generic gemstone advice may match one gemstone to a Moon sign. AstroVed goes deeper by using
-                your Ascendant [Lagna] as the starting point and considering planetary house rulership,
-                supportive planetary influences, and current planetary periods before identifying the
-                gemstone to explore.
-              </p>
-            </div>
-
-            <div className="lp-compare-grid">
-              <div className="lp-compare-card generic">
-                <p className="lp-compare-label">Generic Approach</p>
-                <div className="lp-flow">
-                  <span className="node">Moon Sign</span>
-                  <span className="arrow">→</span>
-                  <span className="node">Planet</span>
-                  <span className="arrow">→</span>
-                  <span className="node">Gemstone</span>
+            <div className="how-it-works-top-row">
+              <div className="how-it-works-left">
+                <div className="lp-section-head custom-astro-header left">
+                  <p className="premium-eyebrow custom-astro-eyebrow">Why AstroVed's Recommendation Goes Deeper</p>
+                  <h2>Not Just Your Moon Sign.<br />Your Deeper Birth-Chart Logic.</h2>
+                  <p>
+                    Generic gemstone advice may match one gemstone to a Moon sign. AstroVed goes deeper by using
+                    your Ascendant [Lagna] as the starting point and considering planetary house rulership,
+                    supportive planetary influences, and current planetary periods before identifying the
+                    gemstone to explore.
+                  </p>
                 </div>
               </div>
-              <div className="lp-compare-card chart">
-                <p className="lp-compare-label">AstroVed Chart-Based Approach</p>
-                <div className="lp-flow">
-                  <span className="node">Birth Chart</span>
-                  <span className="arrow">→</span>
-                  <span className="node">Supportive Planet</span>
-                  <span className="arrow">→</span>
-                  <span className="node">Planetary Timing</span>
-                  <span className="arrow">→</span>
-                  <span className="node">Gemstone</span>
+
+              <div className="how-it-works-right">
+                <div className="lp-compare-grid">
+                  <div className="lp-compare-card generic">
+                    <p className="lp-compare-label">Generic Approach</p>
+                    <div className="lp-flow vertical-flow">
+                      <span className="node"><Moon size={18} /> Moon Sign</span>
+                      <span className="arrow"><ArrowDown size={18} /></span>
+                      <span className="node"><Globe size={18} /> Planet</span>
+                      <span className="arrow"><ArrowDown size={18} /></span>
+                      <span className="node"><Gem size={18} /> Gemstone</span>
+                    </div>
+                  </div>
+                  <div className="vs-badge">VS</div>
+                  <div className="lp-compare-card chart">
+                    <p className="lp-compare-label">AstroVed Chart-Based Approach</p>
+                    <div className="lp-flow vertical-flow">
+                      <span className="node"><Compass size={18} /> Birth Chart</span>
+                      <span className="arrow"><ArrowDown size={18} /></span>
+                      <span className="node"><Sparkles size={18} /> Supportive Planet</span>
+                      <span className="arrow"><ArrowDown size={18} /></span>
+                      <span className="node"><Hourglass size={18} /> Planetary Timing</span>
+                      <span className="arrow"><ArrowDown size={18} /></span>
+                      <span className="node"><Gem size={18} /> Gemstone</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="lp-note-block">
-              <p>
-                Two people with the same Moon sign may therefore receive different gemstone guidance. An
-                Especially Supportive Planet [Yogakaraka], for example, can take priority over a simple
-                sign-based gemstone association.
-              </p>
-              <div className="lp-cta-row">
-                <a href="#gemstone-form" className="lp-btn lp-btn-gold" onClick={(e) => { e.preventDefault(); document.getElementById('gemstone-form').scrollIntoView({ behavior: 'smooth' }); }}>See What My Chart Recommends</a>
+            <div className="lp-note-block-banner">
+              <div className="note-banner-icon">
+                <Users size={36} color="#064e3b" />
+              </div>
+              <div className="note-banner-text">
+                <p>
+                  Two people with the same Moon sign may therefore receive different gemstone guidance.<br />
+                  An Especially Supportive Planet [Yogakaraka], for example, can take priority over a simple
+                  sign-based gemstone association.
+                </p>
+              </div>
+              <div className="note-banner-cta">
+                <a href="#gemstone-form" className="lp-btn lp-btn-gold" onClick={(e) => { e.preventDefault(); document.getElementById('gemstone-form').scrollIntoView({ behavior: 'smooth' }); }}>
+                  SEE WHAT MY CHART RECOMMENDS
+                </a>
               </div>
             </div>
           </div>
-        </section >
+        </section>
 
         {/* 3 SIMPLE STEPS */}
-        < section className="lp-section-pad lp-bg-ivory" id="steps" >
+        <section className="lp-section-pad steps-section" id="steps">
           <div className="container">
-            <div className="lp-section-head">
-              <p className="premium-eyebrow">Get Your Gemstone Report</p>
-              <h2>In 3 Simple Steps</h2>
+            <div className="steps-header-row">
+              <span className="steps-line left"></span>
+              <h2 className="steps-title">GET YOUR GEMSTONE REPORT IN 3 SIMPLE STEPS</h2>
+              <span className="steps-line right"></span>
             </div>
 
-            <div className="lp-steps-grid">
-              <div className="lp-step-card">
-                <div className="lp-step-num">01</div>
-                <h3>Enter Your Birth Details</h3>
+            <div className="lp-steps-grid-modern">
+              <div className="lp-step-card-modern">
+                <div className="lp-step-badge">01</div>
+                <div className="lp-step-icon"><User size={48} /></div>
+                <h3>ENTER YOUR<br />BIRTH DETAILS</h3>
                 <p>Provide your date, time, and place of birth.</p>
+                <div className="lp-step-arrow"><ArrowRight size={24} /></div>
               </div>
-              <div className="lp-step-card">
-                <div className="lp-step-num">02</div>
-                <h3>Let Your Chart Guide the Analysis</h3>
+              <div className="lp-step-card-modern">
+                <div className="lp-step-badge">02</div>
+                <div className="lp-step-icon"><FileSearch size={48} /></div>
+                <h3>LET YOUR CHART GUIDE<br />THE ANALYSIS</h3>
                 <p>Review Ascendant [Lagna], supportive influences, and planetary timing.</p>
+                <div className="lp-step-arrow"><ArrowRight size={24} /></div>
               </div>
-              <div className="lp-step-card">
-                <div className="lp-step-num">03</div>
-                <h3>Get Your Gemstone Report</h3>
+              <div className="lp-step-card-modern">
+                <div className="lp-step-badge">03</div>
+                <div className="lp-step-icon"><Gem size={48} /></div>
+                <h3>GET YOUR GEMSTONE<br />REPORT</h3>
                 <p>See your gemstone, why it is suggested, and stones to approach with caution.</p>
               </div>
             </div>
 
             <div className="lp-cta-row">
-              <a href="#gemstone-form" className="lp-btn lp-btn-gold" onClick={(e) => { e.preventDefault(); document.getElementById('gemstone-form').scrollIntoView({ behavior: 'smooth' }); }}>Start My Gemstone Report</a>
+              <a href="#gemstone-form" className="lp-btn lp-btn-gold" onClick={(e) => { e.preventDefault(); document.getElementById('gemstone-form').scrollIntoView({ behavior: 'smooth' }); }}>START MY GEMSTONE REPORT</a>
             </div>
           </div>
-        </section >
+        </section>
 
         {/* WHAT ARE GEMSTONES [MANI] */}
-        < section className="lp-section-pad lp-bg-navy" id="mani" >
+        <section className="lp-section-pad mani-section" id="mani">
           <div className="container">
-            <div className="lp-split lp-split-block">
-              <div className="lp-split-body">
-                <p className="premium-eyebrow">A Word for Wealth, Light, and Meaning</p>
-                <h2>What Are Gemstones [Mani]?</h2>
-                <p>
-                  The Sanskrit word Mani [Maṇi] means a gem or jewel. In Vedic Astrology [Jyotish], gemstones
-                  are traditionally connected with the 9 planetary influences, with different stones used for
-                  different planetary qualities.
-                </p>
-                <p>
-                  From a gemology perspective, gemstones interact with visible light in different ways. Their
-                  crystal structure and trace elements absorb some wavelengths of light and transmit others,
-                  creating the colors we see. This explains a gemstone's physical color and light behavior.
-                </p>
+            <div className="lp-mani-card">
+              <div className="lp-split">
+                <div className="lp-split-media">
+                  <img src={gemstoneOgImage} alt="Gemstones" className="mani-gemstone-image" />
+                </div>
+                <div className="lp-split-body">
+                  <h2 className="mani-title">WHAT ARE GEMSTONES [MANI]?</h2>
+                  <p className="mani-text">
+                    The Sanskrit word Mani [Maá¹‡i] means a gem or jewel. In Vedic Astrology [Jyotish], gemstones
+                    are traditionally connected with the 9 planetary influences, with different stones used for
+                    different planetary qualities.
+                  </p>
+                  <p className="mani-text">
+                    From a gemology perspective, gemstones interact with visible light in different ways. Their
+                    crystal structure and trace elements absorb some wavelengths of light and transmit others,
+                    creating the colors we see. This explains a gemstone's physical color and light behavior.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </section >
+        </section>
 
         {/* HOW DO GEMSTONES WORK */}
-        < section className="lp-section-pad lp-bg-ivory" >
+        <section className="lp-section-pad how-works-section">
           <div className="container">
-            <div className="lp-split reverse">
-              <div className="lp-split-media">
-                <img src="https://phplexus.astroved.com/wp-content/uploads/2026/08/gemstones.png" alt="Gemstone" className="gemstone-showcase-img" />
-              </div>
-              <div className="lp-split-body">
+            <div className="how-works-split">
+              <div className="how-works-body">
                 <p className="premium-eyebrow">A Traditional Planetary Remedy</p>
                 <h2>How Do Gemstones Work in Vedic Astrology?</h2>
                 <p>
@@ -612,16 +632,19 @@ export function GemstoneLp({ onSubmitDetails }) {
                   gemstone can vary from person to person. AstroVed therefore begins with your birth chart
                   rather than a one-size-fits-all sign rule.
                 </p>
-                <div className="lp-cta-row left">
-                  <a href="#gemstone-form" className="lp-btn lp-btn-gold" onClick={(e) => { e.preventDefault(); document.getElementById('gemstone-form').scrollIntoView({ behavior: 'smooth' }); }}>Find My Chart-Aligned Gemstone</a>
+                <div className="lp-cta-row left" style={{ marginTop: '30px' }}>
+                  <a href="#gemstone-form" className="lp-btn lp-btn-gold uppercase" onClick={(e) => { e.preventDefault(); document.getElementById('gemstone-form').scrollIntoView({ behavior: 'smooth' }); }}>FIND MY CHART-ALIGNED GEMSTONE</a>
                 </div>
+              </div>
+              <div className="how-works-media">
+                <img src="https://phplexus.astroved.com/wp-content/uploads/2026/08/gemstones.png" alt="Gemstone" className="gemstone-showcase-img" />
               </div>
             </div>
           </div>
-        </section >
+        </section>
 
         {/* AREAS OF LIFE */}
-        < section className="lp-section-pad lp-bg-navy" id="areas" >
+        <section className="lp-areas-light-section" id="areas">
           <div className="container">
             <div className="lp-section-head">
               <p className="premium-eyebrow">Traditional Support, By Area of Life</p>
@@ -630,134 +653,145 @@ export function GemstoneLp({ onSubmitDetails }) {
             </div>
 
             <div className="lp-areas-grid">
-              <div className="lp-area-card wealth">
-                <div className="lp-area-icon"><Gem size={24} /></div>
-                <div>
-                  <h3>Wealth &amp; Prosperity</h3>
-                  <p>Financial stability, opportunity, abundance.</p>
+              <div className="lp-area-card">
+                <div className="lp-area-icon-wrap wealth">
+                  <Gem size={28} />
                 </div>
+                <h3>Wealth &amp; Prosperity</h3>
+                <p>Financial stability, opportunity, abundance.</p>
               </div>
-              <div className="lp-area-card career">
-                <div className="lp-area-icon"><Target size={24} /></div>
-                <div>
-                  <h3>Career &amp; Success</h3>
-                  <p>Confidence, recognition, decision-making, steady progress.</p>
+              <div className="lp-area-card">
+                <div className="lp-area-icon-wrap relationships">
+                  <Sparkles size={28} />
                 </div>
+                <h3>Relationships &amp;<br />Family Harmony</h3>
+                <p>Connection, understanding, comfort, harmony.</p>
               </div>
-              <div className="lp-area-card relationships">
-                <div className="lp-area-icon"><Sparkles size={24} /></div>
-                <div>
-                  <h3>Relationships &amp; Family Harmony</h3>
-                  <p>Connection, understanding, comfort, harmony.</p>
+              <div className="lp-area-card">
+                <div className="lp-area-icon-wrap career">
+                  <Target size={28} />
                 </div>
+                <h3>Career &amp; Success</h3>
+                <p>Confidence, recognition, decision-making, steady progress.</p>
               </div>
-              <div className="lp-area-card wellbeing">
-                <div className="lp-area-icon"><Lock size={24} /></div>
-                <div>
-                  <h3>Well-Being &amp; Inner Balance</h3>
-                  <p>Resilience, calm, vitality, spiritual reflection.</p>
+              <div className="lp-area-card">
+                <div className="lp-area-icon-wrap wellbeing">
+                  <Lock size={28} />
                 </div>
+                <h3>Well-Being &amp;<br />Inner Balance</h3>
+                <p>Resilience, calm, vitality, spiritual reflection.</p>
               </div>
             </div>
 
-            <p className="lp-disclaimer">These are traditional astrological associations and are not guaranteed outcomes.</p>
+            <div className="lp-disclaimer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              These are traditional astrological associations and are not guaranteed outcomes.
+            </div>
 
-            <div className="lp-cta-row">
-              <a href="#gemstone-form" className="lp-btn lp-btn-gold" onClick={(e) => { e.preventDefault(); document.getElementById('gemstone-form').scrollIntoView({ behavior: 'smooth' }); }}>Explore What My Chart Supports</a>
+            <div className="lp-cta-row" style={{ marginTop: '20px' }}>
+              <a href="#gemstone-form" className="lp-btn lp-btn-gold uppercase" onClick={(e) => { e.preventDefault(); document.getElementById('gemstone-form').scrollIntoView({ behavior: 'smooth' }); }}>EXPLORE WHAT MY CHART SUPPORTS</a>
             </div>
           </div>
-        </section >
+        </section>
 
         {/* WHY CHOOSING THE RIGHT GEMSTONE MATTERS */}
-        < section className="lp-section-pad lp-bg-paper" >
+        <section className="lp-why-matters-section">
           <div className="container">
-            <div className="lp-section-head left">
-              <p className="premium-eyebrow">Why Choosing the Right Gemstone Matters</p>
-              <h2>Not Every Planet Should Be Strengthened in Every Chart</h2>
+            <p className="premium-eyebrow">Why Choosing the Right Gemstone Matters</p>
+            <h2>Not Every Planet Should Be<br />Strengthened in Every Chart</h2>
+
+            <p>
+              In Vedic Astrology, wearing a gemstone is intended to strengthen the influence associated
+              with its planet. If that planet is not favorable to strengthen in your individual chart,
+              its gemstone may be a poor fit.
+            </p>
+            <p>
+              This is why AstroVed's report does more than recommend a Primary Gemstone.
+              It also identifies gemstones to approach with caution, helping you avoid choosing only
+              from Moon-sign advice, birth-month lists, color preference, or generic recommendations.
+            </p>
+
+            <div className="lp-why-matters-quote">
+              <p>The goal is not to wear more gemstones.<br />It is to choose more carefully.</p>
             </div>
 
-            <div>
-              <p>
-                In Vedic Astrology, wearing a gemstone is intended to strengthen the influence associated with
-                its planet. If that planet is not favorable to strengthen in your individual chart, its
-                gemstone may be a poor fit.
-              </p>
-              <p>
-                This is why AstroVed's report does more than recommend a Primary Gemstone. It also identifies
-                gemstones to approach with caution, helping you avoid choosing only from Moon-sign advice,
-                birth-month lists, color preference, or generic recommendations.
-              </p>
-
-              <div className="lp-pull-quote">
-                <p>The goal is not to wear more gemstones. It is to choose more carefully.</p>
-              </div>
-
-              <div className="lp-cta-row left">
-                <a href="#gemstone-form" className="lp-btn lp-btn-gold" onClick={(e) => { e.preventDefault(); document.getElementById('gemstone-form').scrollIntoView({ behavior: 'smooth' }); }}>Check My Chart Before I Choose</a>
-              </div>
-            </div>
+            <a href="#gemstone-form" className="lp-btn lp-btn-gold" onClick={(e) => { e.preventDefault(); document.getElementById('gemstone-form').scrollIntoView({ behavior: 'smooth' }); }}>
+              <Shield size={20} /> CHECK MY CHART BEFORE I CHOOSE
+            </a>
           </div>
-        </section >
+        </section>
 
         {/* THE ASTROVED GEMSTONE ADVANTAGE */}
-        < section className="lp-section-pad lp-bg-navy" id="advantage" >
+        <section className="lp-advantage-light-section" id="advantage">
           <div className="container">
             <div className="lp-section-head">
               <p className="premium-eyebrow">Selected for Your Chart. Prepared With Care.</p>
               <h2>The AstroVed Gemstone Advantage</h2>
               <p>
-                Choosing the right gemstone is only the first step. Many gemstones sold online or through
-                jewelers are offered primarily as jewelry or loose stones and may not include traditional
-                Vedic preparation. AstroVed adds a three-step devotional process so the gemstone is selected
-                for your chart and carefully prepared for traditional spiritual use.
+                Choosing the right gemstone is only the first step. AstroVed adds a three-step devotional process
+                so the gemstone is selected for your chart and carefully prepared for traditional spiritual use.
               </p>
             </div>
 
             <div className="lp-advantage-grid">
               <div className="lp-adv-card">
+                <div className="lp-adv-icon">
+                  <Sparkles size={16} />
+                </div>
                 <div className="lp-adv-num">01</div>
                 <h3>Cleanse &amp; Purify</h3>
                 <p>The gemstone is carefully cleansed and purified before ritual preparation.</p>
               </div>
               <div className="lp-adv-card">
+                <div className="lp-adv-icon">
+                  <Sparkles size={16} />
+                </div>
                 <div className="lp-adv-num">02</div>
                 <h3>Activate With Vedic Ritual</h3>
-                <p>Prayer, mantra, and traditional ritual intention prepare the gemstone for its planetary purpose.</p>
+                <p>Prayers, mantras, and traditional ritual intention prepare the gemstone for its planetary purpose.</p>
               </div>
               <div className="lp-adv-card">
+                <div className="lp-adv-icon">
+                  <Sparkles size={16} />
+                </div>
                 <div className="lp-adv-num">03</div>
-                <h3>Energize &amp; Bless at a Powerspot</h3>
+                <h3>Energize &amp; Bless<br />at a Powerspot</h3>
                 <p>The gemstone is blessed and energized at a Powerspot before it is provided for use.</p>
               </div>
             </div>
 
             <div className="lp-advantage-close">
-              <p>The AstroVed difference is not only which gemstone you receive, but the care taken to purify, activate, and energize it to act as a powerful remedy for you as per Vedic astrology principles.</p>
-              <div className="lp-cta-row">
-                <a href="#gemstone-form" className="lp-btn lp-btn-gold" onClick={(e) => { e.preventDefault(); document.getElementById('gemstone-form').scrollIntoView({ behavior: 'smooth' }); }}>Discover the AstroVed Gemstone Advantage</a>
+              <div className="lp-advantage-close-banner">
+                <p>The AstroVed difference is not only which gemstone you receive, but the care taken to purify, activate, and energize it to act as a powerful remedy for you as per Vedic astrology principles.</p>
+              </div>
+              <div className="lp-cta-row" style={{ marginTop: '25px', textAlign: 'left' }}>
+                <a href="#gemstone-form" className="lp-btn lp-btn-gold uppercase" onClick={(e) => { e.preventDefault(); document.getElementById('gemstone-form').scrollIntoView({ behavior: 'smooth' }); }}>DISCOVER THE ASTROVED GEMSTONE ADVANTAGE</a>
               </div>
             </div>
           </div>
-        </section >
 
-        {/* FINAL CTA */}
-        < section className="lp-final-cta" >
+          {/* FINAL CTA */}
           <div className="container">
-            <p className="premium-eyebrow">Your Gemstone Should Not Be a Guess</p>
-            <h2>Your Birth Chart Is Personal.<br />Your Gemstone Guidance Should Be Too.</h2>
-            <p>
-              Use AstroVed's Free AI-Powered Expert Gemstone Report to discover the gemstone your chart points
-              to, understand why it has been identified, see which gemstones may require caution, and choose
-              with greater confidence.
-            </p>
-            <div className="lp-cta-row">
-              <a href="#gemstone-form" className="lp-btn lp-btn-gold" onClick={(e) => { e.preventDefault(); document.getElementById('gemstone-form').scrollIntoView({ behavior: 'smooth' }); }}>Get My Free Gemstone Report</a>
+            <div className="lp-final-cta-box">
+              <div className="lp-final-cta-left">
+                <p className="premium-eyebrow cta-eyebrow">YOUR GEMSTONE SHOULD NOT BE A GUESS</p>
+                <h2 className="final-cta-title">Your Birth Chart Is Personal.<br />Your Gemstone Guidance Should Be Too.</h2>
+                <p>
+                  Use AstroVed's Free AI-Powered Expert Gemstone Report to discover the gemstone
+                  your chart points to, understand why it has been identified, see which gemstones may
+                  require caution, and choose with greater confidence.
+                </p>
+              </div>
+              <div className="lp-final-cta-right">
+                <a href="#gemstone-form" className="lp-btn lp-btn-gold" onClick={(e) => { e.preventDefault(); document.getElementById('gemstone-form').scrollIntoView({ behavior: 'smooth' }); }}>GET MY FREE GEMSTONE REPORT &rarr;</a>
+              </div>
             </div>
           </div>
-        </section >
+        </section>
 
       </div >
     </>
   );
 }
+
 

@@ -213,60 +213,64 @@ export function FormPage({ onSubmitDetails }) {
 
       <div className="form-content-wrapper">
         {/* Left Column - Headline & Repository Checklist */}
-        <div className="form-hero-left">
-          <h1 className="hero-repo-headline">
-            Discover Your Perfect Gemstone
+        <div className="form-hero-left form-hero-left-relative">
+          <svg width="0" height="0" className="form-hero-left-svg">
+            <defs>
+              <linearGradient id="premiumGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#f6d365" />
+                <stop offset="100%" stopColor="#fda085" />
+              </linearGradient>
+            </defs>
+          </svg>
+
+          <span className="premium-eyebrow">
+            YOUR BIRTH CHART HOLDS THE CLUE TO YOUR GEMSTONE
+          </span>
+          <h1 className="hero-repo-headline hero-repo-headline-styled">
+            Discover the <span className="premium-gradient-text">Gemstone</span> Your Chart Points To
           </h1>
-          <p className="hero-repo-subtitle">
-            Discover the hidden power of gemstones aligned with your unique birth chart. Unlock the perfect stones to amplify your strengths, balance your energies, and attract success.
+          <p className="hero-repo-subtitle hero-repo-subtitle-styled">
+            Go beyond generic zodiac or Moon-sign recommendations. Enter your birth details to receive AstroVed's Free AI-Powered Expert Gemstone Report, which considers your Ascendant [Lagna], supportive planetary influences, house rulership, and current planetary timing before identifying the gemstone for you to explore.
           </p>
 
-          <div className="hero-repo-checklist">
-            <div className="repo-check-item" style={{ flexDirection: 'row', alignItems: 'center', textAlign: 'left' }}>
-              <div className="check-circle-icon-wrap">
-                <Compass className="repo-check-icon" />
-              </div>
-              <div style={{ flex: 1 }}>
-                <strong className="repo-check-title">Astrology Blueprint</strong>
-                <p className="repo-check-desc">In-depth analysis of your Lagna, Moon Sign, and Nakshatra.</p>
-              </div>
-            </div>
+          <span className="premium-eyebrow">
+            YOUR PERSONALIZED REPORT HELPS YOU UNDERSTAND
+          </span>
 
-            <div className="repo-check-item" style={{ flexDirection: 'row', alignItems: 'center', textAlign: 'left' }}>
-              <div className="check-circle-icon-wrap">
-                <Gem className="repo-check-icon" />
+          <ul className="premium-benefits-list">
+            <li className="premium-list-item premium-list-item-styled">
+              <div className="premium-icon-wrap premium-icon-wrap-styled">
+                <Sparkles stroke="url(#premiumGradient)" />
               </div>
-              <div style={{ flex: 1 }}>
-                <strong className="repo-check-title">Primary Gemstone</strong>
-                <p className="repo-check-desc">The most beneficial gemstone aligned with your planetary strength.</p>
+              <span className="premium-benefit-text"><strong className="premium-benefit-title">Your Primary Gemstone</strong> â€” see the gemstone identified through your chart and understand the astrological reason it may suit you.</span>
+            </li>
+            <li className="premium-list-item premium-list-item-styled">
+              <div className="premium-icon-wrap premium-icon-wrap-styled">
+                <ShieldAlert stroke="url(#premiumGradient)" />
               </div>
-            </div>
+              <span className="premium-benefit-text"><strong className="premium-benefit-title">Gemstones to Approach With Caution</strong> â€” know which stones may not align well with the planetary patterns in your chart.</span>
+            </li>
+            <li className="premium-list-item premium-list-item-styled">
+              <div className="premium-icon-wrap premium-icon-wrap-styled">
+                <Hourglass stroke="url(#premiumGradient)" />
+              </div>
+              <span className="premium-benefit-text"><strong className="premium-benefit-title">Your Planetary Timing</strong> â€” understand your Major Planetary Period [Mahadasha], Sub-Period [Antardasha], and relevant timing context.</span>
+            </li>
+          </ul>
 
-            <div className="repo-check-item" style={{ flexDirection: 'row', alignItems: 'center', textAlign: 'left' }}>
-              <div className="check-circle-icon-wrap">
-                <ShieldAlert className="repo-check-icon" />
-              </div>
-              <div style={{ flex: 1 }}>
-                <strong className="repo-check-title">Avoid Gemstone</strong>
-                <p className="repo-check-desc">Protecting you from conflicting planetary energies.</p>
-              </div>
-            </div>
-
-            <div className="repo-check-item" style={{ flexDirection: 'row', alignItems: 'center', textAlign: 'left' }}>
-              <div className="check-circle-icon-wrap">
-                <Hourglass className="repo-check-icon" />
-              </div>
-              <div style={{ flex: 1 }}>
-                <strong className="repo-check-title">Dasha and Transits</strong>
-                <p className="repo-check-desc">Actionable timeline guidance for your planetary periods.</p>
-              </div>
-            </div>
+          <div>
+            <a href="#gemstone-form" className="premium-btn" onClick={(e) => { e.preventDefault(); document.getElementById('gemstone-form').scrollIntoView({ behavior: 'smooth' }); }}>
+              GET MY FREE GEMSTONE REPORT
+            </a>
           </div>
         </div>
 
         {/* Right Column - Repository Style Card */}
-        <div className="form-card-right">
+        <div className="form-card-right" id="gemstone-form">
           <Card className="repo-form-card">
+            <div className="form-top-banner">
+              ASTROVED'S FREE AI-POWERED EXPERT GEMSTONE REPORT
+            </div>
             <div className="repo-card-body">
               <h2 className="repo-card-title">Enter Your Birth Details</h2>
               <p className="repo-card-subtext">
@@ -276,22 +280,21 @@ export function FormPage({ onSubmitDetails }) {
               <form onSubmit={handleSubmit} className="repo-birth-form">
                 {/* Row 1: Name & Gender */}
                 <div className="repo-form-row-two">
-                  <div className="floating-form-group" style={{ position: 'relative' }}>
-                    <span className="field-floating-label" style={{ color: errors.name ? '#ef4444' : undefined }}>Full Name</span>
+                  <div className={`floating-form-group floating-form-group-relative ${errors.name ? 'has-error' : ''}`}>
+                    <span className="field-floating-label">Full Name</span>
                     <input
                       type="text"
                       name="name"
                       value={formData.name}
                       onChange={(e) => { handleChange(e); setErrors(prev => ({ ...prev, name: null })); }}
                       placeholder="Your Name"
-                      style={{ borderColor: errors.name ? '#ef4444' : undefined }}
                     />
                     {errors.name && <ErrorIcon message={errors.name} />}
                   </div>
 
-                  <div className="floating-form-group" style={{ position: 'relative' }}>
-                    <span className="field-floating-label" style={{ color: errors.gender ? '#ef4444' : undefined }}>Gender</span>
-                    <div style={{ border: errors.gender ? '1px solid #ef4444' : 'none', borderRadius: '8px' }}>
+                  <div className={`floating-form-group floating-form-group-relative ${errors.gender ? 'has-error' : ''}`}>
+                    <span className="field-floating-label">Gender</span>
+                    <div className="dropdown-wrapper">
                       <SearchableDropdown
                         value={formData.gender}
                         onChange={(val) => { setFormData((prev) => ({ ...prev, gender: val })); setErrors(prev => ({ ...prev, gender: null })); }}
@@ -305,8 +308,8 @@ export function FormPage({ onSubmitDetails }) {
                 </div>
 
                 {/* Email Address */}
-                <div className="floating-form-group" style={{ position: 'relative' }}>
-                  <span className="field-floating-label" style={{ color: errors.email ? '#ef4444' : undefined }}>Email Address</span>
+                <div className={`floating-form-group floating-form-group-relative ${errors.email ? 'has-error' : ''}`}>
+                  <span className="field-floating-label">Email Address</span>
                   <input
                     type="email"
                     name="email"
@@ -321,7 +324,6 @@ export function FormPage({ onSubmitDetails }) {
                       }
                     }}
                     placeholder="Enter Your Email"
-                    style={{ borderColor: errors.email ? '#ef4444' : undefined }}
                   />
                   {errors.email && <ErrorIcon message={errors.email} />}
                 </div>
@@ -406,9 +408,9 @@ export function FormPage({ onSubmitDetails }) {
 
                 {/* Location */}
                 <div className="repo-form-row-two">
-                  <div className="floating-form-group" style={{ position: 'relative' }}>
-                    <span className="field-floating-label" style={{ color: errors.country ? '#ef4444' : undefined }}>Country</span>
-                    <div style={{ border: errors.country ? '1px solid #ef4444' : 'none', borderRadius: '8px' }}>
+                  <div className={`floating-form-group floating-form-group-relative ${errors.country ? 'has-error' : ''}`}>
+                    <span className="field-floating-label">Country</span>
+                    <div className="dropdown-wrapper">
                       <SearchableDropdown
                         value={formData.country}
                         onChange={(val) => { setFormData((prev) => ({ ...prev, country: val, city: '' })); setErrors(prev => ({ ...prev, country: null })); }}
@@ -422,16 +424,16 @@ export function FormPage({ onSubmitDetails }) {
                     {errors.country && <ErrorIcon message={errors.country} />}
                   </div>
 
-                  <div className="floating-form-group" style={{ position: 'relative' }}>
-                    <span className="field-floating-label" style={{ color: errors.city ? '#ef4444' : undefined }}>City</span>
-                    <div style={{ position: 'relative' }}>
+                  <div className={`floating-form-group floating-form-group-relative ${errors.city ? 'has-error' : ''}`}>
+                    <span className="field-floating-label">City</span>
+                    <div className="floating-form-group-relative">
                       {!formData.country && (
                         <div
-                          style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 10, cursor: 'pointer' }}
+                          className="city-overlay-blocker"
                           onClick={() => setErrors(prev => ({ ...prev, city: "Please select a country first" }))}
                         />
                       )}
-                      <div style={{ border: errors.city ? '1px solid #ef4444' : 'none', borderRadius: '8px' }}>
+                      <div className="dropdown-wrapper">
                         <SearchableDropdown
                           value={formData.city}
                           onChange={(val, opt) => {
@@ -473,14 +475,17 @@ export function FormPage({ onSubmitDetails }) {
                   </div>
                 </div>
                 <button type="submit" className="repo-green-submit-btn">
-                  Discover Your Gemstone &rarr;
+                  Get My Free Gemstone Report &rarr;
                 </button>
+                <p className="repo-form-footer-text">
+                  For the most personalized result, enter the most accurate birth details available.
+                </p>
               </form>
             </div>
           </Card>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }
 
