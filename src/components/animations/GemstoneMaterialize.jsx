@@ -46,19 +46,19 @@ export function GemstoneMaterialize({ gemType = 'emerald', name = 'Emerald', dis
   return (
     <div className="gem-materialize-wrap">
       <div className="gem-aura" style={{ background: `radial-gradient(circle, ${glow} 0%, transparent 70%)` }} />
-      
-      <motion.div 
+
+      <motion.div
         className="gem-pedestal"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6 }}
       >
         <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-          <img 
-            src={src} 
-            alt={name} 
+          <img
+            src={src}
+            alt={name}
             className={disableFloat ? "" : "gem-floating-img"}
-            style={{ width: '100%', maxWidth: '100px', height: 'auto', zIndex: 2, objectFit: 'contain' }} 
+            style={{ width: '100%', maxWidth: '100px', height: 'auto', zIndex: 2, objectFit: 'contain' }}
           />
           {!disableFloat && <div className="gem-floor-shadow" />}
         </div>

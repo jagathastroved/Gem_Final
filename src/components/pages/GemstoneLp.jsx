@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Target, Globe, Gem, AlertCircle, Sparkles, Lock, Compass, ShieldAlert, Shield, Hourglass, Users, Moon, User, FileSearch, ArrowDown, ArrowRight } from 'lucide-react';
 import { Card } from '../ui/Card.jsx';
@@ -726,7 +726,7 @@ export function GemstoneLp({ onSubmitDetails }) {
           <div className="container">
             <div className="lp-section-head">
               <p className="premium-eyebrow">Selected for Your Chart. Prepared With Care.</p>
-              <h2>The AstroVed Gemstone Advantage</h2>
+              <h2 style={{ marginBottom: '15px' }}>The AstroVed Gemstone Advantage</h2>
               <p>
                 Choosing the right gemstone is only the first step. Many gemstones sold online or through jewelers are offered primarily as jewelry or loose stones and may not include traditional Vedic preparation. AstroVed adds a three-step devotional process so the gemstone is selected for your chart and carefully prepared for traditional spiritual use.
               </p>

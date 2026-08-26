@@ -29,7 +29,6 @@ const SellingGemPage = ({
   const comp = report?.comparison;
 
   const gemName = gem?.suitableStone;
-  const gemImageSrc = gem?.image;
   const reasonText = gem?.whyThisStone;
   const benefitsList = gem?.benefits || [
     "Unlocks rapid career progression and wealth",
