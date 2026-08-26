@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Target, Globe, Gem, AlertCircle, Sparkles, Lock, Compass, ShieldAlert, Shield, Hourglass, Users, Moon, User, FileSearch, ArrowDown, ArrowRight } from 'lucide-react';
 import { Card } from '../ui/Card.jsx';
@@ -237,20 +237,20 @@ export function GemstoneLp({ onSubmitDetails }) {
                 <div className="premium-icon-wrap premium-icon-wrap-styled">
                   <Sparkles stroke="url(#premiumGradient)" />
                 </div>
-                <span className="premium-benefit-text"><strong className="premium-benefit-title">Your Primary Gemstone</strong> â€” see the gemstone identified through your chart and understand the astrological reason it may suit you.</span>
-              </li>
+                <span className="premium-benefit-text"><strong className="premium-benefit-title">Your Primary Gemstone</strong> - see the gemstone identified through your chart and understand the astrological reason it may suit you.</span>
+            </li>
               <li className="premium-list-item premium-list-item-styled">
                 <div className="premium-icon-wrap premium-icon-wrap-styled">
                   <ShieldAlert stroke="url(#premiumGradient)" />
                 </div>
-                <span className="premium-benefit-text"><strong className="premium-benefit-title">Gemstones to Approach With Caution</strong> â€” know which stones may not align well with the planetary patterns in your chart.</span>
-              </li>
+                <span className="premium-benefit-text"><strong className="premium-benefit-title">Gemstones to Approach With Caution</strong> - know which stones may not align well with the planetary patterns in your chart.</span>
+            </li>
               <li className="premium-list-item premium-list-item-styled">
                 <div className="premium-icon-wrap premium-icon-wrap-styled">
                   <Hourglass stroke="url(#premiumGradient)" />
                 </div>
-                <span className="premium-benefit-text"><strong className="premium-benefit-title">Your Planetary Timing</strong> â€” understand your Major Planetary Period [Mahadasha], Sub-Period [Antardasha], and relevant timing context.</span>
-              </li>
+                <span className="premium-benefit-text"><strong className="premium-benefit-title">Your Planetary Timing</strong> - understand your Major Planetary Period [Mahadasha], Sub-Period [Antardasha], and relevant timing context.</span>
+            </li>
             </ul>
 
             <div>
