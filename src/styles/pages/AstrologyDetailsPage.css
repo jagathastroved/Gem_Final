@@ -2,8 +2,10 @@
 .blueprint-page-section {
   display: flex;
   flex-direction: column;
-  gap: 32px;
   width: 100%;
+}
+.blueprint-page-section > * + * {
+  margin-top: 32px;
 }
 
 /* Header */
@@ -33,10 +35,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
   color: #64748B;
   font-size: 0.95rem;
   font-weight: 500;
+}
+
+.blueprint-subtitle-row > * + * {
+  margin-left: 12px;
 }
 
 [data-theme="dark"] .blueprint-subtitle-row {
@@ -115,8 +120,11 @@
   align-items: center;
   flex: 1;
   justify-content: space-between;
-  gap: 16px;
   flex-wrap: wrap;
+}
+
+.ud-info-grid > * + * {
+  margin-left: 16px;
 }
 
 .ud-info-item {
@@ -173,6 +181,7 @@
   
   .user-details-bar > * + * {
     margin-top: 16px;
+    margin-left: 0;
   }
 
   .ud-divider {
@@ -184,6 +193,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
+  }
+  
+  .ud-info-grid > * + * {
+    margin-left: 0;
   }
 }
 
@@ -374,12 +387,14 @@
   padding: 24px;
   display: flex;
   align-items: center;
-  gap: 20px;
   border: 1px solid #E2E8F0;
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
   transition: transform 0.2s ease;
   min-width: 0;
+}
+.bp-card-horizontal > * + * {
+  margin-left: 20px;
 }
 
 [data-theme="dark"] .bp-card-horizontal {
@@ -507,12 +522,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
   margin: 16px 0;
   color: #6358F7;
   font-size: 0.8rem;
   font-weight: 800;
   letter-spacing: 0.1em;
+}
+.planetary-period-divider > * + * {
+  margin-left: 12px;
+}
+
+.planetary-period-divider span {
+  text-align: center;
 }
 
 [data-theme="dark"] .planetary-period-divider {
@@ -536,9 +557,11 @@
   padding: 32px;
   display: flex;
   align-items: center;
-  gap: 32px;
   margin-top: 16px;
   border: 1px solid #E0DDF7;
+}
+.blueprint-cta-banner > * + * {
+  margin-left: 32px;
 }
 
 [data-theme="dark"] .blueprint-cta-banner {
@@ -659,7 +682,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+}
+
+.cta-content-right > * + * {
+  margin-left: 24px;
 }
 
 .cta-note {
@@ -676,7 +702,6 @@
 .cta-btn-emerald {
   display: flex;
   align-items: center;
-  gap: 8px;
   padding: 14px 28px;
   background-color: #10B981;
   color: #FFFFFF;
@@ -688,6 +713,10 @@
   box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
   transition: transform 0.2s ease, opacity 0.2s ease;
   white-space: nowrap;
+}
+
+.cta-btn-emerald > * + * {
+  margin-left: 8px;
 }
 
 .cta-btn-emerald:hover {
@@ -706,10 +735,21 @@
     text-align: center;
     padding: 24px;
   }
+  
+  .blueprint-cta-banner > * + * {
+    margin-top: 32px;
+    margin-left: 0;
+  }
 
   .cta-content-right {
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+  }
+
+  .cta-content-right > * + * {
+    margin-top: 24px;
+    margin-left: 0;
   }
 
   .cta-note {

@@ -2,7 +2,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
   border-radius: var(--radius-md);
   font-weight: 700;
   font-family: var(--font-sans);
@@ -10,6 +9,10 @@
   transition: all 0.25s ease;
   letter-spacing: 0.01em;
   white-space: nowrap;
+}
+
+.app-btn > * + * {
+  margin-left: 10px;
 }
 
 .btn--full {

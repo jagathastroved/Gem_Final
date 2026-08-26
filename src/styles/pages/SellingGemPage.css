@@ -69,8 +69,11 @@
   padding: 40px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
   animation: slideUpFade 0.6s ease-out;
+}
+
+.selling-gem-content > * + * {
+  margin-top: 32px;
 }
 
 /* Header Section */
@@ -133,15 +136,21 @@
 .selling-gem-body {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+}
+.selling-gem-body > * + * {
+  margin-top: 24px;
 }
 
 .reason-section-new,
 .benefits-section-new {
   display: flex;
   flex-direction: column;
-  gap: 16px;
   padding: 0 10px; /* Slight padding for alignment, no box */
+}
+
+.reason-section-new > * + *,
+.benefits-section-new > * + * {
+  margin-top: 16px;
 }
 
 .section-heading {
@@ -151,44 +160,143 @@
   margin: 0;
   display: flex;
   align-items: center;
-  gap: 10px;
   border-bottom: 1px solid var(--sg-border);
   padding-bottom: 12px;
 }
 
-.heading-icon {
-  color: #10b981;
+.section-heading > * + * {
+  margin-left: 10px;
 }
 
-.reason-text {
+.heading-icon {
+  color: #10b981;
+  margin-right: 10px;
+}
+
+.reason-items-container {
+  display: flex;
+  flex-direction: column;
+}
+.reason-items-container > * + * {
+  margin-top: 24px;
+}
+
+.reason-item {
+  display: flex;
+  align-items: flex-start;
+}
+
+.reason-item > * + * {
+  margin-left: 16px;
+}
+
+.reason-icon-wrapper {
+  background: #ffffff;
+  color: #10b981;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+}
+
+[data-theme="dark"] .reason-icon-wrapper {
+  background: rgba(16, 185, 129, 0.1);
+  box-shadow: none;
+}
+
+.reason-text-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.reason-text-content > * + * {
+  margin-top: 4px;
+}
+
+.reason-title {
   font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--sg-text-title);
+}
+
+.reason-desc {
+  font-size: 1rem;
   line-height: 1.6;
   color: var(--sg-text-p);
+}
+
+.astrologer-insight-card {
+  display: flex;
+  align-items: flex-start;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.01) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-left: 4px solid #10b981;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 16px;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.05);
+}
+
+[data-theme="dark"] .astrologer-insight-card {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.02) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  border-left: 4px solid #10b981;
+}
+
+.insight-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.insight-content h4 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #10b981;
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.insight-content .reason-desc {
   margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .benefits-list {
   list-style: none;
   padding: 0;
   margin: 0;
+  margin-top: 16px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+}
+
+.benefits-list > * + * {
+  margin-top: 12px;
 }
 
 .benefits-list li {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
   font-size: 1rem;
   color: var(--sg-text-benefits);
   line-height: 1.5;
+}
+
+.benefits-list li > * + * {
+  margin-left: 12px;
 }
 
 .benefit-icon {
   color: #10b981;
   flex-shrink: 0;
   margin-top: 2px;
+  margin-right: 12px;
 }
 
 /* Feature Badges */
@@ -196,18 +304,21 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  margin-top: 10px;
+  margin-top: 32px;
 }
 
 .feature-badge {
   display: flex;
   align-items: center;
-  gap: 12px;
   background: var(--sg-bg-badge);
   padding: 12px;
   border-radius: 12px;
   border: 1px solid var(--sg-border);
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.3s ease;
+}
+
+.feature-badge > * + * {
+  margin-left: 12px;
 }
 
 .feature-badge:hover {
@@ -225,6 +336,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .feature-badge span {
@@ -261,13 +373,19 @@
 .price-label-row {
   display: flex;
   align-items: center;
-  gap: 16px;
+}
+
+.price-label-row > * + * {
+  margin-left: 16px;
 }
 
 .price-value-row {
   display: flex;
   align-items: baseline;
-  gap: 12px;
+}
+
+.price-value-row > * + * {
+  margin-left: 12px;
 }
 
 .price-label {
@@ -317,10 +435,13 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  gap: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+}
+
+.buy-now-btn > * + * {
+  margin-left: 12px;
 }
 
 .buy-now-btn:hover {
@@ -335,16 +456,21 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 8px;
   color: var(--sg-text-subtitle);
   font-size: 0.85rem;
   margin-top: 10px;
+}
+.trust-indicators > * + * {
+  margin-left: 8px;
 }
 
 .trust-item {
   display: flex;
   align-items: center;
-  gap: 6px;
+}
+
+.trust-item > * + * {
+  margin-left: 6px;
 }
 
 .trust-dot {
@@ -362,16 +488,22 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+}
+
+.additional-trust-points ul > * + * {
+  margin-top: 16px;
 }
 
 .additional-trust-points li {
   display: flex;
   align-items: center;
-  gap: 16px;
   font-size: 1.05rem;
   font-weight: 600;
   color: var(--sg-text-title);
+}
+
+.additional-trust-points li > * + * {
+  margin-left: 16px;
 }
 
 .trust-check-icon {

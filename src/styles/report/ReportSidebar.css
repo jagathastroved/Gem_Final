@@ -36,7 +36,6 @@
   padding: 10px 18px;
   display: flex;
   align-items: center;
-  gap: 8px;
   border: none;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
@@ -44,6 +43,10 @@
   font-weight: 700;
   transition: transform 0.2s ease, opacity 0.2s ease;
   z-index: 20;
+}
+
+.floating-show-index-btn > * + * {
+  margin-left: 8px;
 }
 
 .floating-show-index-btn span {
@@ -77,7 +80,10 @@
 .sidebar-title {
   display: flex;
   align-items: center;
-  gap: 10px;
+}
+
+.sidebar-title > * + * {
+  margin-left: 10px;
 }
 
 .book-icon-badge {
@@ -107,7 +113,10 @@
 .sidebar-header-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+}
+
+.sidebar-header-actions > * + * {
+  margin-left: 12px;
 }
 
 .theme-toggle-switch-btn {
@@ -365,7 +374,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   width: 100%;
   height: 44px;
   border-radius: var(--radius-md);
@@ -380,6 +388,10 @@
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
+.sidebar-btn-download > * + * {
+  margin-left: 8px;
+}
+
 .sidebar-btn-download:hover {
   opacity: 0.92;
   transform: translateY(-1px);
@@ -389,7 +401,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   width: 100%;
   height: 48px;
   border-radius: 12px;
@@ -401,6 +412,10 @@
   border: 1px solid #E2E8F0;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+.sidebar-btn-reset > * + * {
+  margin-left: 8px;
 }
 
 .sidebar-btn-reset:hover {

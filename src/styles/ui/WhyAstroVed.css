@@ -46,12 +46,14 @@
 .why-av-comparison {
   display: flex;
   align-items: stretch;
-  gap: 0;
   margin-bottom: 56px;
   position: relative;
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+}
+.why-av-comparison > * + * {
+  margin-left: 0;
 }
 
 @media (max-width: 640px) {
@@ -110,10 +112,13 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 24px;
   border: none;
   box-shadow: none;
   transform: none;
+}
+
+.av-comp-card > * + * {
+  margin-top: 24px;
 }
 
 .av-comp-card.ordinary {
@@ -135,8 +140,11 @@
 .av-comp-header-custom {
   display: flex;
   align-items: center;
-  gap: 16px;
   margin-bottom: 16px;
+}
+
+.av-comp-header-custom > * + * {
+  margin-left: 16px;
 }
 
 .av-comp-header-custom.right-aligned {
@@ -194,20 +202,27 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+}
+
+.av-comp-list > * + * {
+  margin-top: 16px;
 }
 
 .av-comp-list li {
   display: flex;
   align-items: center;
-  gap: 16px;
   font-size: 1.05rem;
   line-height: 1.5;
   color: #475569;
 }
 
+.av-comp-list li > * + * {
+  margin-left: 16px;
+}
+
 .av-comp-list li svg {
   flex-shrink: 0;
+  margin-right: 12px;
 }
 
 .av-comp-card.astroved .av-comp-list li {
@@ -278,10 +293,13 @@
   border-radius: 24px;
   padding: 40px 24px 32px;
   position: relative;
-  gap: 20px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
   height: 100%;
+}
+
+.av-process-step > * + * {
+  margin-top: 20px;
 }
 
 .av-process-step:hover {
@@ -341,9 +359,12 @@
 .step-content {
   display: flex;
   flex-direction: column;
-  gap: 12px;
   flex: 1;
   width: 100%;
+}
+
+.step-content > * + * {
+  margin-top: 12px;
 }
 
 .step-title {
@@ -416,11 +437,14 @@
 .adv-list-item {
   display: flex;
   align-items: flex-start;
-  gap: 24px;
   text-align: left;
   opacity: 0;
   transform: translateY(15px);
   animation: fadeUpIn 0.5s ease-out forwards;
+}
+
+.adv-list-item > * + * {
+  margin-left: 24px;
 }
 
 /* Sequential animation delays for 6 items */

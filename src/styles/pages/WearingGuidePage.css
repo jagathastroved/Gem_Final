@@ -11,8 +11,11 @@
   padding: 20px 24px;
   display: flex;
   align-items: flex-start;
-  gap: 16px;
   margin-bottom: 28px;
+}
+
+.alert-callout-box > * + * {
+  margin-left: 16px;
 }
 
 .alert-icon {
@@ -70,8 +73,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   margin-bottom: 24px;
+}
+
+.specs-header > * + * {
+  margin-left: 8px;
 }
 
 .specs-header span {
@@ -96,11 +102,14 @@
 .spec-item {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
   background-color: var(--color-card-alt);
   padding: 16px;
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
+}
+
+.spec-item > * + * {
+  margin-left: 14px;
 }
 
 .spec-label {

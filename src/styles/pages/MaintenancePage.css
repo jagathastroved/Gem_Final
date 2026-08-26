@@ -179,8 +179,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
   margin-bottom: 15px;
+}
+
+.maintenance-divider > * + * {
+  margin-left: 15px;
 }
 
 .divider-line {
@@ -215,13 +218,15 @@
   width: max-content;
   margin: 0 auto 20px auto;
   align-items: center;
-  gap: 6px;
   background: rgba(239, 68, 68, 0.1);
   border: 1px solid rgba(239, 68, 68, 0.2);
   color: #fca5a5;
   padding: 6px 14px;
   border-radius: 50px;
   font-size: 12px;
+}
+.maintenance-error-pill > * + * {
+  margin-left: 6px;
 }
 
 .error-pill-icon {
@@ -235,7 +240,6 @@
   margin: 0 auto;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   background: linear-gradient(135deg, #059669 0%, #10b981 100%);
   color: white;
   border: none;
@@ -246,6 +250,9 @@
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4);
+}
+.maintenance-action-btn > * + * {
+  margin-left: 8px;
 }
 
 .maintenance-action-btn:hover {

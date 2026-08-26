@@ -24,8 +24,11 @@
 .navbar-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
   cursor: pointer;
+}
+
+.navbar-brand > * + * {
+  margin-left: 12px;
 }
 
 .brand-icon-wrap {
@@ -79,7 +82,10 @@
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+}
+
+.navbar-links > * + * {
+  margin-left: 28px;
 }
 
 .nav-link {
@@ -98,7 +104,10 @@
 .navbar-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+}
+
+.navbar-actions > * + * {
+  margin-left: 12px;
 }
 
 .mobile-toggle {

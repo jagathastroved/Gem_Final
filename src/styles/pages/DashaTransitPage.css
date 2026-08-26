@@ -4,7 +4,9 @@
   padding: 16px 24px 80px;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+}
+.dasha-timeline-section > * + * {
+  margin-top: 40px;
 }
 
 /* Header Styles */
@@ -39,7 +41,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+}
+
+.gold-divider > * + * {
+  margin-left: 12px;
 }
 
 .gold-divider span {
@@ -80,10 +85,12 @@
   letter-spacing: 0.05em;
   display: flex;
   align-items: center;
-  gap: 8px;
   z-index: 10;
   box-shadow: 0 4px 12px rgba(99, 88, 247, 0.3);
   white-space: nowrap;
+}
+.floating-pill-badge > * + * {
+  margin-left: 8px;
 }
 
 /* Left Column: Insights */
@@ -102,13 +109,14 @@
 }
 
 .insights-stack {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 16px;
 }
 
 .insight-card-modern {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
   align-items: flex-start;
   gap: 16px;
   padding: 24px 28px;
@@ -156,8 +164,11 @@
 .insight-body-content {
   display: flex;
   flex-direction: column;
-  gap: 16px;
   flex: 1;
+}
+
+.insight-body-content > * + * {
+  margin-top: 16px;
 }
 
 .insight-text-modern {
@@ -174,7 +185,6 @@
 .insight-source-modern {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
   color: #64748B;
   font-size: 0.85rem;
   background-color: #ECFDF5;
@@ -182,6 +192,10 @@
   border-radius: 6px;
   line-height: 1.4;
   word-break: break-word;
+}
+
+.insight-source-modern > * + * {
+  margin-left: 8px;
 }
 
 .insight-source-modern svg {
@@ -224,7 +238,6 @@
 .timeline-events-list {
   display: flex;
   flex-direction: column;
-  gap: 48px;
   position: relative;
   z-index: 2;
   padding-left: 28px;
@@ -232,11 +245,18 @@
   padding-bottom: 20px;
 }
 
+.timeline-events-list > * + * {
+  margin-top: 48px;
+}
+
 .timeline-event-node {
   display: flex;
   align-items: flex-start;
-  gap: 20px;
   position: relative;
+}
+
+.timeline-event-node > * + * {
+  margin-left: 20px;
 }
 
 .dasha-node-circle {
@@ -260,8 +280,11 @@
 .event-info-col {
   display: flex;
   flex-direction: column;
-  gap: 6px;
   padding-top: 2px;
+}
+
+.event-info-col > * + * {
+  margin-top: 6px;
 }
 
 .date-range-pill {
@@ -281,7 +304,6 @@
 .active-status-tag {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
   padding: 4px 10px;
   background-color: #FEF2F2;
   color: #EF4444;
@@ -291,6 +313,10 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+.active-status-tag > * + * {
+  margin-left: 6px;
 }
 
 .pulse-dot {
@@ -346,7 +372,9 @@
   padding: 16px;
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+}
+.dasha-system-banner > * + * {
+  margin-left: 12px;
 }
 
 [data-theme="dark"] .dasha-system-banner {

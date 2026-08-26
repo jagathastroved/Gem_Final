@@ -12,5 +12,8 @@
 .results-scroll-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+}
+
+.results-scroll-container > * + * {
+  margin-top: 20px;
 }

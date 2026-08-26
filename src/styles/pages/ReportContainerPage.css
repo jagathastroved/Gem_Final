@@ -143,7 +143,10 @@
 .astroved-logo-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+}
+
+.astroved-logo-brand > * + * {
+  margin-left: 10px;
 }
 
 .astroved-delta-logo {
@@ -169,12 +172,15 @@
   transform: translateX(-50%);
   display: flex;
   align-items: center;
-  gap: 8px;
   font-size: 0.775rem;
   font-weight: 800;
   color: #64748B;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.section-badge-center > * + * {
+  margin-left: 8px;
 }
 
 [data-theme="dark"] .section-badge-center {
@@ -196,7 +202,6 @@
 .journey-purple-pill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
   background-color: #EEECFF;
   color: #4F46E5;
   font-size: 0.75rem;
@@ -206,6 +211,10 @@
   border-radius: 20px;
   margin-bottom: 20px;
   text-transform: uppercase;
+}
+
+.journey-purple-pill > * + * {
+  margin-left: 8px;
 }
 
 [data-theme="dark"] .journey-purple-pill {
@@ -264,11 +273,14 @@
 .includes-box-title {
   display: flex;
   align-items: center;
-  gap: 10px;
   font-size: 1.05rem;
   font-weight: 800;
   color: #1E293B;
   margin-bottom: 20px;
+}
+
+.includes-box-title > * + * {
+  margin-left: 10px;
 }
 
 [data-theme="dark"] .includes-box-title {
@@ -291,11 +303,14 @@
 .include-card-item {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
   padding: 16px;
   background-color: #F8FAFC;
   border-radius: var(--radius-lg);
   border: 1px solid #E2E8F0;
+}
+
+.include-card-item > * + * {
+  margin-left: 14px;
 }
 
 [data-theme="dark"] .include-card-item {
@@ -364,7 +379,10 @@
   border: 1px solid #E2E8F0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+}
+
+.trait-card > * + * {
+  margin-top: 6px;
 }
 
 [data-theme="dark"] .trait-card {
@@ -409,7 +427,6 @@
 .nav-btn-back {
   display: flex;
   align-items: center;
-  gap: 8px;
   padding: 12px 24px;
   border-radius: 8px;
   background-color: transparent;
@@ -419,6 +436,10 @@
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
+}
+
+.nav-btn-back > * + * {
+  margin-left: 8px;
 }
 
 .nav-btn-back:hover {
@@ -437,7 +458,6 @@
 .nav-btn-next-green {
   display: flex;
   align-items: center;
-  gap: 8px;
   padding: 12px 28px;
   border-radius: 8px;
   background: linear-gradient(135deg, #10B981 0%, #059669 100%);
@@ -448,6 +468,10 @@
   cursor: pointer;
   box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-btn-next-green > * + * {
+  margin-left: 8px;
 }
 
 .nav-btn-next-green:hover {

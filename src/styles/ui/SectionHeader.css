@@ -5,7 +5,10 @@
 .section-header-title-row {
   display: flex;
   align-items: center;
-  gap: 12px;
+}
+
+.section-header-title-row > * + * {
+  margin-left: 12px;
 }
 
 .section-header-title-row h2 {

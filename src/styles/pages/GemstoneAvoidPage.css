@@ -131,7 +131,9 @@
 .avoid-card-info {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+}
+.avoid-card-info > * + * {
+  margin-top: 6px;
 }
 
 .avoid-gem-name {
@@ -183,7 +185,6 @@
 .btn-avoid-outline {
   display: flex;
   align-items: center;
-  gap: 6px;
   padding: 8px 16px;
   border: 1px solid rgba(239, 68, 68, 0.3);
   color: #DC2626;
@@ -196,6 +197,10 @@
   box-shadow: none;
   transition: all 0.2s ease;
   user-select: none;
+}
+
+.btn-avoid-outline > * + * {
+  margin-left: 6px;
 }
 
 .btn-avoid-outline:hover {

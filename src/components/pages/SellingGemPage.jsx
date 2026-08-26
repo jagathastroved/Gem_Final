@@ -26,11 +26,12 @@ const SellingGemPage = ({
   if (!report) return null;
 
   const gem = report?.primaryGemstone?.gemstone;
-  const comp = report?.comparison;
 
   const gemName = gem?.suitableStone;
-  const reasonText = gem?.whyThisStone;
-  const benefitsList = gem?.benefits || [
+
+  const reasonText = gem?.whySuitableText || `This planet exerts a favorable influence in your chart, making ${gemName} an excellent choice for you. As the gemstone linked to this planet, ${gemName} enhances its powerful effects in your life. Wearing it can amplify the positive attributes associated with the areas governed by this radiant planet.`;
+
+  const benefitsList = gem?.keyBenefits || [
     "Unlocks rapid career progression and wealth",
     "Improves focus and mental clarity",
     "Provides protection from negative energies"
@@ -53,15 +54,12 @@ const SellingGemPage = ({
         <div className="selling-gem-body">
           <div className="reason-section-new">
             <h2 className="section-heading"><Sparkles size={20} className="heading-icon" /> Why {gemName} is suitable for you?</h2>
-            {Array.isArray(reasonText) && reasonText.length > 0 ? (
-              reasonText.map((reason) => (
-                <p key={reason.id} className="reason-text">
-                  <strong>{reason.title}: </strong> {reason.text}
-                </p>
-              ))
-            ) : (
-              <p className="reason-text">{typeof reasonText === 'string' ? reasonText : "Based on your birth chart, this gemstone is highly favorable."}</p>
-            )}
+            <div className="astrologer-insight-card">
+              <div className="insight-content">
+                <h4>Astrological Insight</h4>
+                <p className="reason-desc">{reasonText}</p>
+              </div>
+            </div>
           </div>
 
           <div className="benefits-section-new">

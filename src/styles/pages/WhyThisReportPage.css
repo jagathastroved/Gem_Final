@@ -27,8 +27,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
   margin-bottom: 8px;
+}
+
+.feature-title-row > * + * {
+  margin-left: 6px;
 }
 
 .check-green-icon {
@@ -61,13 +64,19 @@
 .pdf-card-content {
   display: flex;
   align-items: center;
-  gap: 24px;
+}
+
+.pdf-card-content > * + * {
+  margin-left: 24px;
 }
 
 .pdf-text-col {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+}
+
+.pdf-text-col > * + * {
+  margin-top: 4px;
 }
 
 .pdf-title {
