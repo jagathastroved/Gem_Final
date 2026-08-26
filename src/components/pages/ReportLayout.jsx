@@ -78,6 +78,19 @@ export function ReportLayout({ report }) {
       />
 
       <main className="report-main-stage">
+        <button
+          className="desktop-theme-toggle"
+          onClick={toggleTheme}
+          title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          aria-label="Toggle Theme"
+        >
+          <Moon className="bg-icon moon-icon" size={22} />
+          <Sun className="bg-icon sun-icon" size={22} />
+          <div className={`toggle-knob ${isDarkMode ? 'dark' : 'light'}`}>
+            {isDarkMode ? <Moon size={20} /> : <Sun size={20} />}
+          </div>
+        </button>
+
         {/* Central AstroVed Styled Card Canvas */}
         <div className="report-central-canvas-card">
           <div

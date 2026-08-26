@@ -25,6 +25,75 @@
   min-width: 0;
 }
 
+/* Desktop Theme Toggle */
+.desktop-theme-toggle {
+  position: absolute;
+  top: 32px;
+  right: 40px;
+  background: #1a1a2e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  width: 88px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 0 14px;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.bg-icon {
+  z-index: 1;
+}
+
+.bg-icon.moon-icon {
+  color: #a5b4fc;
+}
+
+.bg-icon.sun-icon {
+  color: #fcd34d;
+}
+
+.toggle-knob {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 34px;
+  height: 34px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.toggle-knob.light {
+  transform: translateX(44px);
+}
+
+.toggle-knob.light svg {
+  color: #f59e0b;
+}
+
+.toggle-knob.dark {
+  transform: translateX(0);
+}
+
+.toggle-knob.dark svg {
+  color: #1e293b;
+}
+
+@media (max-width: 1080px) {
+  .desktop-theme-toggle {
+    display: none;
+  }
+}
+
 /* Central Elevated Canvas Card */
 .report-central-canvas-card {
   position: relative;

@@ -14,21 +14,29 @@ import {
   Heart
 } from 'lucide-react';
 import '../../styles/pages/SellingGemPage.css';
-import defaultGemImage from '../../assets/gemStone_images/emerald.png'; // Using emerald to match the green theme request
+import { useOutletContext } from 'react-router-dom';
+import { GemstoneMaterialize } from '../animations/GemstoneMaterialize.jsx';
 
 const SellingGemPage = ({
-  gemName = "Emerald",
-  gemImage = defaultGemImage,
   originalPrice = "₹ 16,000",
   price = "₹ 8,000",
   offerPercentage = "50% OFF",
-  recommendationReason = "Based on your birth chart, Mercury's position is highly favorable. Wearing an Emerald strengthens Mercury's ability to protect and enhance the areas of life it governs in your chart.",
-  benefits = [
+}) => {
+  const { report } = useOutletContext() || {};
+  if (!report) return null;
+
+  const gem = report?.primaryGemstone?.gemstone;
+  const comp = report?.comparison;
+
+  const gemName = gem?.suitableStone;
+  const gemImageSrc = gem?.image;
+  const reasonText = gem?.whyThisStone;
+  const benefitsList = gem?.benefits || [
     "Unlocks rapid career progression and wealth",
     "Improves focus and mental clarity",
     "Provides protection from negative energies"
-  ]
-}) => {
+  ];
+
   return (
     <div className="selling-gem-container">
       <div className="selling-gem-content">
@@ -37,23 +45,30 @@ const SellingGemPage = ({
         <div className="selling-gem-header">
           <p className="selling-gem-subtitle">YOUR RECOMMENDED GEMSTONE</p>
           <h1 className="selling-gem-title">{gemName}</h1>
-          <div className="gem-image-wrapper">
-            <div className="gem-light-glow"></div>
-            <img src={gemImage} alt={gemName} className="gem-image-light floating-animation" />
+          <div className="gem-image-container">
+            <GemstoneMaterialize gemType={gem?.suitableStone} name={gem?.suitableStone} />
           </div>
         </div>
 
         {/* Middle Section: Reason & Benefits */}
         <div className="selling-gem-body">
           <div className="reason-section-new">
-            <h2 className="section-heading"><Sparkles size={20} className="heading-icon"/> Why {gemName} is suatable for you?</h2>
-            <p className="reason-text">{recommendationReason}</p>
+            <h2 className="section-heading"><Sparkles size={20} className="heading-icon" /> Why {gemName} is suitable for you?</h2>
+            {Array.isArray(reasonText) && reasonText.length > 0 ? (
+              reasonText.map((reason) => (
+                <p key={reason.id} className="reason-text">
+                  <strong>{reason.title}: </strong> {reason.text}
+                </p>
+              ))
+            ) : (
+              <p className="reason-text">{typeof reasonText === 'string' ? reasonText : "Based on your birth chart, this gemstone is highly favorable."}</p>
+            )}
           </div>
 
           <div className="benefits-section-new">
-            <h3 className="section-heading"><Award size={20} className="heading-icon"/> Key Benefits for You</h3>
+            <h3 className="section-heading"><Award size={20} className="heading-icon" /> Key Benefits for You</h3>
             <ul className="benefits-list">
-              {benefits.map((benefit, index) => (
+              {benefitsList.map((benefit, index) => (
                 <li key={index}>
                   <CheckCircle2 className="benefit-icon" />
                   <span>{benefit}</span>
@@ -99,7 +114,7 @@ const SellingGemPage = ({
                 <span className="price-label">Special Price</span>
                 <span className="offer-badge">{offerPercentage}</span>
               </div>
-              
+
               <div className="price-value-row">
                 <span className="original-price">{originalPrice}</span>
                 <span className="price-value">{price}</span>

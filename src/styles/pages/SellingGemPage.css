@@ -55,33 +55,22 @@
   --sg-trust-dot: #cbd5e1;
   --sg-grad-1: rgba(16, 185, 129, 0.05);
   --sg-grad-2: rgba(14, 165, 233, 0.05);
+}
 
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--sg-bg-body);
-  background-image: radial-gradient(circle at top right, var(--sg-grad-1), transparent 40%),
-                    radial-gradient(circle at bottom left, var(--sg-grad-2), transparent 40%);
-  padding: 40px 20px;
+.selling-gem-container {
+  /* Removed container styling to let it blend perfectly into the parent layout */
   font-family: 'Inter', sans-serif;
   color: var(--sg-text-title);
-  transition: background-color 0.3s ease;
 }
 
 .selling-gem-content {
-  background: var(--sg-bg-card);
   max-width: 700px;
   width: 100%;
-  border-radius: 24px;
-  box-shadow: var(--sg-shadow-card);
   padding: 40px;
   display: flex;
   flex-direction: column;
   gap: 32px;
-  border: 1px solid var(--sg-border);
   animation: slideUpFade 0.6s ease-out;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Header Section */
@@ -108,7 +97,7 @@
   margin: 0 0 30px 0;
 }
 
-.gem-image-wrapper {
+.gem-image-container {
   position: relative;
   width: 100%;
   max-width: 320px;
@@ -118,26 +107,26 @@
   margin-bottom: 20px;
 }
 
-.gem-light-glow {
-  position: absolute;
-  width: 250px;
-  height: 250px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0) 70%);
-  border-radius: 50%;
-  z-index: 0;
-  animation: pulseLight 4s infinite alternate;
+/* Scale up the GemstoneMaterialize component */
+.gem-image-container .gem-materialize-wrap {
+  width: 250px !important;
+  height: 250px !important;
 }
 
-.gem-image-light {
-  width: 100%;
-  object-fit: contain;
-  z-index: 1;
+.gem-image-container .gem-aura {
+  width: 350px !important;
+  height: 350px !important;
+}
+
+.gem-image-container .gem-floating-img {
+  width: 220px !important;
+  max-width: 220px !important;
   filter: drop-shadow(0 20px 30px var(--sg-image-shadow));
-  transition: filter 0.3s ease;
 }
 
-.floating-animation {
-  animation: floatLight 6s ease-in-out infinite;
+.gem-image-container .gem-floor-shadow {
+  width: 120px !important;
+  margin-top: 24px !important;
 }
 
 /* Body Section */
@@ -149,22 +138,10 @@
 
 .reason-section-new,
 .benefits-section-new {
-  background: var(--sg-bg-card);
-  border: 1px solid var(--sg-border);
-  border-radius: 16px;
-  padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.reason-section-new:hover,
-.benefits-section-new:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 35px -10px rgba(16, 185, 129, 0.1);
-  border-color: rgba(16, 185, 129, 0.3);
+  padding: 0 10px; /* Slight padding for alignment, no box */
 }
 
 .section-heading {
@@ -450,9 +427,49 @@
     display: none;
   }
   
+  .offer-card {
+    padding: 20px;
+  }
+
   .price-details-split {
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
+  }
+
+  .price-label-row,
+  .price-value-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .price-label {
+    font-size: 0.85rem;
+  }
+
+  .offer-badge {
+    font-size: 0.75rem;
+    padding: 3px 8px;
+  }
+
+  .original-price {
+    font-size: 1rem;
+  }
+
+  .price-value {
+    font-size: 2rem;
+  }
+
+  .price-label,
+  .offer-badge,
+  .original-price,
+  .price-value,
+  .buy-now-btn {
+    white-space: nowrap;
+  }
+
+  .buy-now-btn {
+    padding: 16px 20px;
   }
 }

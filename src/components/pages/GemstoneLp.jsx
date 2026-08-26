@@ -633,7 +633,7 @@ export function GemstoneLp({ onSubmitDetails }) {
                   rather than a one-size-fits-all sign rule.
                 </p>
                 <div className="lp-cta-row left" style={{ marginTop: '30px' }}>
-                  <a href="#gemstone-form" className="lp-btn lp-btn-gold uppercase" onClick={(e) => { e.preventDefault(); document.getElementById('gemstone-form').scrollIntoView({ behavior: 'smooth' }); }}>FIND MY CHART-ALIGNED GEMSTONE</a>
+                  <a href="#gemstone-form" className="lp-btn lp-btn-gold uppercase" onClick={(e) => { e.preventDefault(); document.getElementById('gemstone-form').scrollIntoView({ behavior: 'smooth' }); }}>FIND MY CHART ALIGNED GEMSTONE</a>
                 </div>
               </div>
               <div className="how-works-media">
@@ -728,8 +728,7 @@ export function GemstoneLp({ onSubmitDetails }) {
               <p className="premium-eyebrow">Selected for Your Chart. Prepared With Care.</p>
               <h2>The AstroVed Gemstone Advantage</h2>
               <p>
-                Choosing the right gemstone is only the first step. AstroVed adds a three-step devotional process
-                so the gemstone is selected for your chart and carefully prepared for traditional spiritual use.
+                Choosing the right gemstone is only the first step. Many gemstones sold online or through jewelers are offered primarily as jewelry or loose stones and may not include traditional Vedic preparation. AstroVed adds a three-step devotional process so the gemstone is selected for your chart and carefully prepared for traditional spiritual use.
               </p>
             </div>
 
