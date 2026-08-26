@@ -297,7 +297,7 @@
   margin: 0 auto;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 767px) {
   .lp-steps-grid-modern {
     grid-template-columns: 1fr;
     gap: 70px;
@@ -310,9 +310,9 @@
     animation: pulseArrowDown 2s infinite;
   }
   @keyframes pulseArrowDown {
-    0% { transform: translateX(50%) rotate(90deg) translateY(0); opacity: 0.4; }
-    50% { transform: translateX(50%) rotate(90deg) translateY(-6px); opacity: 1; }
-    100% { transform: translateX(50%) rotate(90deg) translateY(0); opacity: 0.4; }
+    0% { transform: translate(50%, 0) rotate(90deg); opacity: 0.4; }
+    50% { transform: translate(50%, 6px) rotate(90deg); opacity: 1; }
+    100% { transform: translate(50%, 0) rotate(90deg); opacity: 0.4; }
   }
   .steps-title {
     font-size: 16px;
@@ -411,7 +411,7 @@
   margin: 44px auto 36px;
   max-width: var(--max-width, 1180px);
 }
-@media(max-width:860px){ .lp-advantage-grid { grid-template-columns: 1fr; } }
+@media(max-width:767px){ .lp-advantage-grid { grid-template-columns: 1fr; } }
 
 .lp-adv-card {
   text-align: center;
@@ -791,6 +791,7 @@
 .container {
   max-width: 1180px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .lp-section-head, .lp-section-head.left {
@@ -931,6 +932,7 @@
   display: flex;
   align-items: flex-start;
   gap: 16px;
+  text-align: left !important;
 }
 
 .premium-icon-wrap-styled {
@@ -941,6 +943,7 @@
   font-size: clamp(13px, 4vw, 15px);
   color: #334155 !important;
   line-height: 1.5;
+  text-align: left !important;
 }
 
 .premium-benefit-title {
@@ -1128,7 +1131,7 @@
 .lp-areas-light-section {
   background-color: #fbfaf8;
   color: #333333;
-  padding: 40px 0 10px;
+  padding: 40px 0 60px;
   position: relative;
   overflow: hidden;
   text-align: center;
@@ -1605,7 +1608,7 @@
   transform: translateY(-2px);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .lp-advantage-light-section .lp-flex-head {
     flex-direction: column;
     gap: 20px;
@@ -1665,6 +1668,7 @@
 .how-it-works-left .custom-astro-header h2 {
   background: linear-gradient(135deg, #fde047 0%, #f59e0b 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   color: #fde047 !important; /* fallback */
   text-shadow: 0 4px 20px rgba(245, 158, 11, 0.2);
@@ -1686,10 +1690,19 @@
   margin: 0;
   position: relative;
 }
-@media (max-width: 992px) {
+@media (max-width: 767px) {
   .lp-compare-grid {
-    grid-template-columns: 1fr;
-    gap: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .vs-badge {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    margin: 10px auto;
+    z-index: 5;
   }
 }
 
@@ -1784,7 +1797,7 @@
 .vertical-flow .node {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 12px;
   width: 100%;
   padding: 14px 20px !important;
@@ -1867,6 +1880,7 @@
   .lp-note-block-banner {
     flex-direction: column;
     text-align: center;
+    padding: 24px 16px;
   }
   .note-banner-cta {
     width: 100%;
@@ -1875,7 +1889,8 @@
     width: 100%;
     display: block;
     white-space: normal;
-    padding: 16px 20px !important;
+    padding: 14px 10px !important;
+    font-size: 13px !important;
   }
 }
 
@@ -1898,4 +1913,20 @@
   flex-shrink: 0;
 }
 
-
+/* --- Global Mobile Button Gap Fix --- */
+@media (max-width: 768px) {
+  .gemstone-lp-section .lp-btn,
+  .gemstone-lp-section .premium-btn,
+  .gemstone-lp-section .lp-btn.uppercase,
+  .gemstone-lp-section .repo-green-submit-btn {
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    justify-content: center !important;
+    text-align: center !important;
+    display: inline-flex !important;
+    box-sizing: border-box !important;
+    font-size: 13px !important;
+    padding: 14px 16px !important;
+  }
+}

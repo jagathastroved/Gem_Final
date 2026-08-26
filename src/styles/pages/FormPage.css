@@ -316,8 +316,8 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
+    align-items: center;
+    text-align: center;
   }
 
   .repo-form-card {
@@ -325,22 +325,22 @@
   }
 
   .hero-repo-headline {
-    text-align: left;
-    margin-left: 0;
-    margin-right: 0;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .repo-headline,
   .hero-repo-subtitle {
-    text-align: left;
-    margin-left: 0;
-    margin-right: 0;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-repo-checklist {
     width: 100%;
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .repo-check-item {
