@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Target, Globe, Gem, Calendar, AlertCircle, Sparkles, Lock, Compass, ShieldAlert, Hourglass } from 'lucide-react';
+import { AlertCircle, Sparkles, ShieldAlert, Hourglass } from 'lucide-react';
 import { Card } from '../ui/Card.jsx';
 import { SearchableDropdown } from '../ui/SearchableDropdown.jsx';
 import '../../styles/pages/FormPage.css';
@@ -24,7 +24,11 @@ const ErrorIcon = ({ message }) => {
 }
 
 
-export function FormPage({ onSubmitDetails }) {
+const getDaysInMonth = (month, year) => {
+  return new Date(year, parseInt(month), 0).getDate();
+};
+
+export function FormPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const promoCode = searchParams.get('promo') || "";
@@ -154,10 +158,6 @@ export function FormPage({ onSubmitDetails }) {
   const currentMonth = currentDate.getMonth() + 1;
   const currentDay = currentDate.getDate();
 
-  const getDaysInMonth = (month, year) => {
-    return new Date(year, parseInt(month), 0).getDate();
-  };
-
   const selectedYear = parseInt(formData.dobYear) || currentYear;
   const selectedMonth = parseInt(formData.dobMonth) || currentMonth;
 
@@ -183,28 +183,30 @@ export function FormPage({ onSubmitDetails }) {
 
   useEffect(() => {
     // Reset day/month if they become invalid due to year/month change
-    let updatedFormData = { ...formData };
-    let changed = false;
+    setFormData(prevFormData => {
+      let updatedFormData = { ...prevFormData };
+      let changed = false;
 
-    if (selectedYear === currentYear && parseInt(formData.dobMonth) > currentMonth) {
-      updatedFormData.dobMonth = String(currentMonth).padStart(2, '0');
-      changed = true;
-    }
+      const currentSelectedYear = parseInt(prevFormData.dobYear) || currentYear;
 
-    const newMaxDays = getDaysInMonth(updatedFormData.dobMonth, updatedFormData.dobYear);
-    const finalMaxDays = (parseInt(updatedFormData.dobYear) === currentYear && parseInt(updatedFormData.dobMonth) === currentMonth)
-      ? Math.min(newMaxDays, currentDay)
-      : newMaxDays;
+      if (currentSelectedYear === currentYear && parseInt(prevFormData.dobMonth) > currentMonth) {
+        updatedFormData.dobMonth = String(currentMonth).padStart(2, '0');
+        changed = true;
+      }
 
-    if (parseInt(formData.dobDay) > finalMaxDays) {
-      updatedFormData.dobDay = String(finalMaxDays).padStart(2, '0');
-      changed = true;
-    }
+      const newMaxDays = getDaysInMonth(updatedFormData.dobMonth, updatedFormData.dobYear);
+      const finalMaxDays = (parseInt(updatedFormData.dobYear) === currentYear && parseInt(updatedFormData.dobMonth) === currentMonth)
+        ? Math.min(newMaxDays, currentDay)
+        : newMaxDays;
 
-    if (changed) {
-      setFormData(updatedFormData);
-    }
-  }, [formData.dobYear, formData.dobMonth]);
+      if (parseInt(prevFormData.dobDay) > finalMaxDays) {
+        updatedFormData.dobDay = String(finalMaxDays).padStart(2, '0');
+        changed = true;
+      }
+
+      return changed ? updatedFormData : prevFormData;
+    });
+  }, [formData.dobYear, formData.dobMonth, currentYear, currentMonth, currentDay]);
   const hours = Array.from({ length: 12 }, (_, i) => String(i + 1).padStart(2, '0'));
   const minutes = Array.from({ length: 60 }, (_, i) => String(i).padStart(2, '0'));
 

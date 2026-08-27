@@ -6,7 +6,7 @@ export const countryList = async () => {
     return countries.data.Countries;
   }
   catch (err) {
-    console.error('countrylist do not fetch')
+    console.error('countrylist do not fetch', err)
   }
 };
 
@@ -15,7 +15,7 @@ export const cityList = async (countryName, cityName) => {
     const cities = await axios.get(`https://webservice.astroved.com/Api/Panchang/PopulateCityBycountry/${countryName}/${cityName}`)
     return cities
   } catch (error) {
-    console.error('cityList is not able to fetch');
+    console.error('cityList is not able to fetch', error);
   }
 }
 
