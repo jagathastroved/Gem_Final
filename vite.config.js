@@ -37,13 +37,13 @@ export default defineConfig(() => {
 
       // local Project Run Uncommend this 
 
-      proxy: {
-        '/gemstone-report/api': {
-          target: 'https://astropedia-ai.astroved.com',
-          changeOrigin: true,
-          secure: false,
-        }
-      },
+      // proxy: {
+      //   '/gemstone-report/api': {
+      //     target: 'https://astropedia-ai.astroved.com',
+      //     changeOrigin: true,
+      //     secure: false,
+      //   }
+      // },
 
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
       // Do not modify file watching is disabled to prevent flickering during agent edits.

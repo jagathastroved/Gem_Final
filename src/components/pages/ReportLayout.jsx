@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Outlet } from 'react-router-dom';
-import { Sun, Moon, Sparkles, Gem, ArrowLeft, ArrowRight, Compass } from 'lucide-react';
+import { Sun, Moon, ArrowLeft, ArrowRight, Compass } from 'lucide-react';
 import { ReportSidebar } from '../report/ReportSidebar.jsx';
 import '../../styles/pages/ReportContainerPage.css';
 import { useTheme } from '../../context/ThemeContext.jsx';
