@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation, Navigate } from 'react-router-dom';
-import { CheckCircle2, Circle, Loader2 } from 'lucide-react';
+import { CheckCircle2, Circle } from 'lucide-react';
 import { OrbitalRings } from '../animations/OrbitalRings.jsx';
 import '../../styles/pages/AnalysisLoadingPage.css';
 import { fetchGemstoneReport } from '@/src/services/astrologyApi.js';
@@ -24,10 +24,6 @@ export function AnalysisLoadingPage({ onSubmitDetails }) {
   const location = useLocation();
   const { birthDetails } = location.state || {};
   const apiCalled = useRef(false);
-
-  if (!birthDetails) {
-    return <Navigate to="/" replace />;
-  }
 
   useEffect(() => {
     if (progress >= 100) {
@@ -75,8 +71,12 @@ export function AnalysisLoadingPage({ onSubmitDetails }) {
       setActiveStageIndex(STAGES.length - 1);
     };
     doFetch();
-  }, [birthDetails, onSubmitDetails]);
+  }, [birthDetails, onSubmitDetails, navigate]);
   // Navigation is now handled by App.jsx when the API call completes
+
+  if (!birthDetails) {
+    return <Navigate to="/" replace />;
+  }
 
   return (
     <div className="analysis-loading-page">

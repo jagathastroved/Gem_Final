@@ -1,4 +1,3 @@
-import React from 'react';
 import { Card } from '../ui/Card.jsx';
 import { FileText, Sparkles, Sun, Moon, Flame, Zap, BookOpen, Heart, Anchor, Wind, Compass } from 'lucide-react';
 import { TravelingMarker } from '../animations/TravelingMarker.jsx';
@@ -24,7 +23,7 @@ export function DashaTransitPage() {
   const { report } = useOutletContext();
   if (!report || !report.timeline) return null;
 
-  const { keyInsights, events } = report?.timeline;
+  const { keyInsights, events } = report.timeline;
 
   return (
     <section id="timeline-section" className="dasha-timeline-section">

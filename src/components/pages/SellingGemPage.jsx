@@ -1,13 +1,10 @@
-import React from 'react';
 import {
   CheckCircle2,
   ShoppingCart,
   ShieldCheck,
   Truck,
   Award,
-  Leaf,
   Zap,
-  Diamond,
   Sparkles,
   Target,
   Clock,

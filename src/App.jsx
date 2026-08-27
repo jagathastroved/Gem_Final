@@ -19,6 +19,7 @@ function AppContent() {
       const saved = localStorage.getItem('gemstoneReport');
       return saved ? JSON.parse(saved) : null;
     } catch (e) {
+      console.log('Error Msg: ', e);
       return null;
     }
   });
@@ -28,6 +29,7 @@ function AppContent() {
       const saved = localStorage.getItem('gemstoneBirthDetails');
       return saved ? JSON.parse(saved) : null;
     } catch (e) {
+      console.error('Error Msg: ', e);
       return null;
     }
   });

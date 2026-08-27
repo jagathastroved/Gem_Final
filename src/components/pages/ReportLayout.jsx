@@ -1,9 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Outlet } from 'react-router-dom';
 import { Sun, Moon, ArrowLeft, ArrowRight, Compass } from 'lucide-react';
 import { ReportSidebar } from '../report/ReportSidebar.jsx';
 import '../../styles/pages/ReportContainerPage.css';
 import { useTheme } from '../../context/ThemeContext.jsx';
+
+const sections = [
+  { id: 'welcome', title: 'Welcome', badgeText: 'WELCOME' },
+  { id: 'lagna', title: 'Chart & Lagna Math', badgeText: 'ASTROLOGICAL BLUEPRINT' },
+  { id: 'primary-gem', title: 'Primary Gemstone', badgeText: 'PRIMARY GEMSTONE' },
+  { id: 'why-astroved', title: 'Why Astroved', badgeText: 'WHY ASTROVED' },
+  { id: 'gems-avoid', title: 'Gems to Avoid', badgeText: 'GEMS TO AVOID' },
+  { id: 'dasha-transit', title: 'Dasha & Transit', badgeText: 'DASHA & TRANSIT' },
+  { id: 'selling-gem', title: 'Buy Gemstone', badgeText: 'YOUR GEMSTONE' },
+];
 
 export function ReportLayout({ report }) {
   const navigate = useNavigate();
@@ -12,18 +22,6 @@ export function ReportLayout({ report }) {
 
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
-
-  const sections = [
-    { id: 'welcome', title: 'Welcome', badgeText: 'WELCOME' },
-    { id: 'lagna', title: 'Chart & Lagna Math', badgeText: 'ASTROLOGICAL BLUEPRINT' },
-    { id: 'primary-gem', title: 'Primary Gemstone', badgeText: 'PRIMARY GEMSTONE' },
-    { id: 'why-astroved', title: 'Why Astroved', badgeText: 'WHY ASTROVED' },
-    { id: 'gems-avoid', title: 'Gems to Avoid', badgeText: 'GEMS TO AVOID' },
-    { id: 'dasha-transit', title: 'Dasha & Transit', badgeText: 'DASHA & TRANSIT' },
-    { id: 'selling-gem', title: 'Buy Gemstone', badgeText: 'YOUR GEMSTONE' },
-    // { id: 'why-report', title: 'Why This Gemstone', badgeText: 'ASTROLOGICAL PROOF' },
-    // { id: 'premium', title: 'Premium Deliverables', badgeText: 'UNLOCK FULL REPORT', isPro: true },
-  ];
 
   // Extract the current path ID from the URL (e.g. "/lagna" -> "lagna")
   const currentPathId = location.pathname.split('/')[1] || '';

@@ -2039,14 +2039,7 @@
   margin: 0;
   position: relative;
 }
-@media (max-width: 992px) {
-  .lp-compare-grid {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-}
-
-.vs-badge {
+.lp-compare-grid .vs-badge {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -2066,9 +2059,30 @@
   z-index: 2;
 }
 
+@media (max-width: 992px) {
+  .lp-compare-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .lp-compare-grid > .lp-compare-card {
+    margin-bottom: 0;
+  }
+  .lp-compare-grid .vs-badge {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: -12px auto;
+    z-index: 5;
+  }
+}
+
 .lp-compare-card {
   padding: 32px 20px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  box-sizing: border-box;
 }
 .lp-compare-card:hover {
   transform: translateY(-4px);
@@ -2127,6 +2141,7 @@
   font-family: var(--sans);
   font-size: 15px;
   font-weight: 600;
+  width: 100%;
 }
 
 .lp-flow > * + * {
@@ -2135,15 +2150,19 @@
 .vertical-flow {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .vertical-flow > * + * {
   margin-top: 12px;
+  margin-left: 0;
 }
 .vertical-flow .node {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 100%;
+  width: 220px !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
   padding: 14px 20px !important;
   border-radius: 12px !important;
   font-weight: 600;

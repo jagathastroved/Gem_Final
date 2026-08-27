@@ -258,7 +258,7 @@ export function FormPage({ onSubmitDetails }) {
             </li>
           </ul>
 
-          <div>
+          <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
             <a href="#gemstone-form" className="premium-btn" onClick={(e) => { e.preventDefault(); document.getElementById('gemstone-form').scrollIntoView({ behavior: 'smooth' }); }}>
               GET MY FREE GEMSTONE REPORT
             </a>
