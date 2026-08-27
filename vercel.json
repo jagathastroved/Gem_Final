@@ -1,4 +1,11 @@
 {
+    "redirects": [
+        {
+            "source": "/",
+            "destination": "/gemstone-report",
+            "permanent": false
+        }
+    ],
     "rewrites": [
         {
             "source": "/gemstone-report/assets/(.*)",
