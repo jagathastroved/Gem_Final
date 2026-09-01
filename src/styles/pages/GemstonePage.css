@@ -1015,6 +1015,201 @@
   justify-content: center;
   margin-top: -12px;
   margin-bottom: 16px;
+  background: radial-gradient(circle, #2A3A5E 0%, #1E293B 100%);
+  border-color: #3B4252;
+}
+
+.premium-right-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.premium-title {
+  font-family: var(--font-serif, serif);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #1E293B;
+  margin-bottom: 24px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+[data-theme="dark"] .premium-title {
+  color: #FFFFFF;
+}
+
+.premium-features-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.premium-features-row > * + * {
+  margin-left: 16px;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 80px;
+}
+
+.feature-item > * + * {
+  margin-top: 8px;
+}
+
+.feature-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background-color: #F5F3FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6358F7;
+}
+
+[data-theme="dark"] .feature-icon-box {
+  background-color: rgba(99, 88, 247, 0.1);
+  color: #A5B4FC;
+}
+
+.f-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.feature-item span {
+  font-size: 0.75rem;
+  color: #475569;
+  line-height: 1.4;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .feature-item span {
+  color: #94A3B8;
+}
+
+.premium-pricing-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #FFFFFF;
+  padding: 16px 24px;
+  border-radius: 16px;
+  border: 1px solid #E2E8F0;
+  flex-wrap: wrap;
+}
+
+.premium-pricing-row > * + * {
+  margin-left: 16px;
+}
+
+[data-theme="dark"] .premium-pricing-row {
+  background-color: #0F172A;
+  border-color: #334155;
+}
+
+.price-block {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.price-block > * + * {
+  margin-left: 12px;
+}
+
+.price-current {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #1E293B;
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .price-current {
+  color: #FFFFFF;
+}
+
+.price-old {
+  font-size: 1.1rem;
+  color: #94A3B8;
+  text-decoration: line-through;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.price-discount {
+  background: linear-gradient(90deg, #4F46E5, #7C3AED);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.premium-buy-btn {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, #4F46E5, #7C3AED);
+  color: white;
+  border: none;
+  padding: 14px 40px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(99, 88, 247, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.premium-buy-btn > * + * {
+  margin-left: 12px;
+}
+
+.premium-buy-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(99, 88, 247, 0.5);
+}
+
+@media (max-width: 767px) {
+  .premium-cta-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 32px 16px;
+    padding-top: 56px;
+  }
+
+  .premium-pricing-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .premium-features-row {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* Footer Guarantees */
+.premium-footer-guarantees {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -12px;
+  margin-bottom: 16px;
 }
 .premium-footer-guarantees > * + * {
   margin-left: 16px;
@@ -1059,4 +1254,59 @@
   .g-dot {
     display: none;
   }
+}
+
+/* Added for interest checkbox styling */
+.interest-checkbox-container {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.interest-checkbox-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  color: #475569;
+  padding: 12px 20px;
+  background-color: #F8F7FF;
+  border: 1px solid #E0DDF7;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.interest-checkbox-label:hover {
+  background-color: #F0EDFF;
+  border-color: #C7C2FE;
+}
+
+[data-theme="dark"] .interest-checkbox-label {
+  color: #CBD5E1;
+  background-color: rgba(99, 88, 247, 0.05);
+  border-color: #2A3A5E;
+}
+
+.interest-checkbox-input {
+  /* Reset appearance in case a global reset hid it */
+  appearance: auto;
+  -webkit-appearance: checkbox;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #6358F7;
+  margin: 0;
+  display: inline-block;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.gem-buy-btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

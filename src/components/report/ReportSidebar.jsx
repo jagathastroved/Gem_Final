@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BookOpen, Download, RotateCcw, PanelLeftClose, PanelLeft, Sun, Moon } from 'lucide-react';
+import { BookOpen, RotateCcw, PanelLeftClose, Sun, Moon } from 'lucide-react';
 import '../../styles/report/ReportSidebar.css';
 
 export function ReportSidebar({
@@ -9,11 +9,17 @@ export function ReportSidebar({
   onSelectSection,
   collapsed,
   onToggleCollapse,
-  // onDownloadReport,
   isDarkMode,
   toggleTheme
 }) {
   const navigate = useNavigate();
+  const activeItemRef = useRef(null);
+
+  useEffect(() => {
+    if (activeItemRef.current && !collapsed) {
+      activeItemRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, [activeSectionIndex, collapsed]);
 
   useEffect(() => {
     const handleScrollLock = () => {
@@ -74,7 +80,7 @@ export function ReportSidebar({
             <button
               type="button"
               className="theme-toggle-switch-btn"
-              onClick={(e) => {
+              onClick={() => {
                 toggleTheme();
                 if (window.innerWidth <= 1080 && !collapsed) {
                   onToggleCollapse();
@@ -106,6 +112,7 @@ export function ReportSidebar({
             return (
               <button
                 key={sec.id}
+                ref={isActive ? activeItemRef : null}
                 className={`sidebar-index-item ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}`}
                 onClick={() => onSelectSection(idx)}
               >

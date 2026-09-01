@@ -217,7 +217,7 @@
   flex-direction: column;
   flex: 1;
   min-height: 0;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   padding-right: 6px; /* Stop overlap with buttons */
   -webkit-overflow-scrolling: auto;

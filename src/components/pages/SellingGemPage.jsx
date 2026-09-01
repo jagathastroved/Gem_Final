@@ -13,18 +13,20 @@ import {
 import '../../styles/pages/SellingGemPage.css';
 import { useOutletContext } from 'react-router-dom';
 import { GemstoneMaterialize } from '../animations/GemstoneMaterialize.jsx';
+import { useState, useEffect } from 'react';
+import { InterestModal } from '../ui/InterestModal.jsx';
+import { ConfirmModal } from '../ui/ConfirmModal.jsx';
 
-const SellingGemPage = ({
-  originalPrice = "₹ 16,000",
-  price = "₹ 8,000",
-  offerPercentage = "50% OFF",
-}) => {
+const SellingGemPage = () => {
   const { report } = useOutletContext() || {};
-  if (!report) return null;
+  const [isInterested, setIsInterested] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   const gem = report?.primaryGemstone?.gemstone;
 
-  const gemName = gem?.suitableStone;
+  // const gemName = gem?.suitableStone;
+  const gemName = 'Diamond';
 
   const reasonText = gem?.whySuitableText || `This planet exerts a favorable influence in your chart, making ${gemName} an excellent choice for you. As the gemstone linked to this planet, ${gemName} enhances its powerful effects in your life. Wearing it can amplify the positive attributes associated with the areas governed by this radiant planet.`;
 
@@ -33,6 +35,66 @@ const SellingGemPage = ({
     "Improves focus and mental clarity",
     "Provides protection from negative energies"
   ];
+
+  const isSpecialGem = ['Diamond', 'diamond', 'Hessonite', 'hessonite'].includes(gemName);
+
+  useEffect(() => {
+    if (isSpecialGem) {
+      const savedInterest = localStorage.getItem(`gem_interest_${gemName}`);
+      if (savedInterest === 'true') {
+        setIsInterested(true);
+      }
+    }
+  }, [gemName, isSpecialGem]);
+
+  if (!report) return null;
+
+
+  const handleInterestChange = (e) => {
+    // Do not allow unchecking once checked
+    if (isInterested) return;
+
+    if (e.target.checked) {
+      setShowConfirmModal(true);
+    }
+  };
+
+  const handleConfirmInterest = (mobileNumber) => {
+    setIsInterested(true);
+    if (isSpecialGem) {
+      localStorage.setItem(`gem_interest_${gemName}`, 'true');
+    }
+    setShowModal(true);
+
+    try {
+      const savedDetails = localStorage.getItem('gemstoneBirthDetails');
+      const details = savedDetails ? JSON.parse(savedDetails) : {};
+
+      const payload = {
+        fullName: details.fullName || '',
+        gender: details.gender || '',
+        email: details.email || '',
+        birthCity: details.birthCity || '',
+        mobileNumber: mobileNumber || '',
+        gemStoneName: gemName
+      };
+
+      console.log("Sending data to backend:", payload);
+    } catch (e) {
+      console.error("Error retrieving user details", e);
+    }
+  };
+
+  const handleBuyClick = () => {
+    if (isSpecialGem) {
+      if (isInterested) {
+        setShowModal(true);
+      }
+    } else {
+      // Default buy now behavior
+      console.log("Proceeding to normal checkout...");
+    }
+  };
 
   return (
     <div className="selling-gem-container">
@@ -103,7 +165,7 @@ const SellingGemPage = ({
         {/* Bottom Section: Offer Card & Action */}
         <div className="selling-gem-footer">
           <div className="offer-card">
-            <div className="price-details-split">
+            {/* <div className="price-details-split">
               <div className="price-label-row">
                 <span className="price-label">Special Price</span>
                 <span className="offer-badge">{offerPercentage}</span>
@@ -113,12 +175,31 @@ const SellingGemPage = ({
                 <span className="original-price">{originalPrice}</span>
                 <span className="price-value">{price}</span>
               </div>
-            </div>
+            </div> */}
 
-            <button className="buy-now-btn pulse-light-animation">
-              <ShoppingCart size={20} />
-              <span>Buy Now</span>
-            </button>
+            {isSpecialGem && (
+              <div className="interest-checkbox-container">
+                <label className="interest-checkbox-label">
+                  <input
+                    type="checkbox"
+                    checked={isInterested}
+                    onChange={handleInterestChange}
+                    className="interest-checkbox-input"
+                  />
+                  Are you interested to buy that product?
+                </label>
+              </div>
+            )}
+
+            {!isSpecialGem && (
+              <button
+                className="buy-now-btn pulse-light-animation"
+                onClick={handleBuyClick}
+              >
+                <ShoppingCart size={20} />
+                <span>Buy Now</span>
+              </button>
+            )}
 
             {/* Trust Indicators */}
             <div className="trust-indicators">
@@ -128,8 +209,8 @@ const SellingGemPage = ({
               </div>
               <span className="trust-dot">•</span>
               <div className="trust-item">
-                <Truck size={14} />
-                <span>Free Shipping</span>
+                <Sparkles size={14} />
+                <span>Premium Quality</span>
               </div>
               <span className="trust-dot">•</span>
               <div className="trust-item">
@@ -141,6 +222,18 @@ const SellingGemPage = ({
         </div>
 
       </div>
+
+      <InterestModal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        gemName={gemName}
+      />
+      <ConfirmModal
+        isOpen={showConfirmModal}
+        onClose={() => setShowConfirmModal(false)}
+        onConfirm={handleConfirmInterest}
+        gemName={gemName}
+      />
     </div>
   );
 };

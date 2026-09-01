@@ -165,6 +165,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  min-width: 0;
 }
 
 .insight-body-content > * + * {
@@ -176,6 +177,8 @@
   color: #334155;
   line-height: 1.6;
   margin: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 [data-theme="dark"] .insight-text-modern {
@@ -191,7 +194,6 @@
   padding: 8px 12px;
   border-radius: 6px;
   line-height: 1.4;
-  word-break: break-word;
 }
 
 .insight-source-modern > * + * {
@@ -401,13 +403,15 @@
 
 @media (max-width: 640px) {
   .insight-card-modern {
-    flex-direction: row;
+    display: flex;
+    flex-direction: column;
     align-items: flex-start;
     padding: 16px;
   }
   
   .insight-card-modern > * + * {
-    margin-left: 12px;
+    margin-left: 0;
+    margin-top: 12px;
   }
 
   .insight-num-circle {

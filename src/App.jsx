@@ -14,6 +14,24 @@ function AppContent() {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
+  useEffect(() => {
+    const getCookie = (name) => {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+      return null;
+    };
+
+    const currency = getCookie('currentcurrency');
+
+    if (currency) {
+      const currentcurrency = currency.toUpperCase();
+      if (currentcurrency === 'USD' || currentcurrency === 'MYR') {
+        window.location.href = 'https://www.astroved.com/';
+      }
+    }
+  }, []);
+
   const [report, setReport] = useState(() => {
     try {
       const saved = localStorage.getItem('gemstoneReport');

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Target, Globe, Gem, AlertCircle, Sparkles, Lock, Compass, ShieldAlert, Shield, Hourglass, Users, Moon, User, FileSearch, ArrowDown, ArrowRight } from 'lucide-react';
 import { Card } from '../ui/Card.jsx';
@@ -20,7 +20,7 @@ const ErrorIcon = ({ message }) => {
 }
 
 
-export function GemstoneLp({ onSubmitDetails }) {
+export function GemstoneLp() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const promoCode = searchParams.get('promo') || "";
@@ -177,28 +177,29 @@ export function GemstoneLp({ onSubmitDetails }) {
 
   useEffect(() => {
     // Reset day/month if they become invalid due to year/month change
-    let updatedFormData = { ...formData };
-    let changed = false;
+    setFormData((prevFormData) => {
+      let updatedFormData = { ...prevFormData };
+      let changed = false;
+      const currentSelectedYear = parseInt(prevFormData.dobYear) || currentYear;
 
-    if (selectedYear === currentYear && parseInt(formData.dobMonth) > currentMonth) {
-      updatedFormData.dobMonth = String(currentMonth).padStart(2, '0');
-      changed = true;
-    }
+      if (currentSelectedYear === currentYear && parseInt(prevFormData.dobMonth) > currentMonth) {
+        updatedFormData.dobMonth = String(currentMonth).padStart(2, '0');
+        changed = true;
+      }
 
-    const newMaxDays = getDaysInMonth(updatedFormData.dobMonth, updatedFormData.dobYear);
-    const finalMaxDays = (parseInt(updatedFormData.dobYear) === currentYear && parseInt(updatedFormData.dobMonth) === currentMonth)
-      ? Math.min(newMaxDays, currentDay)
-      : newMaxDays;
+      const newMaxDays = getDaysInMonth(updatedFormData.dobMonth, updatedFormData.dobYear);
+      const finalMaxDays = (parseInt(updatedFormData.dobYear) === currentYear && parseInt(updatedFormData.dobMonth) === currentMonth)
+        ? Math.min(newMaxDays, currentDay)
+        : newMaxDays;
 
-    if (parseInt(formData.dobDay) > finalMaxDays) {
-      updatedFormData.dobDay = String(finalMaxDays).padStart(2, '0');
-      changed = true;
-    }
+      if (parseInt(prevFormData.dobDay) > finalMaxDays) {
+        updatedFormData.dobDay = String(finalMaxDays).padStart(2, '0');
+        changed = true;
+      }
 
-    if (changed) {
-      setFormData(updatedFormData);
-    }
-  }, [formData.dobYear, formData.dobMonth]);
+      return changed ? updatedFormData : prevFormData;
+    });
+  }, [formData.dobYear, formData.dobMonth, currentYear, currentMonth, currentDay]);
   const hours = Array.from({ length: 12 }, (_, i) => String(i + 1).padStart(2, '0'));
   const minutes = Array.from({ length: 60 }, (_, i) => String(i).padStart(2, '0'));
 
@@ -555,9 +556,7 @@ export function GemstoneLp({ onSubmitDetails }) {
         <section className="lp-section-pad steps-section" id="steps">
           <div className="container">
             <div className="steps-header-row">
-              <span className="steps-line left"></span>
               <h2 className="steps-title">GET YOUR GEMSTONE REPORT IN 3 SIMPLE STEPS</h2>
-              <span className="steps-line right"></span>
             </div>
 
             <div className="lp-steps-grid-modern">
@@ -747,7 +746,7 @@ export function GemstoneLp({ onSubmitDetails }) {
                 </div>
                 <div className="lp-adv-num">02</div>
                 <h3>Activate With Vedic Ritual</h3>
-                <p>Prayers, mantras, and traditional ritual intention prepare the gemstone for its planetary purpose.</p>
+                <p>Prayer, mantra, and traditional ritual intention prepare the gemstone for its planetary purpose.</p>
               </div>
               <div className="lp-adv-card">
                 <div className="lp-adv-icon">
