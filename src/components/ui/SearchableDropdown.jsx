@@ -114,7 +114,7 @@ export function SearchableDropdown({
       {isOpen && (
         <ul className={`searchable-dropdown-menu ${openUpwards ? 'searchable-dropdown-up' : ''}`}>
           {loading ? (
-            <li className="searchable-dropdown-empty" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#6b7280' }}>
+            <li className="searchable-dropdown-empty" style={{ display: 'flex', alignItems: 'center', color: '#6b7280' }}>
               <style>
                 {`
                   @keyframes dropdown-spin {
@@ -122,7 +122,7 @@ export function SearchableDropdown({
                   }
                 `}
               </style>
-              <div style={{ animation: 'dropdown-spin 1s linear infinite', width: '16px', height: '16px', border: '2px solid #e5e7eb', borderTopColor: '#8b5cf6', borderRadius: '50%', flexShrink: 0 }}></div>
+              <div style={{ animation: 'dropdown-spin 1s linear infinite', width: '16px', height: '16px', border: '2px solid #e5e7eb', borderTopColor: '#8b5cf6', borderRadius: '50%', flexShrink: 0, marginRight: '8px' }}></div>
               Searching for "{query}"...
             </li>
           ) : internalOptions.length > 0 ? (

@@ -81,8 +81,8 @@ export function DashaTransitPage() {
                       <IconComponent size={22} strokeWidth={2.5} />
                     </div>
                     <div className="event-info-col">
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '8px' }}>
-                        <h5 className="event-title-modern" style={{ margin: 0 }}>{ev.title}</h5>
+                      <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', marginBottom: '8px' }}>
+                        <h5 className="event-title-modern" style={{ margin: 0, marginRight: '12px' }}>{ev.title}</h5>
                         {ev.active && (
                           <div className="active-status-tag">
                             <span className="pulse-dot"></span> Active Phase

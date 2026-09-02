@@ -550,10 +550,12 @@
     grid-template-columns: 1fr;
   }
   .trust-indicators {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
+    display: block;
+    text-align: center;
+  }
+  .trust-indicators > * {
+    display: inline-block;
+    margin: 8px;
   }
   .trust-dot {
     display: none;
@@ -564,16 +566,25 @@
   }
 
   .price-details-split {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+  }
+  
+  .price-details-split > * + * {
+    margin-top: 12px;
   }
 
   .price-label-row,
   .price-value-row {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+  }
+  
+  .price-label-row > * + *,
+  .price-value-row > * + * {
+    margin-top: 4px;
   }
 
   .price-label {

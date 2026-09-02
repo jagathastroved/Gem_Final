@@ -37,7 +37,7 @@ function AppContent() {
       const saved = localStorage.getItem('gemstoneReport');
       return saved ? JSON.parse(saved) : null;
     } catch (e) {
-      console.log('Error Msg: ', e);
+      console.error('Error Msg: ', e);
       return null;
     }
   });

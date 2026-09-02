@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
   ShoppingCart, Info, Quote, FileText, CheckCircle2,
   Sparkles, Leaf, Zap, Diamond, Award, ShieldCheck,
@@ -43,7 +44,7 @@ export function GemstonePage() {
     }
   };
 
-  const handleConfirmInterest = (mobileNumber) => {
+  const handleConfirmInterest = async (mobileNumber) => {
     setIsInterested(true);
     if (isSpecialGem) {
       localStorage.setItem(`gem_interest_${gemName}`, 'true');
@@ -58,12 +59,23 @@ export function GemstonePage() {
         fullName: details.fullName || '',
         gender: details.gender || '',
         email: details.email || '',
-        birthCity: details.birthCity || '',
-        mobileNumber: mobileNumber || '',
-        gemStoneName: gemName || '',
+        phoneNumber: mobileNumber || '',
+        city: details.birthCity || '',
+        country: details.country || 'India',
+        gemstoneName: gemName || '',
       };
 
-      console.log("Sending data to backend:", payload);
+      // console.log("Sending data to backend:", payload);
+
+      const interestApiUrl = import.meta.env.VITE_INTEREST_API;
+      if (interestApiUrl) {
+        try {
+          await axios.post(interestApiUrl, payload);
+          // console.log("Data successfully posted to", interestApiUrl);
+        } catch (apiError) {
+          console.error("Failed to post interest data", apiError);
+        }
+      }
     } catch (e) {
       console.error("Error retrieving user details", e);
     }

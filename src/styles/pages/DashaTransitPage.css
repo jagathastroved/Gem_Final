@@ -403,9 +403,7 @@
 
 @media (max-width: 640px) {
   .insight-card-modern {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    display: block;
     padding: 16px;
   }
   
@@ -418,7 +416,7 @@
     width: 32px;
     height: 32px;
     font-size: 0.9rem;
-    margin-top: 2px;
+    margin-top: 0;
   }
 
   .timeline-events-list {
@@ -430,10 +428,11 @@
   }
 
   .timeline-event-node {
-    flex-direction: column;
+    display: block;
   }
   
   .timeline-event-node > * + * {
+    margin-left: 0;
     margin-top: 12px;
   }
 

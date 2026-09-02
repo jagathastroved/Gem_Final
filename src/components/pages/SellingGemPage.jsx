@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
   CheckCircle2,
   ShoppingCart,
@@ -13,7 +15,6 @@ import {
 import '../../styles/pages/SellingGemPage.css';
 import { useOutletContext } from 'react-router-dom';
 import { GemstoneMaterialize } from '../animations/GemstoneMaterialize.jsx';
-import { useState, useEffect } from 'react';
 import { InterestModal } from '../ui/InterestModal.jsx';
 import { ConfirmModal } from '../ui/ConfirmModal.jsx';
 
@@ -25,8 +26,8 @@ const SellingGemPage = () => {
 
   const gem = report?.primaryGemstone?.gemstone;
 
-  // const gemName = gem?.suitableStone;
-  const gemName = 'Diamond';
+  const gemName = gem?.suitableStone;
+  // const gemName = 'Diamond';
 
   const reasonText = gem?.whySuitableText || `This planet exerts a favorable influence in your chart, making ${gemName} an excellent choice for you. As the gemstone linked to this planet, ${gemName} enhances its powerful effects in your life. Wearing it can amplify the positive attributes associated with the areas governed by this radiant planet.`;
 
@@ -59,7 +60,7 @@ const SellingGemPage = () => {
     }
   };
 
-  const handleConfirmInterest = (mobileNumber) => {
+  const handleConfirmInterest = async (mobileNumber) => {
     setIsInterested(true);
     if (isSpecialGem) {
       localStorage.setItem(`gem_interest_${gemName}`, 'true');
@@ -74,12 +75,23 @@ const SellingGemPage = () => {
         fullName: details.fullName || '',
         gender: details.gender || '',
         email: details.email || '',
-        birthCity: details.birthCity || '',
-        mobileNumber: mobileNumber || '',
-        gemStoneName: gemName
+        phoneNumber: mobileNumber || '',
+        city: details.birthCity || '',
+        country: details.country || 'India',
+        gemstoneName: gemName || ''
       };
 
-      console.log("Sending data to backend:", payload);
+      // console.log("Sending data to backend:", payload);
+
+      const interestApiUrl = import.meta.env.VITE_INTEREST_API;
+      if (interestApiUrl) {
+        try {
+          await axios.post(interestApiUrl, payload);
+          // console.log("Data successfully posted to", interestApiUrl);
+        } catch (apiError) {
+          console.error("Failed to post interest data", apiError);
+        }
+      }
     } catch (e) {
       console.error("Error retrieving user details", e);
     }
