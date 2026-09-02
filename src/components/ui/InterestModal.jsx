@@ -16,11 +16,15 @@ export const InterestModal = ({ isOpen, onClose, gemName }) => {
         <div className="interest-modal-icon-container">
           <CheckCircle2 size={48} color="#22c55e" />
         </div>
-        <h3 className="interest-modal-title">Interest Registered</h3>
-        <p className="interest-modal-desc">
-          Thanks for showing your interest in the <strong>{gemName}</strong> gemstone.<br />
-          We'll get back to you with pricing details shortly.
-        </p>
+        <h3 className="interest-modal-title">Registered Successfully</h3>
+        <div className="interest-modal-desc">
+          <p className="interest-modal-thank-you">
+            Thank you for showing your interest in the <strong>{gemName}</strong> gemstone.
+          </p>
+          <p className="interest-modal-info">
+            Our Customer Support Team will review your request and get back to you shortly with the pricing details and further information.
+          </p>
+        </div>
         <button
           onClick={onClose}
           className="interest-modal-btn-okay"
