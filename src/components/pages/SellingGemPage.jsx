@@ -37,7 +37,7 @@ const SellingGemPage = () => {
     "Provides protection from negative energies"
   ];
 
-  const isSpecialGem = ['Diamond', 'diamond', 'Hessonite', 'hessonite'].includes(gemName);
+  const isSpecialGem = ['Diamond', 'diamond'].includes(gemName);
 
   useEffect(() => {
     if (isSpecialGem) {

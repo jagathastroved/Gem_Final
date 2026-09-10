@@ -22,7 +22,7 @@ export function GemstonePage() {
   const comp = report?.comparison;
   const gemName = gem?.suitableStone;
 
-  const isSpecialGem = ['Diamond', 'diamond', 'Hessonite', 'hessonite'].includes(gemName);
+  const isSpecialGem = ['Diamond', 'diamond'].includes(gemName);
 
   useEffect(() => {
     if (isSpecialGem) {
