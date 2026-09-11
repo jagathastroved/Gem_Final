@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { ArrowUpRight, Compass, Moon, Star, Orbit, Sun, Sparkles, Calendar, Clock, MapPin, User } from 'lucide-react';
 import { useOutletContext } from 'react-router-dom';
 import '../../styles/pages/AstrologyDetailsPage.css';

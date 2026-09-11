@@ -17,10 +17,10 @@ export function GemstonePage() {
   const [isInterested, setIsInterested] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
-
   const gem = report?.primaryGemstone?.gemstone;
   const comp = report?.comparison;
   const gemName = gem?.suitableStone;
+  // const gemName = 'Diamond';
 
   const isSpecialGem = ['Diamond', 'diamond'].includes(gemName);
 
@@ -81,15 +81,19 @@ export function GemstonePage() {
     }
   };
 
-  const handleBuyClick = () => {
-    if (isSpecialGem) {
-      if (isInterested) {
-        setShowModal(true);
-      }
-    } else {
-      console.log("Proceeding to normal checkout...");
-    }
+  const GEMSTONE_PRODUCT_IDS = {
+    "blue_sapphire": 88722,
+    "yellow_sapphire": 88723,
+    "red_coral": 88724,
+    "cats_eye": 88725,
+    "emerald": 88726,
+    "ruby": 88727,
+    "pearl": 88728
   };
+
+  const normalizedGemName = gemName ? gemName.toLowerCase().replace(/[']/g, '').replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '') : '';
+  const productId = GEMSTONE_PRODUCT_IDS[normalizedGemName];
+  const astrovedLink = productId ? `https://www.astroved.com/-p${productId}.aspx` : '#';
 
   return (
     <>
@@ -167,13 +171,21 @@ export function GemstonePage() {
             )}
 
             {!isSpecialGem && (
-              <button
+              <a
+                href={astrovedLink}
+                target="_blank"
                 className="gem-buy-btn"
-                onClick={handleBuyClick}
+                style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+                onClick={(e) => {
+                  if (!productId) {
+                    e.preventDefault();
+                    console.warn(`No product ID found for gemstone: ${gemName}`);
+                  }
+                }}
               >
                 <ShoppingCart className="btn-icon" />
                 <span>Buy Now</span>
-              </button>
+              </a>
             )}
 
             <div className="hero-guarantees-compact">

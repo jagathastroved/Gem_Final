@@ -25,9 +25,10 @@ const SellingGemPage = () => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   const gem = report?.primaryGemstone?.gemstone;
+  console.log('gem', gem)
 
   const gemName = gem?.suitableStone;
-  // const gemName = 'Diamond';
+  // const gemName = "cat's EYe";
 
   const reasonText = gem?.whySuitableText || `This planet exerts a favorable influence in your chart, making ${gemName} an excellent choice for you. As the gemstone linked to this planet, ${gemName} enhances its powerful effects in your life. Wearing it can amplify the positive attributes associated with the areas governed by this radiant planet.`;
 
@@ -97,16 +98,19 @@ const SellingGemPage = () => {
     }
   };
 
-  const handleBuyClick = () => {
-    if (isSpecialGem) {
-      if (isInterested) {
-        setShowModal(true);
-      }
-    } else {
-      // Default buy now behavior
-      console.log("Proceeding to normal checkout...");
-    }
+  const GEMSTONE_PRODUCT_IDS = {
+    "blue_sapphire": 88722,
+    "yellow_sapphire": 88723,
+    "red_coral": 88724,
+    "cats_eye": 88725,
+    "emerald": 88726,
+    "ruby": 88727,
+    "pearl": 88728
   };
+
+  const normalizedGemName = gemName ? gemName.toLowerCase().replace(/[']/g, '').replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '') : '';
+  const productId = GEMSTONE_PRODUCT_IDS[normalizedGemName];
+  const astrovedLink = productId ? `https://www.astroved.com/-p${productId}.aspx` : '#';
 
   return (
     <div className="selling-gem-container">
@@ -204,13 +208,21 @@ const SellingGemPage = () => {
             )}
 
             {!isSpecialGem && (
-              <button
+              <a
+                href={astrovedLink}
+                target="_blank"
                 className="buy-now-btn pulse-light-animation"
-                onClick={handleBuyClick}
+                style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+                onClick={(e) => {
+                  if (!productId) {
+                    e.preventDefault();
+                    console.warn(`No product ID found for gemstone: ${gemName}`);
+                  }
+                }}
               >
                 <ShoppingCart size={20} />
                 <span>Buy Now</span>
-              </button>
+              </a>
             )}
 
             {/* Trust Indicators */}
