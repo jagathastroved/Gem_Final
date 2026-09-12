@@ -88,7 +88,8 @@ export function GemstonePage() {
     "cats_eye": 88725,
     "emerald": 88726,
     "ruby": 88727,
-    "pearl": 88728
+    "pearl": 88728,
+    "hessonite": 88730,
   };
 
   const normalizedGemName = gemName ? gemName.toLowerCase().replace(/[']/g, '').replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '') : '';
