@@ -25,7 +25,7 @@ const SellingGemPage = () => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   const gem = report?.primaryGemstone?.gemstone;
-  console.log('gem', gem)
+  // console.log('gem', gem)
 
   const gemName = gem?.suitableStone;
   // const gemName = "cat's EYe";

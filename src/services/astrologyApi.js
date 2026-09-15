@@ -29,3 +29,14 @@ export const fetchGemstoneReport = async (birthDetails) => {
     throw error;
   }
 }
+
+export const getTimeZone = async () => {
+  try {
+    const timezone = await axios.get('https://www.astroved.com/new/Home/GetLocationBasedOnIp')
+    console.log(timezone.data.timeZone, "Timezone")
+    return timezone
+  }
+  catch (err) {
+    console.error("Timezone Fetch Failed", err)
+  }
+}

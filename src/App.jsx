@@ -3,6 +3,7 @@ import { BrowserRouter, useLocation, Navigate } from 'react-router-dom';
 import { AppRoutes } from './routes/AppRoutes.jsx';
 import './styles/base/App.css';
 import { ThemeProvider } from './context/ThemeContext.jsx';
+import { getTimeZone } from './services/astrologyApi.js';
 
 function AppContent() {
   const location = useLocation();
@@ -22,14 +23,34 @@ function AppContent() {
       return null;
     };
 
-    const currency = getCookie('currentcurrency');
+    const checkRedirect = async () => {
+      const currency = getCookie('currentcurrency');
 
-    if (currency) {
-      const currentcurrency = currency.toUpperCase();
-      if (currentcurrency === 'USD' || currentcurrency === 'MYR') {
-        window.location.href = 'https://www.astroved.com/';
+      if (currency) {
+        const currentcurrency = currency.toUpperCase();
+        if (currentcurrency === 'USD' || currentcurrency === 'MYR') {
+          window.location.href = 'https://www.astroved.com/';
+        }
+      } else {
+        let tz;
+        try {
+          const timezoneRes = await getTimeZone();
+          tz = timezoneRes?.data?.timeZone;
+        } catch (error) {
+          console.error("Error calling getTimeZone:", error);
+        }
+
+        if (!tz) {
+          tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        }
+
+        if (tz && tz !== 'Asia/Kolkata' && tz !== 'Asia/Calcutta') {
+          window.location.href = 'https://www.astroved.com/';
+        }
       }
-    }
+    };
+
+    checkRedirect();
   }, []);
 
   const [report, setReport] = useState(() => {
