@@ -33,7 +33,7 @@ export const fetchGemstoneReport = async (birthDetails) => {
 export const getTimeZone = async () => {
   try {
     const timezone = await axios.get('https://www.astroved.com/new/Home/GetLocationBasedOnIp')
-    console.log(timezone.data.timeZone, "Timezone")
+    // console.log(timezone.data.timeZone, "Timezone")
     return timezone
   }
   catch (err) {
